@@ -1,0 +1,2 @@
+/usr/bin/ar qc libnvdlaila.a CMakeFiles/nvdlaila.dir/src/cmac_init.cc.o CMakeFiles/nvdlaila.dir/src/cmac_input.cc.o CMakeFiles/nvdlaila.dir/src/cmac_instrs.cc.o CMakeFiles/nvdlaila.dir/src/cmac_output.cc.o CMakeFiles/nvdlaila.dir/src/cmac_state.cc.o CMakeFiles/nvdlaila.dir/src/cmac_top.cc.o
+/usr/bin/ranlib libnvdlaila.a

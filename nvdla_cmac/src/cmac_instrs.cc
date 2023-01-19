@@ -57,7 +57,7 @@ namespace ilang {
             instr.SetDecode(cmac_state == IDLE & group0_ok & csc2cmac_vld);
             
             instr.SetUpdate(m.state("cmac_state"), BUSY);
-            using_stale_data = !(m.input("csc2cmac_reuse_weights"))
+            using_stale_data = !(m.input("csc2cmac_reuse_weights"));
         }
 
         { // Pend2Busy
@@ -65,7 +65,7 @@ namespace ilang {
             instr.SetDecode(cmac_state == PEND & csc2cmac_vld);
 
             instr.SetUpdate(m.state("cmac_state"), BUSY);
-            using_stale_data = !(m.input("csc2cmac_reuse_weights"))
+            using_stale_data = !(m.input("csc2cmac_reuse_weights"));
         }
 
        // Busy2Pend and Busy2Idle handles in "cmac_compute_dot_product"
@@ -93,8 +93,7 @@ namespace ilang {
 
             for (auto i = 0; i < 16; i++) {
                 // get inputs for each cell
-                auto wt = BvConst(0, NVDLA_CMAC_INT16_KERNEL_WIDTH);
-                Load(m.state("cached_weights"), BvConst(i, NVDLA_CMAC_MAC_ARRAY_ADDR_WIDTH), wt);   
+                auto wt = Load(m.state("cached_weights"), BvConst(i, NVDLA_CMAC_MAC_ARRAY_ADDR_WIDTH));   
                 auto feature = m.input("csc2cmac_feature_kernel");
 
                 // int16 calculation

@@ -1,0 +1,32 @@
+{
+  "program fragment": [
+    {
+      "instr No.": 0,
+      "cmac_csc2cmac_vld": false,
+      "cmac_csc2cmac_sending_last_batch": false,
+      "cmac_csc2cmac_reuse_weights": false,
+      "cmac_csc2cmac_status": 0,
+      "cmac_csc2cmac_feature_kernel": "0x0011",
+      "cmac_csc2cmac_weight_kernel_15": "0x0011",
+      "cmac_csc2cmac_weight_kernel_14": "0x0011",
+      "cmac_csc2cmac_weight_kernel_13": "0x0011",
+      "cmac_csc2cmac_weight_kernel_12": "0x0011",
+      "cmac_csc2cmac_weight_kernel_11": "0x0011",
+      "cmac_csc2cmac_weight_kernel_10": "0x0011",
+      "cmac_csc2cmac_weight_kernel_9": "0x0011",
+      "cmac_csc2cmac_weight_kernel_0": "0x0011",
+      "cmac_csc2cmac_weight_kernel_1": "0x0011",
+      "cmac_csc2cmac_weight_kernel_2": "0x0011",
+      "cmac_csc2cmac_weight_kernel_3": "0x0011",
+      "cmac_csc2cmac_weight_kernel_4": "0x0011",
+      "cmac_csc2cmac_weight_kernel_5": "0x0011",
+      "cmac_csc2cmac_weight_kernel_6": "0x0011",
+      "cmac_csc2cmac_weight_kernel_7": "0x0011",
+      "cmac_csc2cmac_weight_kernel_8": "0x0011",
+      "cmac_csb2cmac_addr": "0x1010",
+      "cmac_csb2cmac_data": 0,
+      "cmac_csb2cmac_write": 0,
+      "cmac_csb2cmac_vld": 0
+    }
+  ]
+}
