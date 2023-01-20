@@ -48,7 +48,7 @@ namespace ilang {
         }
 
         //////////////////////////////////////////////////////////////////////////////
-        ///  STATUS CONTROL
+        ///  EXPLICIT STATUS CONTROL
         //////////////////////////////////////////////////////////////////////////////
 
         { // Start from IDLE
@@ -68,8 +68,6 @@ namespace ilang {
             using_stale_data = !(m.input("csc2cmac_reuse_weights"));
         }
 
-       // Busy2Pend and Busy2Idle handles in "cmac_compute_dot_product"
-
         //////////////////////////////////////////////////////////////////////////////
         ///  COMPUTATION
         //////////////////////////////////////////////////////////////////////////////
@@ -78,10 +76,13 @@ namespace ilang {
             auto instr = m.NewInstr("cmac_cache_weights");
             instr.SetDecode((cmac_state == BUSY) & using_stale_data);
             
-            for (auto i = 0; i < 16; i++) {
-                auto wt = m.input("csc2cmac_weight_kernel_" + (std::to_string(i)));
-                Store(m.state("cached_weights"), BvConst(i, NVDLA_CMAC_MAC_ARRAY_ADDR_WIDTH), wt);            
-            }
+            for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
+                for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
+                    // Store weights two bytes at a time
+                    auto wt = m.input("csc2cmac_wt_" + (std::to_string(i)) + "_" + (std::to_string(j)));
+                    Store(m.state("cached_wt_kernel_" + (std::to_string(i))), BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH), wt);         
+                }
+            } 
 
             using_stale_data = BoolConst(false);
         }
@@ -91,35 +92,24 @@ namespace ilang {
             auto instr = m.NewInstr("cmac_compute_dot_product");
             instr.SetDecode((cmac_state == BUSY) & !using_stale_data);
 
-            for (auto i = 0; i < 16; i++) {
-                // get inputs for each cell
-                auto wt = Load(m.state("cached_weights"), BvConst(i, NVDLA_CMAC_MAC_ARRAY_ADDR_WIDTH));   
-                auto feature = m.input("csc2cmac_feature_kernel");
+            for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
 
-                // int16 calculation
-                auto sum_int16 = BvConst(0, NVDLA_CMAC_INT16_DATA_WIDTH);
-                for (auto j = 0; j < 64; j++) {
-                    auto lo = NVDLA_CMAC_INT16_DATA_WIDTH * j;
-                    auto hi = lo + NVDLA_CMAC_INT16_DATA_WIDTH - 1;
-                    sum_int16 = sum_int16 + Extract(wt, hi, lo) * Extract(feature, hi, lo);
+                // int calculation
+                auto sum = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
+                for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
+                    // get inputs
+                    auto wt = Load(m.state("cached_wt_kernel_" + (std::to_string(i))), BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH)); 
+                    auto ft = m.input("csc2cmac_ft_" + (std::to_string(j)));     
+
+                    // accumulate
+                    sum = sum + (wt * ft);
                 }
-                Store(m.state("cmac2cacc_partial_sums"), BvConst(i, NVDLA_CMAC_MAC_ARRAY_ADDR_WIDTH), sum_int16);         
+                // truncate sum for int8 solution
+                // Ite(INT16, sum, sum & 0xFF)
+                Store(m.state("cmac2cacc_partial_sums"), BvConst(i, NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH), sum);         
 
-                // // int8 calculation
-                // auto sum = BvConst(0, NVDLA_CMAC_INT16_DATA_WIDTH);
-                // for (auto j = 0; j < 64; j++) {
-                //     auto lo_0 = NVDLA_CMAC_INT16_DATA_WIDTH * j;
-                //     auto hi_0 = lo_0 + NVDLA_CMAC_INT8_DATA_WIDTH - 1;
-                    
-                //     auto lo_1 = hi_0 + 1;
-                //     auto hi_1 = lo_1 + NVDLA_CMAC_INT8_DATA_WIDTH - 1;
-
-                //     auto sum_int8 = Extract(wt, hi_0, lo_0) * Extract(feature, hi_0, lo_0) + 
-                //         Extract(wt, hi_1, lo_1) * Extract(feature, hi_1, lo_1);
-
-                //     sum = sum + Sext(sum_int8, NVDLA_CMAC_INT16_DATA_WIDTH)
-                // }
-                // Store(m.state("cmac2cacc_partial_sums"), BvConst(i, NVDLA_CMAC_MAC_ARRAY_ADDR_WIDTH), sum);         
+                // Floating point calculation here    
+                 
             }
 
             instr.SetUpdate(m.state("cmac_state"), Ite(m.input("csc2cmac_sending_last_batch") == BoolConst(false), PEND, IDLE));

@@ -54,13 +54,17 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 ///  CONSTANTS
 //////////////////////////////////////////////////////////////////////////////
 
-#define NVDLA_CMAC_INT16_KERNEL_WIDTH     1024    // 64 * 16 bits = 1024 bits
-#define NVDLA_CMAC_INT16_DATA_WIDTH       16       
-#define NVDLA_CMAC_INT8_DATA_WIDTH        8       
-#define NVDLA_CMAC_MAC_ARRAY_ADDR_WIDTH   4       // 2 ^ 14 = 16       
-#define NVDLA_CMAC_PIPELINE_STATUS_WIDTH  8       // Assumed value
+#define NVDLA_CMAC_KERNEL_NUM_ELEM        64
+#define NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH  16      // size of int16/fp16
+#define NVDLA_CMAC_KERNEL_ADDR_WIDTH      6       // 2 ^ 6 = 64       
 
-// #define NVDLA_CMAC_WT_BLOCK_SIZE_INT8   512     // 64 * 8 bits = 512 bits
+#define NVDLA_CMAC_NUM_MAC_CELLS          16  
+#define NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH   4  
+
+#define NVDLA_CMAC_INT16_DATA_WIDTH       16       
+#define NVDLA_CMAC_INT8_DATA_WIDTH        8    
+
+#define NVDLA_CMAC_PIPELINE_STATUS_WIDTH  8       // Assumed value
 
 } // namespace ilang
 

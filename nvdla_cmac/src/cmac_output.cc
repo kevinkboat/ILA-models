@@ -19,7 +19,9 @@ namespace ilang {
         ///  TO CACC 
         //////////////////////////////////////////////////////////////////////////////
 
-        m.NewMemState("cmac2cacc_partial_sums", NVDLA_CMAC_MAC_ARRAY_ADDR_WIDTH, NVDLA_CMAC_INT16_DATA_WIDTH);
+        // 16 Partial Sums
+        m.NewMemState("cmac2cacc_partial_sums", NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
+        
         m.NewBvState("cmac2cacc_status", NVDLA_CMAC_PIPELINE_STATUS_WIDTH);
     }
 
