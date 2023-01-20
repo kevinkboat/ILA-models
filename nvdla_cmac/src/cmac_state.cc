@@ -26,9 +26,9 @@ namespace ilang {
         m.NewBvState(NVDLA_CMAC_S_CONSUMER, NVDLA_CMAC_S_CONSUMER_WIDTH);
 
         // 0x7008
-        m.NewBvState("group0_" + NVDLA_CMAC_D_OP_ENABLE, NVDLA_CMAC_D_OP_ENABLE_WIDTH);
+        m.NewBvState(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE), NVDLA_CMAC_D_OP_ENABLE_WIDTH);
         // 0x700c
-        m.NewBvState("group0_" + NVDLA_CMAC_D_MISC_CFG, NVDLA_CMAC_D_MISC_CFG_WIDTH);
+        m.NewBvState(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG), NVDLA_CMAC_D_MISC_CFG_WIDTH);
 
         // // Duplicated Register Group
         // for (auto i = 0; i < 2; i++) {

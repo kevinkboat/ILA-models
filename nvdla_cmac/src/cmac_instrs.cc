@@ -62,7 +62,7 @@ namespace ilang {
 
         { // Pend2Busy
             auto instr = m.NewInstr("pend2busy");
-            instr.SetDecode(cmac_state == PEND & csc2cmac_vld);
+            instr.SetDecode(cmac_state == PEND & csc2cmac_vld & m.input("csc2cmac_status") == BvConst(1, NVDLA_CMAC_PIPELINE_STATUS_WIDTH));
 
             instr.SetUpdate(m.state("cmac_state"), BUSY);
             using_stale_data = !(m.input("csc2cmac_reuse_weights"));
