@@ -417,6 +417,54 @@ src/memory_update_functions_0.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_0.cc.s
 .PHONY : src/memory_update_functions_0.cc.s
 
+src/memory_update_functions_1.o: src/memory_update_functions_1.cc.o
+.PHONY : src/memory_update_functions_1.o
+
+# target to build an object file
+src/memory_update_functions_1.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_1.cc.o
+.PHONY : src/memory_update_functions_1.cc.o
+
+src/memory_update_functions_1.i: src/memory_update_functions_1.cc.i
+.PHONY : src/memory_update_functions_1.i
+
+# target to preprocess a source file
+src/memory_update_functions_1.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_1.cc.i
+.PHONY : src/memory_update_functions_1.cc.i
+
+src/memory_update_functions_1.s: src/memory_update_functions_1.cc.s
+.PHONY : src/memory_update_functions_1.s
+
+# target to generate assembly for a file
+src/memory_update_functions_1.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_1.cc.s
+.PHONY : src/memory_update_functions_1.cc.s
+
+src/memory_update_functions_2.o: src/memory_update_functions_2.cc.o
+.PHONY : src/memory_update_functions_2.o
+
+# target to build an object file
+src/memory_update_functions_2.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_2.cc.o
+.PHONY : src/memory_update_functions_2.cc.o
+
+src/memory_update_functions_2.i: src/memory_update_functions_2.cc.i
+.PHONY : src/memory_update_functions_2.i
+
+# target to preprocess a source file
+src/memory_update_functions_2.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_2.cc.i
+.PHONY : src/memory_update_functions_2.cc.i
+
+src/memory_update_functions_2.s: src/memory_update_functions_2.cc.s
+.PHONY : src/memory_update_functions_2.s
+
+# target to generate assembly for a file
+src/memory_update_functions_2.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_2.cc.s
+.PHONY : src/memory_update_functions_2.cc.s
+
 src/setup_initial_condition.o: src/setup_initial_condition.cc.o
 .PHONY : src/setup_initial_condition.o
 
@@ -486,6 +534,12 @@ help:
 	@echo "... src/memory_update_functions_0.o"
 	@echo "... src/memory_update_functions_0.i"
 	@echo "... src/memory_update_functions_0.s"
+	@echo "... src/memory_update_functions_1.o"
+	@echo "... src/memory_update_functions_1.i"
+	@echo "... src/memory_update_functions_1.s"
+	@echo "... src/memory_update_functions_2.o"
+	@echo "... src/memory_update_functions_2.i"
+	@echo "... src/memory_update_functions_2.s"
 	@echo "... src/setup_initial_condition.o"
 	@echo "... src/setup_initial_condition.i"
 	@echo "... src/setup_initial_condition.s"

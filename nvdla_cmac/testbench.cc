@@ -10,6 +10,10 @@
 
 using json = nlohmann::json;
 
+#define GET_JSON_INT(json_val, default_val) (!(json_val.is_null()) ? json_val.get<int>() : default_val)
+#define GET_JSON_INT_FROM_HEX_STR(json_val, default_val) (!(json_val.is_null()) ? (std::stoi(json_val.get<std::string>().c_str(), nullptr, 16)) : default_val)
+#define GET_JSON_BOOL(json_val, default_val) (!(json_val.is_null()) ? json_val.get<bool>() : default_val)
+
 std::string file_in;
 std::string file_out;
 
@@ -104,43 +108,76 @@ SC_MODULE(Source) {
     
     json cmd_seq;
     cmd_seq = json::parse(fin);
-
+    
     // Pass the command to the ports
     for (size_t i = 0; i < cmd_seq["program fragment"].size(); i++) {
 
-      cmac_csb2cmac_addr = std::stoi((cmd_seq["program fragment"][i]["cmac_csb2cmac_addr"].get<std::string>()).c_str(), nullptr, 16);
-      cmac_csb2cmac_data = cmd_seq["program fragment"][i]["cmac_csb2cmac_data"].get<int>();
-      cmac_csb2cmac_write = cmd_seq["program fragment"][i]["cmac_csb2cmac_write"].get<int>();
-      cmac_csb2cmac_vld = cmd_seq["program fragment"][i]["cmac_csb2cmac_vld"].get<int>();
+      // cmac_csb2cmac_addr = std::stoi((cmd_seq["program fragment"][i]["cmac_csb2cmac_addr"].get<std::string>()).c_str(), nullptr, 16);
+      // cmac_csb2cmac_data = cmd_seq["program fragment"][i]["cmac_csb2cmac_data"].get<int>();
+      // cmac_csb2cmac_write = cmd_seq["program fragment"][i]["cmac_csb2cmac_write"].get<int>();
+      // cmac_csb2cmac_vld = cmd_seq["program fragment"][i]["cmac_csb2cmac_vld"].get<int>();
     
-      cmac_csc2cmac_status = cmd_seq["program fragment"][i]["cmac_csc2cmac_status"].get<int>();
-      cmac_csc2cmac_reuse_weights = cmd_seq["program fragment"][i]["cmac_csc2cmac_reuse_weights"].get<bool>();
-      cmac_csc2cmac_vld = cmd_seq["program fragment"][i]["cmac_csc2cmac_vld"].get<bool>();
-      cmac_csc2cmac_sending_last_batch = cmd_seq["program fragment"][i]["cmac_csc2cmac_sending_last_batch"].get<bool>();
+      // cmac_csc2cmac_status = cmd_seq["program fragment"][i]["cmac_csc2cmac_status"].get<int>();
+      // cmac_csc2cmac_reuse_weights = cmd_seq["program fragment"][i]["cmac_csc2cmac_reuse_weights"].get<bool>();
+      // cmac_csc2cmac_vld = cmd_seq["program fragment"][i]["cmac_csc2cmac_vld"].get<bool>();
+      // cmac_csc2cmac_sending_last_batch = cmd_seq["program fragment"][i]["cmac_csc2cmac_sending_last_batch"].get<bool>();
+
+      cmac_csb2cmac_addr = GET_JSON_INT_FROM_HEX_STR(cmd_seq["program fragment"][i]["cmac_csb2cmac_addr"], 0);
+      cmac_csb2cmac_data = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_data"], 0);
+      cmac_csb2cmac_write = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_write"], 0);
+      cmac_csb2cmac_vld = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_vld"], 0);
+    
+      cmac_csc2cmac_status = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_status"], 0);
+      cmac_csc2cmac_reuse_weights = GET_JSON_BOOL(cmd_seq["program fragment"][i]["cmac_csc2cmac_reuse_weights"], false);
+      cmac_csc2cmac_vld = GET_JSON_BOOL(cmd_seq["program fragment"][i]["cmac_csc2cmac_vld"], false);
+      cmac_csc2cmac_sending_last_batch = GET_JSON_BOOL(cmd_seq["program fragment"][i]["cmac_csc2cmac_sending_last_batch"], false);
 
       // Read in array data
       for (size_t j = 0; j < NUM_KERNEL_ELEM; j++) {
-        cmac_csc2cmac_ft[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_ft_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_ft[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_ft_" + std::to_string(j)].get<int>();
         
-        cmac_csc2cmac_wt_0[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_0_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_1[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_1_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_2[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_2_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_3[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_3_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_0[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_0_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_1[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_1_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_2[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_2_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_3[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_3_" + std::to_string(j)].get<int>();
 
-        cmac_csc2cmac_wt_4[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_4_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_5[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_5_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_6[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_6_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_7[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_7_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_4[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_4_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_5[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_5_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_6[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_6_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_7[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_7_" + std::to_string(j)].get<int>();
         
-        cmac_csc2cmac_wt_8[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_8_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_9[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_9_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_10[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_10_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_11[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_11_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_8[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_8_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_9[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_9_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_10[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_10_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_11[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_11_" + std::to_string(j)].get<int>();
         
-        cmac_csc2cmac_wt_12[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_12_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_13[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_13_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_14[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_14_" + std::to_string(j)].get<int>();
-        cmac_csc2cmac_wt_15[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_15_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_12[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_12_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_13[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_13_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_14[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_14_" + std::to_string(j)].get<int>();
+        // cmac_csc2cmac_wt_15[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_15_" + std::to_string(j)].get<int>();
+
+        cmac_csc2cmac_ft[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_ft_" + std::to_string(j)], 0);
+        
+        cmac_csc2cmac_wt_0[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_0_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_1[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_1_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_2[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_2_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_3[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_3_" + std::to_string(j)], 0);
+
+        cmac_csc2cmac_wt_4[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_4_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_5[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_5_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_6[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_6_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_7[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_7_" + std::to_string(j)], 0);
+        
+        cmac_csc2cmac_wt_8[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_8_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_9[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_9_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_10[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_10_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_11[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_11_" + std::to_string(j)], 0);
+        
+        cmac_csc2cmac_wt_12[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_12_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_13[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_13_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_14[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_14_" + std::to_string(j)], 0);
+        cmac_csc2cmac_wt_15[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_15_" + std::to_string(j)], 0);
+
       }
     
       wait(10, SC_NS);
@@ -159,39 +196,39 @@ SC_MODULE(testbench) {
 
   sc_clock clk;
 
-  sc_out<sc_biguint<16>> cmac_csb2cmac_addr_signal;
-  sc_out<sc_biguint<32>> cmac_csb2cmac_data_signal;
-  sc_out<sc_biguint<1>> cmac_csb2cmac_write_signal;
-  sc_out<sc_biguint<1>> cmac_csb2cmac_vld_signal;
+  sc_signal<sc_biguint<16>> cmac_csb2cmac_addr_signal;
+  sc_signal<sc_biguint<32>> cmac_csb2cmac_data_signal;
+  sc_signal<sc_biguint<1>> cmac_csb2cmac_write_signal;
+  sc_signal<sc_biguint<1>> cmac_csb2cmac_vld_signal;
 
-  sc_out<sc_biguint<8>> cmac_csc2cmac_status_signal;
-  sc_out<bool> cmac_csc2cmac_reuse_weights_signal;
-  sc_out<bool> cmac_csc2cmac_vld_signal;
-  sc_out<bool> cmac_csc2cmac_sending_last_batch_signal;
+  sc_signal<sc_biguint<8>> cmac_csc2cmac_status_signal;
+  sc_signal<bool> cmac_csc2cmac_reuse_weights_signal;
+  sc_signal<bool> cmac_csc2cmac_vld_signal;
+  sc_signal<bool> cmac_csc2cmac_sending_last_batch_signal;
   
-  sc_out<sc_biguint<16>> cmac_csc2cmac_ft_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_ft_signal[NUM_KERNEL_ELEM];
   
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_0_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_1_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_2_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_3_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_0_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_1_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_2_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_3_signal[NUM_KERNEL_ELEM];
 
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_4_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_5_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_6_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_7_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_4_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_5_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_6_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_7_signal[NUM_KERNEL_ELEM];
   
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_8_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_9_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_10_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_11_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_8_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_9_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_10_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_11_signal[NUM_KERNEL_ELEM];
   
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_12_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_13_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_14_signal[NUM_KERNEL_ELEM];
-  sc_out<sc_biguint<16>> cmac_csc2cmac_wt_15_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_12_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_13_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_14_signal[NUM_KERNEL_ELEM];
+  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_15_signal[NUM_KERNEL_ELEM];
 
-  sc_out<sc_biguint<1>> input_done;
+  sc_signal<sc_biguint<1>> input_done;
 
   SC_CTOR(testbench) :
     clk("clk", 1, SC_NS),
@@ -1376,6 +1413,12 @@ SC_MODULE(testbench) {
     std::ofstream fout;
     fout.open(file_out, ios::out | ios::trunc);
  
+    fout << "cmac_csb2cmac_data_in => " << std::dec << cmac_inst.cmac_csb2cmac_data_in << std::endl; 
+
+    fout << "cmac_csc2cmac_wt_15_30_in => " << std::dec << cmac_inst.cmac_csc2cmac_wt_15_30_in << std::endl; 
+    fout << "cmac_csc2cmac_wt_15_63_in => " << std::dec << cmac_inst.cmac_csc2cmac_wt_15_63_in << std::endl; 
+    fout << "cmac_csc2cmac_ft_30_in => " << std::dec << cmac_inst.cmac_csc2cmac_ft_30_in << std::endl; 
+    fout << std::endl; 
 
     // cmac_state
     fout << "cmac_cmac_state => " << std::dec << cmac_inst.cmac_cmac_state << std::endl; 
@@ -1434,97 +1477,9 @@ int sc_main(int argc, char *argv[]) {
       file_out = argv[2];
   }
 
-  // // Dummy ports
-
-  // sc_signal <bool> cmac_csc2cmac_sending_last_batch_main;
-  // sc_signal <bool> cmac_csc2cmac_vld_main;
-  // sc_signal <bool> cmac_csc2cmac_reuse_weights_main;
-  // sc_signal <sc_biguint<8>> cmac_csc2cmac_status_main;
-  // sc_signal <sc_biguint<1024>> cmac_csc2cmac_feature_kernel_main;
-
-  sc_signal<sc_biguint<16>> cmac_csb2cmac_addr_main;
-  sc_signal<sc_biguint<32>> cmac_csb2cmac_data_main;
-  sc_signal<sc_biguint<1>> cmac_csb2cmac_write_main;
-  sc_signal<sc_biguint<1>> cmac_csb2cmac_vld_main;
-
-  sc_signal<sc_biguint<8>> cmac_csc2cmac_status_main;
-  sc_signal<bool> cmac_csc2cmac_reuse_weights_main;
-  sc_signal<bool> cmac_csc2cmac_vld_main;
-  sc_signal<bool> cmac_csc2cmac_sending_last_batch_main;
-  
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_ft_main[NUM_KERNEL_ELEM];
-  
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_0_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_1_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_2_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_3_main[NUM_KERNEL_ELEM];
-
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_4_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_5_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_6_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_7_main[NUM_KERNEL_ELEM];
-  
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_8_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_9_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_10_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_11_main[NUM_KERNEL_ELEM];
-  
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_12_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_13_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_14_main[NUM_KERNEL_ELEM];
-  sc_signal<sc_biguint<16>> cmac_csc2cmac_wt_15_main[NUM_KERNEL_ELEM];
-
-  sc_signal<sc_biguint<1>> input_done_main;
-
   // Begin simulation
   std::cout << "test start" << std::endl;
   testbench tb("tb");
-
-  
-  // // Linking to dummy ports
-
-  //   tb.cmac_csc2cmac_sending_last_batch_signal(cmac_csc2cmac_sending_last_batch_main); 
-  //   tb.cmac_csc2cmac_vld_signal(cmac_csc2cmac_vld_main);
-  //   tb.cmac_csc2cmac_reuse_weights_signal(cmac_csc2cmac_reuse_weights_main);
-  //   tb.cmac_csc2cmac_status_signal(cmac_csc2cmac_status_main);
-  //   tb.cmac_csc2cmac_feature_kernel_signal(cmac_csc2cmac_feature_kernel_main);
-
-  tb.cmac_csb2cmac_addr_signal(cmac_csb2cmac_addr_main);
-  tb.cmac_csb2cmac_data_signal(cmac_csb2cmac_data_main);
-  tb.cmac_csb2cmac_write_signal(cmac_csb2cmac_write_main);
-  tb.cmac_csb2cmac_vld_signal(cmac_csb2cmac_vld_main);
-
-  tb.cmac_csc2cmac_status_signal(cmac_csc2cmac_status_main);
-  tb.cmac_csc2cmac_reuse_weights_signal(cmac_csc2cmac_reuse_weights_main);
-  tb.cmac_csc2cmac_vld_signal(cmac_csc2cmac_vld_main);
-  tb.cmac_csc2cmac_sending_last_batch_signal(cmac_csc2cmac_sending_last_batch_main); 
-
-  for (size_t i = 0; i < NUM_KERNEL_ELEM; i++) {      
-    tb.cmac_csc2cmac_ft_signal[i](cmac_csc2cmac_ft_main[i]);
-
-    tb.cmac_csc2cmac_wt_0_signal[i](cmac_csc2cmac_wt_0_main[i]);
-    tb.cmac_csc2cmac_wt_1_signal[i](cmac_csc2cmac_wt_1_main[i]);
-    tb.cmac_csc2cmac_wt_2_signal[i](cmac_csc2cmac_wt_2_main[i]);
-    tb.cmac_csc2cmac_wt_3_signal[i](cmac_csc2cmac_wt_3_main[i]);
-
-    tb.cmac_csc2cmac_wt_4_signal[i](cmac_csc2cmac_wt_4_main[i]);
-    tb.cmac_csc2cmac_wt_5_signal[i](cmac_csc2cmac_wt_5_main[i]);
-    tb.cmac_csc2cmac_wt_6_signal[i](cmac_csc2cmac_wt_6_main[i]);
-    tb.cmac_csc2cmac_wt_7_signal[i](cmac_csc2cmac_wt_7_main[i]);
-
-    tb.cmac_csc2cmac_wt_8_signal[i](cmac_csc2cmac_wt_8_main[i]);
-    tb.cmac_csc2cmac_wt_9_signal[i](cmac_csc2cmac_wt_9_main[i]);
-    tb.cmac_csc2cmac_wt_10_signal[i](cmac_csc2cmac_wt_10_main[i]);
-    tb.cmac_csc2cmac_wt_11_signal[i](cmac_csc2cmac_wt_11_main[i]);
-
-    tb.cmac_csc2cmac_wt_12_signal[i](cmac_csc2cmac_wt_12_main[i]);
-    tb.cmac_csc2cmac_wt_13_signal[i](cmac_csc2cmac_wt_13_main[i]);
-    tb.cmac_csc2cmac_wt_14_signal[i](cmac_csc2cmac_wt_14_main[i]);
-    tb.cmac_csc2cmac_wt_15_signal[i](cmac_csc2cmac_wt_15_main[i]);
-  }
-
-  tb.input_done(input_done_main);
-
 
   sc_start();
 

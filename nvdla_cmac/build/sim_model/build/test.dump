@@ -1,3 +1,8 @@
+cmac_csb2cmac_data_in => 60
+cmac_csc2cmac_wt_15_30_in => 250
+cmac_csc2cmac_wt_15_63_in => 9
+cmac_csc2cmac_ft_30_in => 1
+
 cmac_cmac_state => 1
 
 partial_sum_0 => 0
@@ -15,7 +20,7 @@ partial_sum_11 => 0
 partial_sum_12 => 0
 partial_sum_13 => 0
 partial_sum_14 => 0
-partial_sum_15 => 0
+partial_sum_15 => 259
 
 cached_wt_kernel_0_elem_0 => 0
 cached_wt_kernel_1_elem_0 => 0
@@ -512,7 +517,7 @@ cached_wt_kernel_11_elem_30 => 0
 cached_wt_kernel_12_elem_30 => 0
 cached_wt_kernel_13_elem_30 => 0
 cached_wt_kernel_14_elem_30 => 0
-cached_wt_kernel_15_elem_30 => 0
+cached_wt_kernel_15_elem_30 => 250
 cached_wt_kernel_0_elem_31 => 0
 cached_wt_kernel_1_elem_31 => 0
 cached_wt_kernel_2_elem_31 => 0
@@ -1040,5 +1045,5 @@ cached_wt_kernel_11_elem_63 => 0
 cached_wt_kernel_12_elem_63 => 0
 cached_wt_kernel_13_elem_63 => 0
 cached_wt_kernel_14_elem_63 => 0
-cached_wt_kernel_15_elem_63 => 0
+cached_wt_kernel_15_elem_63 => 9
 

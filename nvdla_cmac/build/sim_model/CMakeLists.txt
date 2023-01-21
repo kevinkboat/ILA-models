@@ -24,6 +24,8 @@ add_executable(cmac
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cmac_start_from_idle.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_pend2busy.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_0.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_1.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_2.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/setup_initial_condition.cc
 )
 

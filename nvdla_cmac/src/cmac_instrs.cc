@@ -58,6 +58,16 @@ namespace ilang {
             
             instr.SetUpdate(m.state("cmac_state"), BUSY);
             using_stale_data = !(m.input("csc2cmac_reuse_weights"));
+            
+            // Code below validates mem stores
+            // instr.SetUpdate(m.state("cmac_state"), DONE);
+            // instr.SetUpdate(m.state("cached_wt_kernel_0"), m.state("cached_wt_kernel_0").Store(BvConst(0, NVDLA_CMAC_KERNEL_ADDR_WIDTH), BvConst(15, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
+            // instr.SetUpdate(m.state("cached_wt_kernel_1"), m.state("cached_wt_kernel_1").Store(BvConst(0, NVDLA_CMAC_KERNEL_ADDR_WIDTH), BvConst(16, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
+            // auto mem2 = m.state("cached_wt_kernel_2");
+            // instr.SetUpdate(m.state("cached_wt_kernel_2"), mem2.Store(BvConst(0, NVDLA_CMAC_KERNEL_ADDR_WIDTH), BvConst(17, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
+            // auto mem3 = m.state("cached_wt_kernel_3");
+            // instr.SetUpdate(mem3, mem3.Store(BvConst(0, NVDLA_CMAC_KERNEL_ADDR_WIDTH), BvConst(18, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
+                 
         }
 
         { // Pend2Busy
@@ -77,11 +87,18 @@ namespace ilang {
             instr.SetDecode((cmac_state == BUSY) & using_stale_data);
             
             for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
+                auto mem_ptr = MemConst(0, {}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH).get();
+                
                 for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
                     // Store weights two bytes at a time
                     auto wt = m.input("csc2cmac_wt_" + (std::to_string(i)) + "_" + (std::to_string(j)));
-                    Store(m.state("cached_wt_kernel_" + (std::to_string(i))), BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH), wt);         
+
+                    // Update memory and store new address
+                    auto new_mem = ExprRef(mem_ptr).Store(BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH), wt);
+                    mem_ptr = new_mem.get();
                 }
+
+                instr.SetUpdate(m.state("cached_wt_kernel_" + (std::to_string(i))), ExprRef(mem_ptr));
             } 
 
             using_stale_data = BoolConst(false);
@@ -92,6 +109,8 @@ namespace ilang {
             auto instr = m.NewInstr("cmac_compute_dot_product");
             instr.SetDecode((cmac_state == BUSY) & !using_stale_data);
 
+            auto mem_ptr = MemConst(0, {}, NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH).get();
+            
             for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
 
                 // int calculation
@@ -106,12 +125,16 @@ namespace ilang {
                 }
                 // truncate sum for int8 solution
                 // Ite(INT16, sum, sum & 0xFF)
-                Store(m.state("cmac2cacc_partial_sums"), BvConst(i, NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH), sum);         
+
+                // Update memory and store new address
+                auto new_mem = ExprRef(mem_ptr).Store(BvConst(i, NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH), sum);
+                mem_ptr = new_mem.get();
 
                 // Floating point calculation here    
-                 
             }
 
+
+            instr.SetUpdate(m.state("cmac2cacc_partial_sums"), ExprRef(mem_ptr));
             instr.SetUpdate(m.state("cmac_state"), Ite(m.input("csc2cmac_sending_last_batch") == BoolConst(false), PEND, IDLE));
         }
 
