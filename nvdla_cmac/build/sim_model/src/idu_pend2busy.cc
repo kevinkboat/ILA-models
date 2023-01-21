@@ -3,10 +3,7 @@ bool cmac::decode_cmac_pend2busy() {
 sc_biguint<2> local_var_1 = 1;
 bool local_var_2 = (cmac_cmac_state == local_var_1);
 bool local_var_4 = (local_var_2 & cmac_csc2cmac_vld);
-sc_biguint<8> local_var_6 = 1;
-bool local_var_7 = (cmac_csc2cmac_status == local_var_6);
-bool local_var_8 = (local_var_4 & local_var_7);
-auto& univ_var_5 = local_var_8;
+auto& univ_var_5 = local_var_4;
 return univ_var_5;
 }
 void cmac::update_cmac_pend2busy() {

@@ -24,6 +24,7 @@ namespace ilang {
         auto csc2cmac_sending_last_batch = m.input("csc2cmac_sending_last_batch");
         auto using_stale_data = BoolConst(false);
 
+
         //////////////////////////////////////////////////////////////////////////////
         ///  SET REGISTERS
         //////////////////////////////////////////////////////////////////////////////
@@ -38,7 +39,6 @@ namespace ilang {
             auto instr = m.NewInstr("cmac_set_start_group0");
             instr.SetDecode(cmac_csb_addr == 0x008 & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(0,1) & cmac_group0_unset);
             instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_OP_ENABLE_WIDTH - 1, 0));
-
         }      
         
         { // CMAC Set Config Group 0 (addr:00c)
@@ -58,21 +58,13 @@ namespace ilang {
             
             instr.SetUpdate(m.state("cmac_state"), BUSY);
             using_stale_data = !(m.input("csc2cmac_reuse_weights"));
-            
-            // Code below validates mem stores
-            // instr.SetUpdate(m.state("cmac_state"), DONE);
-            // instr.SetUpdate(m.state("cached_wt_kernel_0"), m.state("cached_wt_kernel_0").Store(BvConst(0, NVDLA_CMAC_KERNEL_ADDR_WIDTH), BvConst(15, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
-            // instr.SetUpdate(m.state("cached_wt_kernel_1"), m.state("cached_wt_kernel_1").Store(BvConst(0, NVDLA_CMAC_KERNEL_ADDR_WIDTH), BvConst(16, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
-            // auto mem2 = m.state("cached_wt_kernel_2");
-            // instr.SetUpdate(m.state("cached_wt_kernel_2"), mem2.Store(BvConst(0, NVDLA_CMAC_KERNEL_ADDR_WIDTH), BvConst(17, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
-            // auto mem3 = m.state("cached_wt_kernel_3");
-            // instr.SetUpdate(mem3, mem3.Store(BvConst(0, NVDLA_CMAC_KERNEL_ADDR_WIDTH), BvConst(18, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
-                 
         }
 
         { // Pend2Busy
             auto instr = m.NewInstr("pend2busy");
-            instr.SetDecode(cmac_state == PEND & csc2cmac_vld & m.input("csc2cmac_status") == BvConst(1, NVDLA_CMAC_PIPELINE_STATUS_WIDTH));
+            // instr.SetDecode(cmac_state == PEND & csc2cmac_vld & m.input("csc2cmac_status") == BvConst(1, NVDLA_CMAC_PIPELINE_STATUS_WIDTH));
+            instr.SetDecode(cmac_state == PEND & csc2cmac_vld);
+
 
             instr.SetUpdate(m.state("cmac_state"), BUSY);
             using_stale_data = !(m.input("csc2cmac_reuse_weights"));
@@ -110,7 +102,7 @@ namespace ilang {
             instr.SetDecode((cmac_state == BUSY) & !using_stale_data);
 
             auto mem_ptr = MemConst(0, {}, NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH).get();
-            
+
             for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
 
                 // int calculation
@@ -136,6 +128,7 @@ namespace ilang {
 
             instr.SetUpdate(m.state("cmac2cacc_partial_sums"), ExprRef(mem_ptr));
             instr.SetUpdate(m.state("cmac_state"), Ite(m.input("csc2cmac_sending_last_batch") == BoolConst(false), PEND, IDLE));
+            instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), Ite(m.input("csc2cmac_sending_last_batch") == BoolConst(false), BvConst(1,1), BvConst(0,1)));
         }
 
     }
