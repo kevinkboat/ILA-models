@@ -1,156 +1,25 @@
-cmac_csb2cmac_data_in => 1
-cmac_csc2cmac_wt_15_30_in => 0
-cmac_csc2cmac_wt_15_63_in => 0
-cmac_csc2cmac_ft_30_in => 0
-
+current simulation time: 	10 ns
 cmac_cmac_state => 0
 cmac_group0_cmac_d_op_en => 1
+partial_sums => [ 0(0), 1(0), 2(0), 3(0), 4(0), 5(0), 6(0), 7(0), 8(0), 9(0), 10(0), 11(0), 12(0), 13(0), 14(0), 15(0), ]
 
-partial_sum_0 => 0
-partial_sum_1 => 0
-partial_sum_2 => 0
-partial_sum_3 => 0
-partial_sum_4 => 0
-partial_sum_5 => 0
-partial_sum_6 => 0
-partial_sum_7 => 0
-partial_sum_8 => 0
-partial_sum_9 => 0
-partial_sum_10 => 0
-partial_sum_11 => 0
-partial_sum_12 => 0
-partial_sum_13 => 0
-partial_sum_14 => 0
-partial_sum_15 => 0
-
-
-cmac_csb2cmac_data_in => 0
-cmac_csc2cmac_wt_15_30_in => 250
-cmac_csc2cmac_wt_15_63_in => 9
-cmac_csc2cmac_ft_30_in => 1
-
+current simulation time: 	20 ns
 cmac_cmac_state => 1
 cmac_group0_cmac_d_op_en => 1
+partial_sums => [ 0(0), 1(0), 2(0), 3(0), 4(0), 5(250), 6(0), 7(0), 8(0), 9(0), 10(0), 11(0), 12(0), 13(0), 14(0), 15(9), ]
 
-partial_sum_0 => 0
-partial_sum_1 => 0
-partial_sum_2 => 0
-partial_sum_3 => 0
-partial_sum_4 => 0
-partial_sum_5 => 0
-partial_sum_6 => 0
-partial_sum_7 => 0
-partial_sum_8 => 0
-partial_sum_9 => 0
-partial_sum_10 => 0
-partial_sum_11 => 0
-partial_sum_12 => 0
-partial_sum_13 => 0
-partial_sum_14 => 0
-partial_sum_15 => 259
-
-
-cmac_csb2cmac_data_in => 0
-cmac_csc2cmac_wt_15_30_in => 0
-cmac_csc2cmac_wt_15_63_in => 0
-cmac_csc2cmac_ft_30_in => 2
-
-cmac_cmac_state => 0
-cmac_group0_cmac_d_op_en => 0
-
-partial_sum_0 => 0
-partial_sum_1 => 0
-partial_sum_2 => 0
-partial_sum_3 => 0
-partial_sum_4 => 0
-partial_sum_5 => 0
-partial_sum_6 => 0
-partial_sum_7 => 0
-partial_sum_8 => 0
-partial_sum_9 => 0
-partial_sum_10 => 0
-partial_sum_11 => 0
-partial_sum_12 => 0
-partial_sum_13 => 0
-partial_sum_14 => 0
-partial_sum_15 => 518
-
-
-cmac_csb2cmac_data_in => 0
-cmac_csc2cmac_wt_15_30_in => 0
-cmac_csc2cmac_wt_15_63_in => 0
-cmac_csc2cmac_ft_30_in => 4
-
-cmac_cmac_state => 0
-cmac_group0_cmac_d_op_en => 0
-
-partial_sum_0 => 0
-partial_sum_1 => 0
-partial_sum_2 => 0
-partial_sum_3 => 0
-partial_sum_4 => 0
-partial_sum_5 => 0
-partial_sum_6 => 0
-partial_sum_7 => 0
-partial_sum_8 => 0
-partial_sum_9 => 0
-partial_sum_10 => 0
-partial_sum_11 => 0
-partial_sum_12 => 0
-partial_sum_13 => 0
-partial_sum_14 => 0
-partial_sum_15 => 518
-
-
-cmac_csb2cmac_data_in => 1
-cmac_csc2cmac_wt_15_30_in => 0
-cmac_csc2cmac_wt_15_63_in => 0
-cmac_csc2cmac_ft_30_in => 4
-
-cmac_cmac_state => 0
-cmac_group0_cmac_d_op_en => 1
-
-partial_sum_0 => 0
-partial_sum_1 => 0
-partial_sum_2 => 0
-partial_sum_3 => 0
-partial_sum_4 => 0
-partial_sum_5 => 0
-partial_sum_6 => 0
-partial_sum_7 => 0
-partial_sum_8 => 0
-partial_sum_9 => 0
-partial_sum_10 => 0
-partial_sum_11 => 0
-partial_sum_12 => 0
-partial_sum_13 => 0
-partial_sum_14 => 0
-partial_sum_15 => 518
-
-
-cmac_csb2cmac_data_in => 0
-cmac_csc2cmac_wt_15_30_in => 0
-cmac_csc2cmac_wt_15_63_in => 0
-cmac_csc2cmac_ft_30_in => 0
-
+current simulation time: 	30 ns
 cmac_cmac_state => 1
 cmac_group0_cmac_d_op_en => 1
+partial_sums => [ 0(0), 1(0), 2(0), 3(0), 4(0), 5(500), 6(0), 7(0), 8(0), 9(0), 10(0), 11(0), 12(0), 13(0), 14(0), 15(18), ]
 
-partial_sum_0 => 0
-partial_sum_1 => 0
-partial_sum_2 => 45
-partial_sum_3 => 0
-partial_sum_4 => 0
-partial_sum_5 => 0
-partial_sum_6 => 0
-partial_sum_7 => 0
-partial_sum_8 => 0
-partial_sum_9 => 0
-partial_sum_10 => 0
-partial_sum_11 => 0
-partial_sum_12 => 0
-partial_sum_13 => 0
-partial_sum_14 => 0
-partial_sum_15 => 0
+current simulation time: 	40 ns
+cmac_cmac_state => 0
+cmac_group0_cmac_d_op_en => 0
+partial_sums => [ 0(0), 1(0), 2(0), 3(0), 4(0), 5(1000), 6(0), 7(0), 8(0), 9(0), 10(0), 11(0), 12(0), 13(0), 14(0), 15(36), ]
 
+current simulation time: 	50 ns
+cmac_cmac_state => 0
+cmac_group0_cmac_d_op_en => 0
+partial_sums => [ 0(0), 1(0), 2(0), 3(0), 4(0), 5(1000), 6(0), 7(0), 8(0), 9(0), 10(0), 11(0), 12(0), 13(0), 14(0), 15(36), ]
 

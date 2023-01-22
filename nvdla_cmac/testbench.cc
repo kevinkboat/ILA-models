@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include <cstdio>
 
 #include "nlohmann/json.hpp"
 #include "cmac.h"
@@ -1410,24 +1411,16 @@ SC_MODULE(testbench) {
     while (input_done == 0) {
 		  std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
       
-      fout << "cmac_csb2cmac_data_in => " << std::dec << cmac_inst.cmac_csb2cmac_data_in << std::endl; 
-
-      fout << "cmac_csc2cmac_wt_15_30_in => " << std::dec << cmac_inst.cmac_csc2cmac_wt_15_30_in << std::endl; 
-      fout << "cmac_csc2cmac_wt_15_63_in => " << std::dec << cmac_inst.cmac_csc2cmac_wt_15_63_in << std::endl; 
-      fout << "cmac_csc2cmac_ft_30_in => " << std::dec << cmac_inst.cmac_csc2cmac_ft_30_in << std::endl; 
-      fout << std::endl; 
-
-      // cmac_state
+      fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
       fout << "cmac_cmac_state => " << std::dec << cmac_inst.cmac_cmac_state << std::endl; 
       fout << "cmac_group0_cmac_d_op_en => " << std::dec << cmac_inst.cmac_group0_cmac_d_op_en << std::endl; 
-      // fout << "cmac_group0_cmac_d_misc_cfg => " << std::dec << cmac_inst.cmac_group0_cmac_d_misc_cfg << std::endl; 
-      fout << std::endl; 
 
+      fout << std::dec << "partial_sums => [ ";
       // partial_sums
       for (int i = 0; i < 16; i++) {
-        fout << std::dec << "partial_sum_" << i <<  " => " << cmac_inst.cmac_cmac2cacc_partial_sums[i] << std::endl; 
+        fout << std::dec << i <<  "(" << cmac_inst.cmac_cmac2cacc_partial_sums[i] << "), "; 
       }
-      fout << std::endl; 
+      fout << "]" << std::endl; 
 
       
       // // cached_weights

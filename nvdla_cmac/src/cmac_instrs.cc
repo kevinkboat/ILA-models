@@ -24,7 +24,6 @@ namespace ilang {
         auto csc2cmac_sending_last_batch = m.input("csc2cmac_sending_last_batch");
         auto using_stale_data = BoolConst(false);
 
-
         //////////////////////////////////////////////////////////////////////////////
         ///  SET REGISTERS
         //////////////////////////////////////////////////////////////////////////////
@@ -56,15 +55,14 @@ namespace ilang {
             auto group0_ok = cmac_consumer == BvConst(0,1) & m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)) == BvConst(1,1);
             instr.SetDecode(cmac_state == IDLE & group0_ok & csc2cmac_vld);
             
+            // Cold start
             instr.SetUpdate(m.state("cmac_state"), BUSY);
-            using_stale_data = !(m.input("csc2cmac_reuse_weights"));
+            using_stale_data = BoolConst(true);
         }
 
         { // Pend2Busy
             auto instr = m.NewInstr("pend2busy");
-            // instr.SetDecode(cmac_state == PEND & csc2cmac_vld & m.input("csc2cmac_status") == BvConst(1, NVDLA_CMAC_PIPELINE_STATUS_WIDTH));
             instr.SetDecode(cmac_state == PEND & csc2cmac_vld);
-
 
             instr.SetUpdate(m.state("cmac_state"), BUSY);
             using_stale_data = !(m.input("csc2cmac_reuse_weights"));
