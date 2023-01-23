@@ -124,6 +124,7 @@ SC_MODULE(Source) {
       // cmac_csc2cmac_sending_last_batch = cmd_seq["program fragment"][i]["cmac_csc2cmac_sending_last_batch"].get<bool>();
 
       cmac_csb2cmac_addr = GET_JSON_INT_FROM_HEX_STR(cmd_seq["program fragment"][i]["cmac_csb2cmac_addr"], 0);
+
       cmac_csb2cmac_data = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_data"], 0);
       cmac_csb2cmac_write = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_write"], 0);
       cmac_csb2cmac_vld = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_vld"], 0);
@@ -1408,21 +1409,35 @@ SC_MODULE(testbench) {
     std::ofstream fout;
     fout.open(file_out, ios::out | ios::trunc);
 
-    while (input_done == 0) {
-		  std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
-      
-      fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
-      fout << "cmac_cmac_state => " << std::dec << cmac_inst.cmac_cmac_state << std::endl; 
-      fout << "cmac_group0_cmac_d_op_en => " << std::dec << cmac_inst.cmac_group0_cmac_d_op_en << std::endl; 
+    int instr_no = 0;
 
-      fout << std::dec << "partial_sums => [ ";
+    while (input_done == 0) {
+		  // std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
+      
+      // fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
+      // fout << "cmac_cmac_state => " << std::dec << cmac_inst.cmac_cmac_state << std::endl; 
+      // fout << "cmac_group0_cmac_d_op_en => " << std::dec << cmac_inst.cmac_group0_cmac_d_op_en << std::endl; 
+
+      // fout << std::dec << "partial_sums => [ ";
+      // // partial_sums
+      // for (int i = 0; i < 16; i++) {
+      //   fout << std::dec << i <<  "(" << cmac_inst.cmac_cmac2cacc_partial_sums[i] << "), "; 
+      // }
+      // fout << "]" << std::endl; 
+      // fout << std::endl; 
+
+
+      //  Output format: instr_no sum0 sum1 ... sum15
+      fout << std::dec << instr_no++ << " ";
       // partial_sums
       for (int i = 0; i < 16; i++) {
-        fout << std::dec << i <<  "(" << cmac_inst.cmac_cmac2cacc_partial_sums[i] << "), "; 
+        fout << std::dec << cmac_inst.cmac_cmac2cacc_partial_sums[i] << " "; 
       }
-      fout << "]" << std::endl; 
+      fout << std::endl; 
 
-      
+
+
+
       // // cached_weights
       // for (int i = 0; i < NUM_KERNEL_ELEM; i++) {
       //   fout << std::dec << "cached_wt_kernel_0_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_0[i] << std::endl; 
@@ -1445,7 +1460,6 @@ SC_MODULE(testbench) {
       //   fout << std::dec << "cached_wt_kernel_14_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_14[i] << std::endl;
       //   fout << std::dec << "cached_wt_kernel_15_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_15[i] << std::endl; 
       // }
-      fout << std::endl; 
 
       
       wait(10, SC_NS);
