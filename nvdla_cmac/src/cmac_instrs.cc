@@ -120,7 +120,9 @@ namespace ilang {
                 auto new_mem = ExprRef(mem_ptr).Store(BvConst(i, NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH), sum);
                 mem_ptr = new_mem.get();
 
-                // Floating point calculation here    
+                // Floating point calculation here 
+                
+                   
             }
 
 

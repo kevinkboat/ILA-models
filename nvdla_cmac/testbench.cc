@@ -1431,7 +1431,9 @@ SC_MODULE(testbench) {
       fout << std::dec << instr_no++ << " ";
       // partial_sums
       for (int i = 0; i < 16; i++) {
-        fout << std::dec << cmac_inst.cmac_cmac2cacc_partial_sums[i] << " "; 
+        sc_dt::sc_bigint<16> sum = cmac_inst.cmac_cmac2cacc_partial_sums[i];
+        fout << std::dec << sum << " "; 
+        // fout << std::dec << cmac_inst.cmac_cmac2cacc_partial_sums[i] << " "; 
       }
       fout << std::endl; 
 
