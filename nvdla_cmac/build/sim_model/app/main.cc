@@ -112,19 +112,7 @@ SC_MODULE(Source) {
     
     // Pass the command to the ports
     for (size_t i = 0; i < cmd_seq["program fragment"].size(); i++) {
-
-      // cmac_csb2cmac_addr = std::stoi((cmd_seq["program fragment"][i]["cmac_csb2cmac_addr"].get<std::string>()).c_str(), nullptr, 16);
-      // cmac_csb2cmac_data = cmd_seq["program fragment"][i]["cmac_csb2cmac_data"].get<int>();
-      // cmac_csb2cmac_write = cmd_seq["program fragment"][i]["cmac_csb2cmac_write"].get<int>();
-      // cmac_csb2cmac_vld = cmd_seq["program fragment"][i]["cmac_csb2cmac_vld"].get<int>();
-    
-      // cmac_csc2cmac_status = cmd_seq["program fragment"][i]["cmac_csc2cmac_status"].get<int>();
-      // cmac_csc2cmac_reuse_weights = cmd_seq["program fragment"][i]["cmac_csc2cmac_reuse_weights"].get<bool>();
-      // cmac_csc2cmac_vld = cmd_seq["program fragment"][i]["cmac_csc2cmac_vld"].get<bool>();
-      // cmac_csc2cmac_sending_last_batch = cmd_seq["program fragment"][i]["cmac_csc2cmac_sending_last_batch"].get<bool>();
-
       cmac_csb2cmac_addr = GET_JSON_INT_FROM_HEX_STR(cmd_seq["program fragment"][i]["cmac_csb2cmac_addr"], 0);
-
       cmac_csb2cmac_data = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_data"], 0);
       cmac_csb2cmac_write = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_write"], 0);
       cmac_csb2cmac_vld = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_vld"], 0);
@@ -136,28 +124,6 @@ SC_MODULE(Source) {
 
       // Read in array data
       for (size_t j = 0; j < NUM_KERNEL_ELEM; j++) {
-        // cmac_csc2cmac_ft[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_ft_" + std::to_string(j)].get<int>();
-        
-        // cmac_csc2cmac_wt_0[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_0_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_1[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_1_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_2[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_2_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_3[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_3_" + std::to_string(j)].get<int>();
-
-        // cmac_csc2cmac_wt_4[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_4_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_5[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_5_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_6[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_6_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_7[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_7_" + std::to_string(j)].get<int>();
-        
-        // cmac_csc2cmac_wt_8[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_8_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_9[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_9_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_10[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_10_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_11[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_11_" + std::to_string(j)].get<int>();
-        
-        // cmac_csc2cmac_wt_12[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_12_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_13[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_13_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_14[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_14_" + std::to_string(j)].get<int>();
-        // cmac_csc2cmac_wt_15[j] = cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_15_" + std::to_string(j)].get<int>();
-
         cmac_csc2cmac_ft[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_ft_" + std::to_string(j)], 0);
         
         cmac_csc2cmac_wt_0[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_0_" + std::to_string(j)], 0);
@@ -179,7 +145,6 @@ SC_MODULE(Source) {
         cmac_csc2cmac_wt_13[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_13_" + std::to_string(j)], 0);
         cmac_csc2cmac_wt_14[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_14_" + std::to_string(j)], 0);
         cmac_csc2cmac_wt_15[j] = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_wt_15_" + std::to_string(j)], 0);
-
       }
     
       wait(10, SC_NS);
@@ -1414,31 +1379,30 @@ SC_MODULE(testbench) {
     while (input_done == 0) {
 		  // std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
       
-      // fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
-      // fout << "cmac_cmac_state => " << std::dec << cmac_inst.cmac_cmac_state << std::endl; 
-      // fout << "cmac_group0_cmac_d_op_en => " << std::dec << cmac_inst.cmac_group0_cmac_d_op_en << std::endl; 
-
-      // fout << std::dec << "partial_sums => [ ";
-      // // partial_sums
-      // for (int i = 0; i < 16; i++) {
-      //   fout << std::dec << i <<  "(" << cmac_inst.cmac_cmac2cacc_partial_sums[i] << "), "; 
-      // }
-      // fout << "]" << std::endl; 
-      // fout << std::endl; 
-
-
+      fout << "datatype => " << cmac_inst.cmac_group0_cmac_d_misc_cfg << std::endl;
       //  Output format: instr_no sum0 sum1 ... sum15
       fout << std::dec << instr_no++ << " ";
       // partial_sums
       for (int i = 0; i < 16; i++) {
-        sc_dt::sc_bigint<16> sum = cmac_inst.cmac_cmac2cacc_partial_sums[i];
-        fout << std::dec << sum << " "; 
-        // fout << std::dec << cmac_inst.cmac_cmac2cacc_partial_sums[i] << " "; 
+
+        // sc_dt::sc_int<2> data_type = cmac_inst.cmac_group0_cmac_d_misc_cfg;
+        // if (data_type == 0){
+        //   fout << std::dec << (sc_dt::sc_bigint<16>) cmac_inst.cmac_cmac2cacc_partial_sums[i] << " "; 
+        // } else if (data_type == 1){
+        //   fout << std::dec << (sc_dt::sc_bigint<8>) cmac_inst.cmac_cmac2cacc_partial_sums[i] << " "; 
+        // }
+
+        fout << std::dec << (sc_dt::sc_bigint<16>) cmac_inst.cmac_cmac2cacc_partial_sums[i] << " "; 
+
+        // sc_dt::sc_bigint<8> sum = cmac_inst.cmac_cmac2cacc_partial_sums[i];
+        // // sc_dt::sc_bigint<8> sum = 127;
+        // // sc_dt::sc_bigint<8> sum1 = 128;
+        // // sc_dt::sc_bigint<8> sum2 = 129;
+        // // fout << std::dec << (sc_dt::sc_bigint<16>) cmac_inst.cmac_cmac2cacc_partial_sums[i] << " "; 
+        
+        // fout << std::dec << sum << " "; 
       }
       fout << std::endl; 
-
-
-
 
       // // cached_weights
       // for (int i = 0; i < NUM_KERNEL_ELEM; i++) {
@@ -1470,54 +1434,6 @@ SC_MODULE(testbench) {
 
     fout.close();
 
-
-    // // Log final outputs
-    // std::ofstream fout;
-    // fout.open(file_out, ios::out | ios::trunc);
- 
-    // fout << "cmac_csb2cmac_data_in => " << std::dec << cmac_inst.cmac_csb2cmac_data_in << std::endl; 
-
-    // fout << "cmac_csc2cmac_wt_15_30_in => " << std::dec << cmac_inst.cmac_csc2cmac_wt_15_30_in << std::endl; 
-    // fout << "cmac_csc2cmac_wt_15_63_in => " << std::dec << cmac_inst.cmac_csc2cmac_wt_15_63_in << std::endl; 
-    // fout << "cmac_csc2cmac_ft_30_in => " << std::dec << cmac_inst.cmac_csc2cmac_ft_30_in << std::endl; 
-    // fout << std::endl; 
-
-    // // cmac_state
-    // fout << "cmac_cmac_state => " << std::dec << cmac_inst.cmac_cmac_state << std::endl; 
-    // fout << std::endl; 
-
-    // // partial_sums
-    // for (int i = 0; i < 16; i++) {
-    //   fout << std::dec << "partial_sum_" << i <<  " => " << cmac_inst.cmac_cmac2cacc_partial_sums[i] << std::endl; 
-    // }
-    // fout << std::endl; 
-
-    
-    // // cached_weights
-    // for (int i = 0; i < NUM_KERNEL_ELEM; i++) {
-    //   fout << std::dec << "cached_wt_kernel_0_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_0[i] << std::endl; 
-    //   fout << std::dec << "cached_wt_kernel_1_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_1[i] << std::endl; 
-    //   fout << std::dec << "cached_wt_kernel_2_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_2[i] << std::endl;
-    //   fout << std::dec << "cached_wt_kernel_3_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_3[i] << std::endl; 
-
-    //   fout << std::dec << "cached_wt_kernel_4_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_4[i] << std::endl; 
-    //   fout << std::dec << "cached_wt_kernel_5_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_5[i] << std::endl; 
-    //   fout << std::dec << "cached_wt_kernel_6_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_6[i] << std::endl;
-    //   fout << std::dec << "cached_wt_kernel_7_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_7[i] << std::endl; 
-      
-    //   fout << std::dec << "cached_wt_kernel_8_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_8[i] << std::endl; 
-    //   fout << std::dec << "cached_wt_kernel_9_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_9[i] << std::endl; 
-    //   fout << std::dec << "cached_wt_kernel_10_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_10[i] << std::endl;
-    //   fout << std::dec << "cached_wt_kernel_11_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_11[i] << std::endl; 
-
-    //   fout << std::dec << "cached_wt_kernel_12_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_12[i] << std::endl; 
-    //   fout << std::dec << "cached_wt_kernel_13_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_13[i] << std::endl; 
-    //   fout << std::dec << "cached_wt_kernel_14_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_14[i] << std::endl;
-    //   fout << std::dec << "cached_wt_kernel_15_elem_" << i <<  " => " << cmac_inst.cmac_cached_wt_kernel_15[i] << std::endl; 
-    // }
-    // fout << std::endl; 
-
-    // fout.close();
     std::cout << "outputs have been stored at " << file_out << std::endl;
 
     wait(100000, SC_NS);

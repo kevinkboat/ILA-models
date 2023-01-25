@@ -6,6 +6,17 @@
 
 namespace ilang {
 
+    ExprRef int8_to_int16(ExprRef bv16, ExprRef data_type){
+        auto bv7_unsigned = bv16 & BvConst(0x7F, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
+
+        // update weight based on datatype
+        auto bv = Ite(data_type == INT16, bv16, 
+                Ite(data_type == INT8, Ite(SelectBit(bv16, 7) == 0, bv7_unsigned, bv7_unsigned | BvConst(0xFF80, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)), 
+                BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
+        
+        return bv;
+    }
+
     void DefineCMACInstrs(Ila& m) {
 
         //////////////////////////////////////////////////////////////////////////////
@@ -23,6 +34,7 @@ namespace ilang {
         auto csc2cmac_vld = m.input("csc2cmac_vld");
         auto csc2cmac_sending_last_batch = m.input("csc2cmac_sending_last_batch");
         auto using_stale_data = BoolConst(false);
+        auto data_type = Extract(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), 1, 0);
 
         //////////////////////////////////////////////////////////////////////////////
         ///  SET REGISTERS
@@ -80,9 +92,18 @@ namespace ilang {
                 auto mem_ptr = MemConst(0, {}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH).get();
                 
                 for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
-                    // Store weights two bytes at a time
-                    auto wt = m.input("csc2cmac_wt_" + (std::to_string(i)) + "_" + (std::to_string(j)));
+                    
+                    auto wt = int8_to_int16(m.input("csc2cmac_wt_" + (std::to_string(i)) + "_" + (std::to_string(j))), data_type);
+                    
+                    // // Store weights
+                    // auto wt16 = m.input("csc2cmac_wt_" + (std::to_string(i)) + "_" + (std::to_string(j)));
+                    // auto wt7_unsigned = wt16 & BvConst(0x7F, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
 
+                    // // update weight based on datatype
+                    // auto wt = Ite(data_type == INT16, wt16, 
+                    //         Ite(data_type == INT8, Ite(SelectBit(wt16, 7) == 0, wt7_unsigned, wt7_unsigned | BvConst(0xFF80, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)), 
+                    //         BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
+                       
                     // Update memory and store new address
                     auto new_mem = ExprRef(mem_ptr).Store(BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH), wt);
                     mem_ptr = new_mem.get();
@@ -104,24 +125,26 @@ namespace ilang {
             for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
 
                 // int calculation
-                auto sum = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
+                auto sum = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);                
                 for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
-                    // get inputs
                     auto wt = Load(m.state("cached_wt_kernel_" + (std::to_string(i))), BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH)); 
-                    auto ft = m.input("csc2cmac_ft_" + (std::to_string(j)));     
+                    auto ft = m.input("csc2cmac_ft_" + (std::to_string(j)));
 
                     // accumulate
                     sum = sum + (wt * ft);
                 }
-                // truncate sum for int8 solution
-                // Ite(INT16, sum, sum & 0xFF)
+
+                sum = int8_to_int16(sum, data_type);
+                // auto sum7_unsigned = sum & BvConst(0x7F, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
+                // sum = Ite(data_type == INT16, sum, 
+                //         Ite(data_type == INT8, Ite(SelectBit(sum, 7) == 0, sum7_unsigned, sum7_unsigned | BvConst(0xFF80, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)), 
+                //         BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH)));
 
                 // Update memory and store new address
                 auto new_mem = ExprRef(mem_ptr).Store(BvConst(i, NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH), sum);
                 mem_ptr = new_mem.get();
 
                 // Floating point calculation here 
-                
                    
             }
 
