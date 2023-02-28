@@ -1,0 +1,32 @@
+{
+    "program fragment": [
+    {
+        "instr No.": 0,
+        "cmac_csb2cmac_data": "0x0001",
+        "cmac_csb2cmac_addr": "0x00c",
+        "cmac_csb2cmac_write": 1,
+        "cmac_csb2cmac_vld": 1
+    },
+    {
+        "instr No.": 1,
+        "cmac_csb2cmac_data": "0x0001",
+        "cmac_csb2cmac_addr": "0x0008",
+        "cmac_csb2cmac_write": 1,
+        "cmac_csb2cmac_vld": 1,
+        // "cmac_csc2cmac_wt_x_y": 0    , for x,y in [0,1,...,63]
+    },
+    {
+        "instr No.": 2,
+        "cmac_csc2cmac_vld": true,
+        "cmac_csc2cmac_reuse_weights": true,
+        // "cmac_csc2cmac_wt_z": 0      , for z in [0,1,...,63]
+    },    
+    {
+        "instr No.": 3,
+        "cmac_csc2cmac_vld": true,
+        "cmac_csc2cmac_reuse_weights": true,
+        "cmac_csc2cmac_sending_last_batch": true,
+        // "cmac_csc2cmac_wt_z": 0      , for z in [0,1,...,63]
+    }
+    ]
+  }
