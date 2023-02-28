@@ -1188,16 +1188,28 @@ if (valid_cmac() && decode_cmac_cmac_cache_weights()) {
   LogInstrSequence("cmac_cache_weights", exec_time);
 #endif
 }
-if (valid_cmac() && decode_cmac_cmac_compute_dot_product()) {
+if (valid_cmac() && decode_cmac_cmac_conv_direct()) {
 #ifdef ILATOR_PROFILING
   auto start = std::chrono::high_resolution_clock::now();
 #endif
-  update_cmac_cmac_compute_dot_product();
+  update_cmac_cmac_conv_direct();
   
 #ifdef ILATOR_PROFILING
   auto stop = std::chrono::high_resolution_clock::now();
   auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
-  LogInstrSequence("cmac_compute_dot_product", exec_time);
+  LogInstrSequence("cmac_conv_direct", exec_time);
+#endif
+}
+if (valid_cmac() && decode_cmac_cmac_conv_winograd()) {
+#ifdef ILATOR_PROFILING
+  auto start = std::chrono::high_resolution_clock::now();
+#endif
+  update_cmac_cmac_conv_winograd();
+  
+#ifdef ILATOR_PROFILING
+  auto stop = std::chrono::high_resolution_clock::now();
+  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
+  LogInstrSequence("cmac_conv_winograd", exec_time);
 #endif
 }
 while (1) {

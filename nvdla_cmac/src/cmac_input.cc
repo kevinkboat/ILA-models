@@ -33,6 +33,8 @@ namespace ilang {
         }
         
         m.NewBvInput("csc2cmac_status", NVDLA_CMAC_PIPELINE_STATUS_WIDTH);
+        
+        // Control signals
         m.NewBoolInput("csc2cmac_reuse_weights");
         m.NewBoolInput("csc2cmac_vld");
         m.NewBoolInput("csc2cmac_sending_last_batch");

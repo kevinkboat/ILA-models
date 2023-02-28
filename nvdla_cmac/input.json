@@ -2,7 +2,7 @@
   "program fragment": [
     {
       "instr No.": 0,
-      "cmac_csb2cmac_data": 1,
+      "cmac_csb2cmac_data": 0,
       "cmac_csb2cmac_addr": "0x00c",
       "cmac_csb2cmac_write": 1,
       "cmac_csb2cmac_vld": 1
@@ -18,36 +18,22 @@
       "instr No.": 1,
       "cmac_csc2cmac_vld": true,
       "cmac_csc2cmac_sending_last_batch": false,
-      "cmac_csc2cmac_wt_1_63": 127,
-      "cmac_csc2cmac_wt_2_30": 128,
-      "cmac_csc2cmac_wt_3_31": 129,
-      "cmac_csc2cmac_wt_4_32": 130,
-      "cmac_csc2cmac_ft_30": 1,
-      "cmac_csc2cmac_ft_31": 1,
-      "cmac_csc2cmac_ft_32": 1,
-      "cmac_csc2cmac_ft_63": 1
+      "cmac_csc2cmac_wt_0_30": 5,
+      "cmac_csc2cmac_ft_30": 1
     },    
     {
       "instr No.": 2,
       "cmac_csc2cmac_vld": true,
       "cmac_csc2cmac_sending_last_batch": false,
       "cmac_csc2cmac_reuse_weights": true,
-      "cmac_csc2cmac_ft_30": 2,
-      "cmac_csc2cmac_ft_31": 2,
-      "cmac_csc2cmac_ft_32": 2,
-      "cmac_csc2cmac_ft_63": 2
+      "cmac_csc2cmac_ft_30": 2
     },
     {
       "instr No.": 3,
       "cmac_csc2cmac_vld": true,
       "cmac_csc2cmac_sending_last_batch": true,
       "cmac_csc2cmac_reuse_weights": true,
-      "cmac_csc2cmac_status": 0,
-      "cmac_csc2cmac_ft_30": 4,
-      "cmac_csc2cmac_ft_63": 4
-    },
-    {
-      "instr No.": 4
+      "cmac_csc2cmac_ft_30": 4
     }
   ]
 }

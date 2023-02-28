@@ -51,23 +51,30 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 #define DONE BvConst(3,2)
 
 //////////////////////////////////////////////////////////////////////////////
-/// DATA TYPES
+/// DATA PRECISION
 //////////////////////////////////////////////////////////////////////////////
 
-#define INT16 BvConst(0,2)
-#define INT8  BvConst(1,2)
+#define INT8  BvConst(0,2)
+#define INT16 BvConst(1,2)
 #define FP16  BvConst(2,2)
 
 //////////////////////////////////////////////////////////////////////////////
-///  CONSTANTS
+/// CONVOLUTION MODE
+//////////////////////////////////////////////////////////////////////////////
+
+#define DIRECT    BvConst(0,1)
+#define WINOGRAD  BvConst(1,1)
+
+//////////////////////////////////////////////////////////////////////////////
+///  OTHER CONSTANTS
 //////////////////////////////////////////////////////////////////////////////
 
 #define NVDLA_CMAC_KERNEL_NUM_ELEM        64
 #define NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH  16      // size of int16/fp16
 #define NVDLA_CMAC_KERNEL_ADDR_WIDTH      6       // 2 ^ 6 = 64       
 
-#define NVDLA_CMAC_NUM_MAC_CELLS          16  
-#define NVDLA_CMAC_MAC_CELLS_ADDR_WIDTH   4  
+#define NVDLA_CMAC_NUM_MAC_CELLS              16  
+#define NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH 2  
 
 #define NVDLA_CMAC_INT16_DATA_WIDTH       16       
 #define NVDLA_CMAC_INT8_DATA_WIDTH        8    

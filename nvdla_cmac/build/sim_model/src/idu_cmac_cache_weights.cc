@@ -2,9 +2,13 @@
 bool cmac::decode_cmac_cmac_cache_weights() {
 sc_biguint<2> local_var_1 = 2;
 bool local_var_2 = (cmac_cmac_state == local_var_1);
-bool local_var_4 = !cmac_csc2cmac_reuse_weights;
-bool local_var_5 = (local_var_2 & local_var_4);
-auto& univ_var_6 = local_var_5;
+auto local_var_4 = cmac_group0_cmac_d_misc_cfg.range(0, 0);
+sc_biguint<1> local_var_5 = 1;
+bool local_var_6 = (local_var_4 == local_var_5);
+bool local_var_8 = !cmac_csc2cmac_reuse_weights;
+bool local_var_9 = (local_var_6 | local_var_8);
+bool local_var_10 = (local_var_2 & local_var_9);
+auto& univ_var_6 = local_var_10;
 return univ_var_6;
 }
 void cmac::update_cmac_cmac_cache_weights() {
