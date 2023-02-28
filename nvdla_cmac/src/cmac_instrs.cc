@@ -226,14 +226,17 @@ namespace ilang {
 
                 // Update memory and store new address
                 auto new_mem = ExprRef(mem_ptr).Store(BvConst(0, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum);
+                // auto new_mem = ExprRef(mem_ptr).Store(BvConst(1, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum);
+                // auto new_mem = ExprRef(mem_ptr).Store(BvConst(2, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum);
+                // auto new_mem = ExprRef(mem_ptr).Store(BvConst(3, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum);
                 mem_ptr = new_mem.get();
 
                 // update state
                 instr.SetUpdate(m.state("cmac2cacc_partial_sum_mac_" + (std::to_string(i))), ExprRef(mem_ptr));                   
             }
 
-            instr.SetUpdate(m.state("cmac_state"), Ite(m.input("csc2cmac_sending_last_batch") == BoolConst(false), PEND, IDLE));
-            instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), Ite(m.input("csc2cmac_sending_last_batch") == BoolConst(false), BvConst(1,1), BvConst(0,1)));
+            instr.SetUpdate(m.state("cmac_state"), IDLE);
+            instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), BvConst(0,1));
         }
     }
 
