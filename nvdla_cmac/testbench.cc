@@ -1392,14 +1392,14 @@ SC_MODULE(testbench) {
       // fout << "datatype => " << std::hex << cmac_inst.cmac_group0_cmac_d_misc_cfg << std::endl;
 
       /* Output format:
-        instr. # <number>
-        mac_0 out1 out2 out out4
-        mac_1 out1 out2 out out4
+        instr. #[number]
+        mac_0 [out1] [out2] [out3] [out4]
+        mac_1 [out1] [out2] [out3] [out4]
         ...
-        mac_15 out1 out2 out out4
+        mac_15 [out1] [out2] [out3] [out4]
       */
 
-      fout << "instr. # " << std::dec << instr_no++ << std::endl;
+      fout << "instr. #" << std::dec << instr_no++ << std::endl;
 
       print_cell_output(0, cmac_inst.cmac_cmac2cacc_partial_sum_mac_0);
       print_cell_output(1, cmac_inst.cmac_cmac2cacc_partial_sum_mac_1);

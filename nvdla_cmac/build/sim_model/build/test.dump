@@ -1,4 +1,4 @@
-instr. # 1
+instr. #1
 mac_0 0 0 0 0 
 mac_1 0 0 0 0 
 mac_2 0 0 0 0 
@@ -16,7 +16,7 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. # 2
+instr. #2
 mac_0 0 0 0 0 
 mac_1 0 0 0 0 
 mac_2 0 0 0 0 
@@ -34,7 +34,7 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. # 3
+instr. #3
 mac_0 126 0 0 0 
 mac_1 127 0 0 0 
 mac_2 -128 0 0 0 
@@ -52,7 +52,7 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. # 4
+instr. #4
 mac_0 -4 0 0 0 
 mac_1 -2 0 0 0 
 mac_2 0 0 0 0 
@@ -70,7 +70,7 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. # 5
+instr. #5
 mac_0 -8 0 0 0 
 mac_1 -4 0 0 0 
 mac_2 0 0 0 0 
@@ -88,7 +88,7 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. # 6
+instr. #6
 mac_0 -8 0 0 0 
 mac_1 -4 0 0 0 
 mac_2 0 0 0 0 

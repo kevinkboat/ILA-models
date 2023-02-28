@@ -19,22 +19,9 @@ using json = nlohmann::json;
 #define GET_JSON_INT_FROM_HEX_STR(json_val, default_val) (!(json_val.is_null()) ? (std::stoi(json_val.get<std::string>().c_str(), nullptr, 16)) : default_val)
 #define GET_JSON_BOOL(json_val, default_val) (!(json_val.is_null()) ? json_val.get<bool>() : default_val)
 
-
-
-
-
 std::string file_in;
 std::string file_out;
 std::ofstream fout;
-
-// // Print line to file in the format: mac_<cell_num> out1 out2 out3 out4
-// void print_cell_output(std::ofstream fout, int cell_num,  std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> data_addr){
-//   fout << "mac_" << std::dec << cell_num << " ";
-//   for (int i = 0; i < NUM_OUTPUTS_PER_MAC_CELL; i++){
-//     fout << std::dec << (sc_dt::sc_bigint<16>) data_addr[i] << " ";
-//   }
-//   fout << std::endl;
-// }
 
 // Print line to file in the format: mac_<cell_num> out1 out2 out3 out4
 void print_cell_output(int cell_num,  std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> data_addr){ 
@@ -1405,14 +1392,14 @@ SC_MODULE(testbench) {
       // fout << "datatype => " << std::hex << cmac_inst.cmac_group0_cmac_d_misc_cfg << std::endl;
 
       /* Output format:
-        instr. # <number>
-        mac_0 out1 out2 out out4
-        mac_1 out1 out2 out out4
+        instr. #[number]
+        mac_0 [out1] [out2] [out3] [out4]
+        mac_1 [out1] [out2] [out3] [out4]
         ...
-        mac_15 out1 out2 out out4
+        mac_15 [out1] [out2] [out3] [out4]
       */
 
-      fout << "instr. # " << std::dec << instr_no++ << std::endl;
+      fout << "instr. #" << std::dec << instr_no++ << std::endl;
 
       print_cell_output(0, cmac_inst.cmac_cmac2cacc_partial_sum_mac_0);
       print_cell_output(1, cmac_inst.cmac_cmac2cacc_partial_sum_mac_1);
