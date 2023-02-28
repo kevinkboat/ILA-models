@@ -4,7 +4,6 @@ import sys
 NUM_KERNEL_ELEM = 64
 NUM_MAC_CELLS = 16
 
-
 def generateAndStoreInputs(dtype: str, num_ft_kernels: int, instr_file:str):
     print(f"Generating {dtype} values")
     

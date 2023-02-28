@@ -1,4 +1,4 @@
-instr. #1
+instr No. 0
 mac_0 0 0 0 0 
 mac_1 0 0 0 0 
 mac_2 0 0 0 0 
@@ -16,7 +16,7 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. #2
+instr No. 1
 mac_0 0 0 0 0 
 mac_1 0 0 0 0 
 mac_2 0 0 0 0 
@@ -34,12 +34,12 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. #3
+instr No. 2
 mac_0 126 0 0 0 
 mac_1 127 0 0 0 
-mac_2 -128 0 0 0 
-mac_3 -127 0 0 0 
-mac_4 -126 0 0 0 
+mac_2 128 0 0 0 
+mac_3 129 0 0 0 
+mac_4 130 0 0 0 
 mac_5 0 0 0 0 
 mac_6 0 0 0 0 
 mac_7 0 0 0 0 
@@ -52,12 +52,12 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. #4
-mac_0 -4 0 0 0 
-mac_1 -2 0 0 0 
-mac_2 0 0 0 0 
-mac_3 2 0 0 0 
-mac_4 4 0 0 0 
+instr No. 3
+mac_0 252 0 0 0 
+mac_1 254 0 0 0 
+mac_2 256 0 0 0 
+mac_3 258 0 0 0 
+mac_4 260 0 0 0 
 mac_5 0 0 0 0 
 mac_6 0 0 0 0 
 mac_7 0 0 0 0 
@@ -70,28 +70,10 @@ mac_13 0 0 0 0
 mac_14 0 0 0 0 
 mac_15 0 0 0 0 
 
-instr. #5
-mac_0 -8 0 0 0 
-mac_1 -4 0 0 0 
-mac_2 0 0 0 0 
-mac_3 0 0 0 0 
-mac_4 0 0 0 0 
-mac_5 0 0 0 0 
-mac_6 0 0 0 0 
-mac_7 0 0 0 0 
-mac_8 0 0 0 0 
-mac_9 0 0 0 0 
-mac_10 0 0 0 0 
-mac_11 0 0 0 0 
-mac_12 0 0 0 0 
-mac_13 0 0 0 0 
-mac_14 0 0 0 0 
-mac_15 0 0 0 0 
-
-instr. #6
-mac_0 -8 0 0 0 
-mac_1 -4 0 0 0 
-mac_2 0 0 0 0 
+instr No. 4
+mac_0 504 0 0 0 
+mac_1 508 0 0 0 
+mac_2 512 0 0 0 
 mac_3 0 0 0 0 
 mac_4 0 0 0 0 
 mac_5 0 0 0 0 

@@ -45,18 +45,10 @@ std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> local_var_14;
 store_101(local_var_14);
 std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> local_var_15;
 store_103(local_var_15);
-bool local_var_17 = false;
-bool local_var_18 = (cmac_csc2cmac_sending_last_batch == local_var_17);
-sc_biguint<2> local_var_19 = 1;
-sc_biguint<2> local_var_20 = 0;
-auto local_var_21 = (local_var_18) ? local_var_19 : local_var_20;
-auto local_var_21_nxt_holder = local_var_21;
-bool local_var_22 = false;
-bool local_var_23 = (cmac_csc2cmac_sending_last_batch == local_var_22);
-sc_biguint<1> local_var_24 = 1;
-sc_biguint<1> local_var_25 = 0;
-auto local_var_26 = (local_var_23) ? local_var_24 : local_var_25;
-auto local_var_26_nxt_holder = local_var_26;
+sc_biguint<2> local_var_16 = 0;
+auto local_var_16_nxt_holder = local_var_16;
+sc_biguint<1> local_var_17 = 0;
+auto local_var_17_nxt_holder = local_var_17;
 for (auto& it : local_var_0) {
   cmac_cmac2cacc_partial_sum_mac_0[it.first] = it.second;
 }
@@ -105,8 +97,8 @@ for (auto& it : local_var_14) {
 for (auto& it : local_var_15) {
   cmac_cmac2cacc_partial_sum_mac_9[it.first] = it.second;
 }
-cmac_cmac_state = local_var_21_nxt_holder;
-cmac_group0_cmac_d_op_en = local_var_26_nxt_holder;
+cmac_cmac_state = local_var_16_nxt_holder;
+cmac_group0_cmac_d_op_en = local_var_17_nxt_holder;
 #ifdef ILATOR_VERBOSE
 instr_update_log << "No." << std::dec << GetInstrCntr() << '\t' << "cmac_conv_winograd state updates:" << std::endl;
 instr_update_log << "    cmac_cmac2cacc_partial_sum_mac_0 get updated" << std::endl;

@@ -1385,21 +1385,21 @@ SC_MODULE(testbench) {
     // Log final outputs
     fout.open(file_out, ios::out | ios::trunc);
 
-    int instr_no = 1;
+    int index = 0;
 
     while (input_done == 0) {
 		  // std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
       // fout << "datatype => " << std::hex << cmac_inst.cmac_group0_cmac_d_misc_cfg << std::endl;
 
       /* Output format:
-        instr. #[number]
+        instr No. [index]
         mac_0 [out1] [out2] [out3] [out4]
         mac_1 [out1] [out2] [out3] [out4]
         ...
         mac_15 [out1] [out2] [out3] [out4]
       */
 
-      fout << "instr. #" << std::dec << instr_no++ << std::endl;
+      fout << "instr No. " << std::dec << index++ << std::endl;
 
       print_cell_output(0, cmac_inst.cmac_cmac2cacc_partial_sum_mac_0);
       print_cell_output(1, cmac_inst.cmac_cmac2cacc_partial_sum_mac_1);
