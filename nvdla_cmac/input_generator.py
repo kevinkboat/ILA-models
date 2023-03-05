@@ -4,20 +4,17 @@ import sys
 NUM_KERNEL_ELEM = 64
 NUM_MAC_CELLS = 16
 
-def generateAndStoreInputs(dtype: str, num_ft_kernels: int, instr_file:str):
+def generateAndStoreInputs(dtype:str, wt_kernels_shape:tuple, ft_kernels_shape:tuple, instr_file:str):
     print(f"Generating {dtype} values")
     
     wt_kernels = None
     ft_kernels = None
-    wt_kernels_shape = (NUM_MAC_CELLS, NUM_KERNEL_ELEM)
-    ft_kernels_shape = (num_ft_kernels, NUM_KERNEL_ELEM)
-
     if dtype == "int8":
-        largest_val = 2**4
+        largest_val = 10
         wt_kernels = np.int8(np.random.randint(largest_val, size=wt_kernels_shape))
         ft_kernels  = np.int8(np.random.randint(largest_val, size=ft_kernels_shape))
     elif dtype == "int16":
-        largest_val = 2**8
+        largest_val = 100
         wt_kernels = np.int16(np.random.randint(largest_val, size=wt_kernels_shape))
         ft_kernels  = np.int16(np.random.randint(largest_val, size=ft_kernels_shape))
     elif dtype == "fp16":
@@ -33,43 +30,24 @@ def generateAndStoreInputs(dtype: str, num_ft_kernels: int, instr_file:str):
         print("Error: Inputs were not generated. Check code")
         exit
 
-    prologue = '''
-    {
-    "program fragment": [
-        {
-            "instr No.": 0,
-            "cmac_csb2cmac_data": 1,
-            "cmac_csb2cmac_addr": "0x0008",
-            "cmac_csb2cmac_write": 1,
-            "cmac_csb2cmac_vld": 1
-        }
-    '''
-
-    epilogue = """
-        ]
-    }
-    """
-
     with open(instr_file, "w") as file1:
-        file1.write(prologue)
-                
-        for k in range(len(ft_kernels)):
-            file1.write("\t\t,{\n")
-            tabs = "\t\t\t"
-            file1.write(tabs + f"\"instr No.\": {k + 1}, \n")
-            file1.write(tabs + f"\"cmac_csc2cmac_vld\": true, \n")
-            file1.write(tabs + f"\"cmac_csc2cmac_sending_last_batch\": {str(k == num_ft_kernels - 1).lower()}, \n")
+        for k in range(ft_kernels_shape[0]):
+            file1.write(f'********* Input set no. {k} *********\n')
 
-            for i in range(NUM_MAC_CELLS):
-                for j in range(NUM_KERNEL_ELEM):
-                    file1.write(tabs + f'\"cmac_csc2cmac_wt_{i}_{j}\": {wt_kernels[i][j]}, \n')
-            for i in range(NUM_KERNEL_ELEM-1):
-                file1.write(tabs + f'\"cmac_csc2cmac_ft_{i}\": {ft_kernels[k][i]}, \n')  
-            file1.write(tabs + f'\"cmac_csc2cmac_ft_{NUM_KERNEL_ELEM -1}\": {ft_kernels[k][NUM_KERNEL_ELEM-1]} \n')  
-            file1.write("\t\t}\n")
+            file1.write(f'Numpy arrays: \n')
+            with np.printoptions(threshold=np.inf):
+                file1.write(f'wt_kernels={wt_kernels}\n')
+                file1.write(f'ft_kernels={ft_kernels}\n\n')
+
+            file1.write(f'JSON inputs: \n')
+            for i in range(wt_kernels_shape[0]):
+                for j in range(wt_kernels_shape[1]):
+                    file1.write(f'\"cmac_csc2cmac_wt_{i}_{j}\": {wt_kernels[i][j]}, \n')
+
+            for i in range(ft_kernels_shape[1]):
+                file1.write(f'\"cmac_csc2cmac_ft_{i}\": {ft_kernels[k][i]}, \n')  
+            file1.write(f'********* Input set of Output set no. {k}*********\n\n')
         
-        
-        file1.write(epilogue + "\n")
     return wt_kernels, ft_kernels
 
 
@@ -77,27 +55,49 @@ def generateAndStoreSolution(dtype: str, wt_kernels: np.ndarray, ft_kernels:np.n
     print(f"Storing solutions in {solution_file}")
     sol = ft_kernels @ np.transpose(wt_kernels)
     
-    default_val = 0
-    if dtype == "fp16": default_val = np.float16(0)
+    dim_diff = max(0, 16 - sol.shape[1])
+    print(dim_diff, sol.shape)
+
+    sol = np.pad(sol, pad_width=((0,0),(0,dim_diff)), mode='constant', constant_values=(0))
+
+    print(dim_diff, sol.shape, sol)
+    if dtype == "int8":
+        sol = np.int8(sol)
+    elif dtype == "int16":
+        sol = np.int16(sol)
+    elif dtype == "fp16":
+        sol = np.float16(sol)
 
     with open(solution_file, "w") as file1:
-        file1.write("0 " + (16 * f'{default_val} ') + "\n")
-        for i in range(len(sol)):
-            file1.write(str(i+1) + " ")
-            for j in range(NUM_MAC_CELLS):
-                file1.write(str(sol[i][j]) + " ")  
+        # file1.write('sol = ft_kernels @ numpy.transpose(wt_kernels)\n\n')
+        for i in range(sol.shape[0]):
+            file1.write(f'Reset {i+1} \n')
+            file1.write(f'consumer = {i+1} \n')
+            for j in range(sol.shape[1]):
+                file1.write(f'mac_{j}' + 4*' 0'+ " \n")  
             file1.write("\n")
 
+            file1.write(f'Solution {i+1} \n')
+            file1.write(f'consumer = {i+1} \n')
+            for j in range(sol.shape[1]):
+                file1.write(f'mac_{j} '+ str(sol[i][j]) + 3*' 0'+ " \n")  
+            file1.write("\n")
+
+                
 
 def main():
     if len(sys.argv) != 5:
-        print("Usage: python input_generator.py [ int8 | int16 | fp16 ] num_ft_kernels output_instr_path output_solution_path")
+        print("Usage: python input_generator.py [ int8 | int16 | fp16 ] num_weight_kernels num_ft_kernels output_base_name")
         exit
     
-    _, dtype, num_ft_kernels, instr_file, sol_file = sys.argv
-    num_ft_kernels = int(num_ft_kernels)
+    _, dtype, num_weight_kernels, num_ft_kernels, output_base_name = sys.argv
   
-    wt_kernels, ft_kernels = generateAndStoreInputs(dtype, num_ft_kernels, instr_file)
+    instr_file = output_base_name + "_input.txt"
+    sol_file = output_base_name + '_sol.txt'
+    wt_kernels_shape = (int(num_weight_kernels), NUM_KERNEL_ELEM) 
+    ft_kernels_shape = (int(num_ft_kernels), NUM_KERNEL_ELEM)
+
+    wt_kernels, ft_kernels = generateAndStoreInputs(dtype, wt_kernels_shape, ft_kernels_shape, instr_file)
     generateAndStoreSolution(dtype, wt_kernels, ft_kernels, sol_file)
 
 

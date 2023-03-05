@@ -80,16 +80,20 @@ namespace ilang {
         auto cmac_csb_addr = Extract(m.input("csb2cmac_addr"), 11, 0);
         auto cmac_csb_valid = (m.state("cmac2csb_rdy") == BvConst(1,1)) & (m.input("csb2cmac_vld") == BvConst(1,1));
         auto cmac_csb_write = m.input("csb2cmac_write") == BvConst(1,1);
+        
         auto cmac_group0_unset = m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)) == BvConst(0,1);
+        auto cmac_group1_unset = m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE)) == BvConst(0,1);
+        auto cmac_group0_status = m.state(NVDLA_CMAC_S_STATUS_0);
+        auto cmac_group1_status = m.state(NVDLA_CMAC_S_STATUS_1);
+        
         auto cmac_producer = m.state(NVDLA_CMAC_S_PRODUCER);
         auto cmac_consumer = m.state(NVDLA_CMAC_S_CONSUMER);
-        auto cmac_state = m.state("cmac_state");        
 
         auto csc2cmac_vld = m.input("csc2cmac_vld");
         auto csc2cmac_sending_last_batch = m.input("csc2cmac_sending_last_batch");
         auto using_stale_data = BoolConst(false);
-        auto data_precision = Extract(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), 13, 12);
-        auto conv_mode = Extract(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), 0, 0);
+        auto data_precision = BvConst(0,2);        // defualt value is INT8
+        auto conv_mode = BvConst(0,1);             // default value is Direct Convolution
 
         //////////////////////////////////////////////////////////////////////////////
         ///  SET REGISTERS
@@ -107,10 +111,22 @@ namespace ilang {
             instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_OP_ENABLE_WIDTH - 1, 0));
         }      
         
+        { // CMAC Set Start Group 1 (addr:008)
+            auto instr = m.NewInstr("cmac_set_start_group1");
+            instr.SetDecode(cmac_csb_addr == 0x008 & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(1,1) & cmac_group1_unset);
+            instr.SetUpdate(m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_OP_ENABLE_WIDTH - 1, 0));
+        } 
+
         { // CMAC Set Config Group 0 (addr:00c)
             auto instr = m.NewInstr("cmac_set_config_group0");
             instr.SetDecode(cmac_csb_addr == 0x00c & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(0,1) & cmac_group0_unset);
             instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_MISC_CFG_WIDTH - 1, 0));
+        }
+
+        { // CMAC Set Config Group 1 (addr:00c)
+            auto instr = m.NewInstr("cmac_set_config_group1");
+            instr.SetDecode(cmac_csb_addr == 0x00c & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(1,1) & cmac_group1_unset);
+            instr.SetUpdate(m.state(GetVarName("group1_", NVDLA_CMAC_D_MISC_CFG)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_MISC_CFG_WIDTH - 1, 0));
         }
 
         //////////////////////////////////////////////////////////////////////////////
@@ -119,18 +135,32 @@ namespace ilang {
 
         { // Start from IDLE
             auto instr = m.NewInstr("cmac_start_from_idle");
-            auto group0_ok = cmac_consumer == BvConst(0,1) & m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)) == BvConst(1,1);
-            instr.SetDecode(cmac_state == IDLE & group0_ok & csc2cmac_vld);
+            auto group0_ok = cmac_consumer == BvConst(0,1) & !cmac_group0_unset & (cmac_group0_status == IDLE);
+            auto group1_ok = cmac_consumer == BvConst(1,1) & !cmac_group1_unset & (cmac_group1_status == IDLE);
+            instr.SetDecode((group0_ok ^ group1_ok) & csc2cmac_vld);
             
+            data_precision = Ite(cmac_consumer == BvConst(0,1), Extract(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), 13, 12),
+                                    Extract(m.state(GetVarName("group1_", NVDLA_CMAC_D_MISC_CFG)), 13, 12));
+
+            conv_mode = Ite(cmac_consumer == BvConst(0,1), Extract(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), 0, 0),
+                                Extract(m.state(GetVarName("group1_", NVDLA_CMAC_D_MISC_CFG)), 0, 0));
+
+            // Update status
+            instr.SetUpdate(cmac_group0_status, Ite(group0_ok, BUSY, cmac_group0_status));
+            instr.SetUpdate(cmac_group1_status, Ite(group1_ok, BUSY, cmac_group1_status)); 
+
             // Cold start
-            instr.SetUpdate(m.state("cmac_state"), BUSY);
             using_stale_data = BoolConst(true);
         }
 
         { // Pend2Busy
             auto instr = m.NewInstr("pend2busy");
-            instr.SetDecode(cmac_state == PEND & csc2cmac_vld);
-            instr.SetUpdate(m.state("cmac_state"), BUSY);
+            auto group0_pend = cmac_group0_status == PEND & cmac_consumer == BvConst(0,1);
+            auto group1_pend = cmac_group1_status == PEND & cmac_consumer == BvConst(1,1);
+
+            instr.SetDecode((group0_pend | group1_pend) & csc2cmac_vld);
+            instr.SetUpdate(cmac_group0_status, Ite(group0_pend, BUSY, cmac_group0_status));
+            instr.SetUpdate(cmac_group1_status, Ite(group1_pend, BUSY, cmac_group1_status)); 
             using_stale_data = (conv_mode == WINOGRAD) | !(m.input("csc2cmac_reuse_weights"));
         }
 
@@ -140,7 +170,7 @@ namespace ilang {
 
         { // Cache new weights
             auto instr = m.NewInstr("cmac_cache_weights");
-            instr.SetDecode((cmac_state == BUSY) & using_stale_data);
+            instr.SetDecode((cmac_group0_status == BUSY | cmac_group1_status == BUSY) & using_stale_data);
             
             for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
                 auto mem_ptr = MemConst(0, {}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH).get();
@@ -164,7 +194,7 @@ namespace ilang {
 
         { // Compute dot product using cached weights
             auto instr = m.NewInstr("cmac_conv_direct");
-            instr.SetDecode((cmac_state == BUSY) & !using_stale_data & (conv_mode == DIRECT));
+            instr.SetDecode((cmac_group0_status == BUSY | cmac_group1_status == BUSY) & !using_stale_data & (conv_mode == DIRECT));
 
             for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
                 // Reset output channels
@@ -191,13 +221,25 @@ namespace ilang {
                 instr.SetUpdate(m.state("cmac2cacc_partial_sum_mac_" + (std::to_string(i))), ExprRef(mem_ptr));                   
             }
 
-            instr.SetUpdate(m.state("cmac_state"), Ite(m.input("csc2cmac_sending_last_batch") == BoolConst(false), PEND, IDLE));
-            instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), Ite(m.input("csc2cmac_sending_last_batch") == BoolConst(false), BvConst(1,1), BvConst(0,1)));
+            auto done = m.input("csc2cmac_sending_last_batch") == BoolConst(true);
+            auto group0_active = cmac_consumer == BvConst(0,1);
+            
+            auto status_update = Ite(done, IDLE, PEND);
+            instr.SetUpdate(cmac_group0_status, Ite(group0_active, status_update, cmac_group0_status));
+            instr.SetUpdate(cmac_group1_status, Ite(!group0_active, status_update, cmac_group1_status));
+
+            auto enable_flag_update = Ite(done, BvConst(0,1), BvConst(1,1));
+            auto group0_enable = m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE));
+            auto group1_enable = m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE));
+            instr.SetUpdate(group0_enable, Ite(group0_active, enable_flag_update, group0_enable));
+            instr.SetUpdate(group1_enable, Ite(!group0_active, enable_flag_update, group1_enable));
+
+            instr.SetUpdate(cmac_consumer, Ite(done, ~cmac_consumer, cmac_consumer));
         }
 
         { // (Winograd mode) Compute partial sum using cached weights
             auto instr = m.NewInstr("cmac_conv_winograd");
-            instr.SetDecode((cmac_state == BUSY) & !using_stale_data & (conv_mode == WINOGRAD));
+            instr.SetDecode((cmac_group0_status == BUSY | cmac_group1_status == BUSY) & !using_stale_data & (conv_mode == WINOGRAD));
 
             // Constant matrices used in winograd mode
             auto C = MemConst(0, {{0,1},{5,1}, {6,0xFFFF}, {7,1}, {8,0xFFFF}, {9,1}, {10,1}, {15, 0xFFFF}}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH); 
@@ -235,8 +277,16 @@ namespace ilang {
                 instr.SetUpdate(m.state("cmac2cacc_partial_sum_mac_" + (std::to_string(i))), ExprRef(mem_ptr));                   
             }
 
-            instr.SetUpdate(m.state("cmac_state"), IDLE);
-            instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), BvConst(0,1));
+            auto group0_active = cmac_consumer == BvConst(0,1);
+            instr.SetUpdate(cmac_group0_status, Ite(group0_active, IDLE, cmac_group0_status));
+            instr.SetUpdate(cmac_group1_status, Ite(!group0_active, IDLE, cmac_group1_status));
+
+            auto group0_enable = m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE));
+            auto group1_enable = m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE));
+            instr.SetUpdate(group0_enable, Ite(group0_active, BvConst(0,1), group0_enable));
+            instr.SetUpdate(group1_enable, Ite(!group0_active, BvConst(0,1), group1_enable));
+            
+            instr.SetUpdate(cmac_consumer, Ite(done, ~cmac_consumer, cmac_consumer));
         }
     }
 

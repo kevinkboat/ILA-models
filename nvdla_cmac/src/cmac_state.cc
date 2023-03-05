@@ -18,10 +18,10 @@ namespace ilang {
         ///  REGISTER STATES
         //////////////////////////////////////////////////////////////////////////////
         
-        m.NewBvState("cmac_state", 2);
+        // m.NewBvState("cmac_state", 2);
 
         //////////////////////////////////////////////////////////////////////////////
-        ///  REGISTER CONFIGS
+        ///  REGISTER STATES
         //////////////////////////////////////////////////////////////////////////////
 
         // 0x7000
@@ -32,18 +32,18 @@ namespace ilang {
         m.NewBvState(NVDLA_CMAC_S_PRODUCER, NVDLA_CMAC_S_PRODUCER_WIDTH);
         m.NewBvState(NVDLA_CMAC_S_CONSUMER, NVDLA_CMAC_S_CONSUMER_WIDTH);
 
-        // 0x7008
-        m.NewBvState(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE), NVDLA_CMAC_D_OP_ENABLE_WIDTH);
-        // 0x700c
-        m.NewBvState(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG), NVDLA_CMAC_D_MISC_CFG_WIDTH);
+        // // 0x7008
+        // m.NewBvState(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE), NVDLA_CMAC_D_OP_ENABLE_WIDTH);
+        // // 0x700c
+        // m.NewBvState(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG), NVDLA_CMAC_D_MISC_CFG_WIDTH);
 
-        // // Duplicated Register Group
-        // for (auto i = 0; i < 2; i++) {
-        //     // 0x7008
-        //     m.NewBvState("group" + (std::to_string(i)) + "_" + NVDLA_CMAC_D_OP_ENABLE, NVDLA_CMAC_D_OP_ENABLE_WIDTH);
-        //     // 0x700c
-        //     m.NewBvState("group" + (std::to_string(i)) + "_" + NVDLA_CMAC_D_MISC_CFG, NVDLA_CMAC_D_MISC_CFG_WIDTH);
-        // }
+        // Duplicated Register Group
+        for (auto i = 0; i < 2; i++) {
+            // 0x7008
+            m.NewBvState("group" + (std::to_string(i)) + "_" + NVDLA_CMAC_D_OP_ENABLE, NVDLA_CMAC_D_OP_ENABLE_WIDTH);
+            // 0x700c
+            m.NewBvState("group" + (std::to_string(i)) + "_" + NVDLA_CMAC_D_MISC_CFG, NVDLA_CMAC_D_MISC_CFG_WIDTH);
+        }
 
         //////////////////////////////////////////////////////////////////////////////
         ///  MAC ARRAY STATES

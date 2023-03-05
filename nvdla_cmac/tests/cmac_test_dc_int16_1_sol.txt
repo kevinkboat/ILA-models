@@ -1,0 +1,38 @@
+Reset 1 
+consumer = 1 
+mac_0 0 0 0 0 
+mac_1 0 0 0 0 
+mac_2 0 0 0 0 
+mac_3 0 0 0 0 
+mac_4 0 0 0 0 
+mac_5 0 0 0 0 
+mac_6 0 0 0 0 
+mac_7 0 0 0 0 
+mac_8 0 0 0 0 
+mac_9 0 0 0 0 
+mac_10 0 0 0 0 
+mac_11 0 0 0 0 
+mac_12 0 0 0 0 
+mac_13 0 0 0 0 
+mac_14 0 0 0 0 
+mac_15 0 0 0 0 
+
+Solution 1 
+consumer = 1 
+mac_0 29115 0 0 0 
+mac_1 0 0 0 0 
+mac_2 0 0 0 0 
+mac_3 0 0 0 0 
+mac_4 0 0 0 0 
+mac_5 0 0 0 0 
+mac_6 0 0 0 0 
+mac_7 0 0 0 0 
+mac_8 0 0 0 0 
+mac_9 0 0 0 0 
+mac_10 0 0 0 0 
+mac_11 0 0 0 0 
+mac_12 0 0 0 0 
+mac_13 0 0 0 0 
+mac_14 0 0 0 0 
+mac_15 0 0 0 0 
+

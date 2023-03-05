@@ -14,6 +14,7 @@ using json = nlohmann::json;
 
 #define NUM_KERNEL_ELEM           64 
 #define NUM_OUTPUTS_PER_MAC_CELL  4
+#define DISABLE_TESTING           false
 
 #define GET_JSON_INT(json_val, default_val) (!(json_val.is_null()) ? json_val.get<int>() : default_val)
 #define GET_JSON_INT_FROM_HEX_STR(json_val, default_val) (!(json_val.is_null()) ? (std::stoi(json_val.get<std::string>().c_str(), nullptr, 16)) : default_val)
@@ -1388,40 +1389,48 @@ SC_MODULE(testbench) {
     int index = 0;
 
     while (input_done == 0) {
-		  // std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
-      // fout << "datatype => " << std::hex << cmac_inst.cmac_group0_cmac_d_misc_cfg << std::endl;
+      if (DISABLE_TESTING || (!DISABLE_TESTING && cmac_inst.cmac_csc2cmac_vld)){
+        // std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
+        // fout << "datatype => " << std::hex << cmac_inst.cmac_group0_cmac_d_misc_cfg << std::endl;
 
-      /* Output format:
-        instr No. [index]
-        mac_0 [out1] [out2] [out3] [out4]
-        mac_1 [out1] [out2] [out3] [out4]
-        ...
-        mac_15 [out1] [out2] [out3] [out4]
-      */
+        /* Output format:
+          instr No. [index]
+          mac_0 [out1] [out2] [out3] [out4]
+          mac_1 [out1] [out2] [out3] [out4]
+          ...
+          mac_15 [out1] [out2] [out3] [out4]
+        */
 
-      fout << "instr No. " << std::dec << index++ << std::endl;
+        fout << "instr No. " << std::dec << index++ << std::endl;
+        fout << "consumer = " << std::dec << cmac_inst.cmac_cmac_s_consumer << std::endl;
 
-      print_cell_output(0, cmac_inst.cmac_cmac2cacc_partial_sum_mac_0);
-      print_cell_output(1, cmac_inst.cmac_cmac2cacc_partial_sum_mac_1);
-      print_cell_output(2, cmac_inst.cmac_cmac2cacc_partial_sum_mac_2);
-      print_cell_output(3, cmac_inst.cmac_cmac2cacc_partial_sum_mac_3);
+        // fout << "group0_cfg = " << std::hex << cmac_inst.cmac_group0_cmac_d_misc_cfg << std::endl;
+        // fout << "group1_cfg = " << std::hex << cmac_inst.cmac_group1_cmac_d_misc_cfg << std::endl;
 
-      print_cell_output(4, cmac_inst.cmac_cmac2cacc_partial_sum_mac_4);
-      print_cell_output(5, cmac_inst.cmac_cmac2cacc_partial_sum_mac_5);
-      print_cell_output(6, cmac_inst.cmac_cmac2cacc_partial_sum_mac_6);
-      print_cell_output(7, cmac_inst.cmac_cmac2cacc_partial_sum_mac_7);
+        print_cell_output(0, cmac_inst.cmac_cmac2cacc_partial_sum_mac_0);
+        print_cell_output(1, cmac_inst.cmac_cmac2cacc_partial_sum_mac_1);
+        print_cell_output(2, cmac_inst.cmac_cmac2cacc_partial_sum_mac_2);
+        print_cell_output(3, cmac_inst.cmac_cmac2cacc_partial_sum_mac_3);
 
-      print_cell_output(8, cmac_inst.cmac_cmac2cacc_partial_sum_mac_8);
-      print_cell_output(9, cmac_inst.cmac_cmac2cacc_partial_sum_mac_9);
-      print_cell_output(10, cmac_inst.cmac_cmac2cacc_partial_sum_mac_10);
-      print_cell_output(11, cmac_inst.cmac_cmac2cacc_partial_sum_mac_11);
+        print_cell_output(4, cmac_inst.cmac_cmac2cacc_partial_sum_mac_4);
+        print_cell_output(5, cmac_inst.cmac_cmac2cacc_partial_sum_mac_5);
+        print_cell_output(6, cmac_inst.cmac_cmac2cacc_partial_sum_mac_6);
+        print_cell_output(7, cmac_inst.cmac_cmac2cacc_partial_sum_mac_7);
 
-      print_cell_output(12, cmac_inst.cmac_cmac2cacc_partial_sum_mac_12);
-      print_cell_output(13, cmac_inst.cmac_cmac2cacc_partial_sum_mac_13);
-      print_cell_output(14, cmac_inst.cmac_cmac2cacc_partial_sum_mac_14);
-      print_cell_output(15, cmac_inst.cmac_cmac2cacc_partial_sum_mac_15);
+        print_cell_output(8, cmac_inst.cmac_cmac2cacc_partial_sum_mac_8);
+        print_cell_output(9, cmac_inst.cmac_cmac2cacc_partial_sum_mac_9);
+        print_cell_output(10, cmac_inst.cmac_cmac2cacc_partial_sum_mac_10);
+        print_cell_output(11, cmac_inst.cmac_cmac2cacc_partial_sum_mac_11);
 
-      fout << std::endl;
+        print_cell_output(12, cmac_inst.cmac_cmac2cacc_partial_sum_mac_12);
+        print_cell_output(13, cmac_inst.cmac_cmac2cacc_partial_sum_mac_13);
+        print_cell_output(14, cmac_inst.cmac_cmac2cacc_partial_sum_mac_14);
+        print_cell_output(15, cmac_inst.cmac_cmac2cacc_partial_sum_mac_15);
+
+        fout << std::endl;
+      } else{
+        index++;
+      }
       
       wait(10, SC_NS);
     }

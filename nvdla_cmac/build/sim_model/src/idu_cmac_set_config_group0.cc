@@ -18,8 +18,8 @@ bool local_var_19 = (local_var_15 & local_var_18);
 sc_biguint<1> local_var_21 = 0;
 bool local_var_22 = (cmac_group0_cmac_d_op_en == local_var_21);
 bool local_var_23 = (local_var_19 & local_var_22);
-auto& univ_var_3 = local_var_23;
-return univ_var_3;
+auto& univ_var_4 = local_var_23;
+return univ_var_4;
 }
 void cmac::update_cmac_cmac_set_config_group0() {
 auto local_var_1 = cmac_csb2cmac_data.range(31, 0);

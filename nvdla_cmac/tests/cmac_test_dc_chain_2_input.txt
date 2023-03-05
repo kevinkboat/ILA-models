@@ -1,0 +1,2 @@
+input 1 => cmac_test_dc_int8_3_input.txt
+input 2 => cmac_test_dc_int16_3_input.txt

@@ -1140,6 +1140,18 @@ if (valid_cmac() && decode_cmac_cmac_set_start_group0()) {
   LogInstrSequence("cmac_set_start_group0", exec_time);
 #endif
 }
+if (valid_cmac() && decode_cmac_cmac_set_start_group1()) {
+#ifdef ILATOR_PROFILING
+  auto start = std::chrono::high_resolution_clock::now();
+#endif
+  update_cmac_cmac_set_start_group1();
+  
+#ifdef ILATOR_PROFILING
+  auto stop = std::chrono::high_resolution_clock::now();
+  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
+  LogInstrSequence("cmac_set_start_group1", exec_time);
+#endif
+}
 if (valid_cmac() && decode_cmac_cmac_set_config_group0()) {
 #ifdef ILATOR_PROFILING
   auto start = std::chrono::high_resolution_clock::now();
@@ -1150,6 +1162,18 @@ if (valid_cmac() && decode_cmac_cmac_set_config_group0()) {
   auto stop = std::chrono::high_resolution_clock::now();
   auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
   LogInstrSequence("cmac_set_config_group0", exec_time);
+#endif
+}
+if (valid_cmac() && decode_cmac_cmac_set_config_group1()) {
+#ifdef ILATOR_PROFILING
+  auto start = std::chrono::high_resolution_clock::now();
+#endif
+  update_cmac_cmac_set_config_group1();
+  
+#ifdef ILATOR_PROFILING
+  auto stop = std::chrono::high_resolution_clock::now();
+  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
+  LogInstrSequence("cmac_set_config_group1", exec_time);
 #endif
 }
 if (valid_cmac() && decode_cmac_cmac_start_from_idle()) {
@@ -1198,18 +1222,6 @@ if (valid_cmac() && decode_cmac_cmac_conv_direct()) {
   auto stop = std::chrono::high_resolution_clock::now();
   auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
   LogInstrSequence("cmac_conv_direct", exec_time);
-#endif
-}
-if (valid_cmac() && decode_cmac_cmac_conv_winograd()) {
-#ifdef ILATOR_PROFILING
-  auto start = std::chrono::high_resolution_clock::now();
-#endif
-  update_cmac_cmac_conv_winograd();
-  
-#ifdef ILATOR_PROFILING
-  auto stop = std::chrono::high_resolution_clock::now();
-  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
-  LogInstrSequence("cmac_conv_winograd", exec_time);
 #endif
 }
 while (1) {
