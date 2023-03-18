@@ -191,7 +191,6 @@ namespace ilang {
             using_stale_data = BoolConst(false);
         }
 
-
         { // Compute dot product using cached weights
             auto instr = m.NewInstr("cmac_conv_direct");
             instr.SetDecode((cmac_group0_status == BUSY | cmac_group1_status == BUSY) & !using_stale_data & (conv_mode == DIRECT));
@@ -286,7 +285,7 @@ namespace ilang {
             instr.SetUpdate(group0_enable, Ite(group0_active, BvConst(0,1), group0_enable));
             instr.SetUpdate(group1_enable, Ite(!group0_active, BvConst(0,1), group1_enable));
             
-            instr.SetUpdate(cmac_consumer, Ite(done, ~cmac_consumer, cmac_consumer));
+            instr.SetUpdate(cmac_consumer, ~cmac_consumer);
         }
     }
 

@@ -273,6 +273,30 @@ src/idu_cmac_conv_direct.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/idu_cmac_conv_direct.cc.s
 .PHONY : src/idu_cmac_conv_direct.cc.s
 
+src/idu_cmac_conv_winograd.o: src/idu_cmac_conv_winograd.cc.o
+.PHONY : src/idu_cmac_conv_winograd.o
+
+# target to build an object file
+src/idu_cmac_conv_winograd.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/idu_cmac_conv_winograd.cc.o
+.PHONY : src/idu_cmac_conv_winograd.cc.o
+
+src/idu_cmac_conv_winograd.i: src/idu_cmac_conv_winograd.cc.i
+.PHONY : src/idu_cmac_conv_winograd.i
+
+# target to preprocess a source file
+src/idu_cmac_conv_winograd.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/idu_cmac_conv_winograd.cc.i
+.PHONY : src/idu_cmac_conv_winograd.cc.i
+
+src/idu_cmac_conv_winograd.s: src/idu_cmac_conv_winograd.cc.s
+.PHONY : src/idu_cmac_conv_winograd.s
+
+# target to generate assembly for a file
+src/idu_cmac_conv_winograd.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/idu_cmac_conv_winograd.cc.s
+.PHONY : src/idu_cmac_conv_winograd.cc.s
+
 src/idu_cmac_set_config_group0.o: src/idu_cmac_set_config_group0.cc.o
 .PHONY : src/idu_cmac_set_config_group0.o
 
@@ -849,6 +873,30 @@ src/memory_update_functions_23.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_23.cc.s
 .PHONY : src/memory_update_functions_23.cc.s
 
+src/memory_update_functions_24.o: src/memory_update_functions_24.cc.o
+.PHONY : src/memory_update_functions_24.o
+
+# target to build an object file
+src/memory_update_functions_24.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_24.cc.o
+.PHONY : src/memory_update_functions_24.cc.o
+
+src/memory_update_functions_24.i: src/memory_update_functions_24.cc.i
+.PHONY : src/memory_update_functions_24.i
+
+# target to preprocess a source file
+src/memory_update_functions_24.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_24.cc.i
+.PHONY : src/memory_update_functions_24.cc.i
+
+src/memory_update_functions_24.s: src/memory_update_functions_24.cc.s
+.PHONY : src/memory_update_functions_24.s
+
+# target to generate assembly for a file
+src/memory_update_functions_24.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/memory_update_functions_24.cc.s
+.PHONY : src/memory_update_functions_24.cc.s
+
 src/memory_update_functions_3.o: src/memory_update_functions_3.cc.o
 .PHONY : src/memory_update_functions_3.o
 
@@ -1068,6 +1116,9 @@ help:
 	@echo "... src/idu_cmac_conv_direct.o"
 	@echo "... src/idu_cmac_conv_direct.i"
 	@echo "... src/idu_cmac_conv_direct.s"
+	@echo "... src/idu_cmac_conv_winograd.o"
+	@echo "... src/idu_cmac_conv_winograd.i"
+	@echo "... src/idu_cmac_conv_winograd.s"
 	@echo "... src/idu_cmac_set_config_group0.o"
 	@echo "... src/idu_cmac_set_config_group0.i"
 	@echo "... src/idu_cmac_set_config_group0.s"
@@ -1140,6 +1191,9 @@ help:
 	@echo "... src/memory_update_functions_23.o"
 	@echo "... src/memory_update_functions_23.i"
 	@echo "... src/memory_update_functions_23.s"
+	@echo "... src/memory_update_functions_24.o"
+	@echo "... src/memory_update_functions_24.i"
+	@echo "... src/memory_update_functions_24.s"
 	@echo "... src/memory_update_functions_3.o"
 	@echo "... src/memory_update_functions_3.i"
 	@echo "... src/memory_update_functions_3.s"
