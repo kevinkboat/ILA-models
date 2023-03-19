@@ -20,14 +20,14 @@ namespace ilang {
         ///  FROM CSC
         //////////////////////////////////////////////////////////////////////////////
         
-        // 16 Weight Kernels
-        for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
+        // Weight Kernels
+        for (auto i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS_ATOMIC_OP; i++) {
             for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
                 m.NewBvInput("csc2cmac_wt_" + (std::to_string(i)) + "_" + (std::to_string(j)), NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
             }
         } 
 
-        // 1 Feature Kernel
+        // Feature Kernel
         for (auto i = 0; i < NVDLA_CMAC_KERNEL_NUM_ELEM; i++){
             m.NewBvInput("csc2cmac_ft_" + (std::to_string(i)), NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
         }

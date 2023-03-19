@@ -44,7 +44,15 @@ add_executable(cmac
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_22.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_23.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_24.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_25.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_26.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_27.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_28.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_29.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_3.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_30.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_31.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_32.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_4.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_5.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_6.cc

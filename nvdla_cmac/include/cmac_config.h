@@ -68,17 +68,18 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 ///  OTHER CONSTANTS
 //////////////////////////////////////////////////////////////////////////////
 
-#define NVDLA_CMAC_KERNEL_NUM_ELEM        64
-#define NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH  16      // size of int16/fp16
-#define NVDLA_CMAC_KERNEL_ADDR_WIDTH      6       // 2 ^ 6 = 64       
+#define NVDLA_CMAC_KERNEL_NUM_ELEM            64
+#define NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH      16      // size of int16/fp16
+#define NVDLA_CMAC_KERNEL_ADDR_WIDTH          6       // 2 ^ 6 = 64       
+#define NVDLA_CMAC_MAX_NUM_KERNELS_ATOMIC_OP  32      // max for int8 is 32, for int16/fp16 max is 16  
 
 #define NVDLA_CMAC_NUM_MAC_CELLS              16  
-#define NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH 2  
+#define NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH 3       // 2 ^ 3 = 8 outputs. odd numbered outputs are for int8 only  
 
 #define NVDLA_CMAC_INT16_DATA_WIDTH       16       
 #define NVDLA_CMAC_INT8_DATA_WIDTH        8    
 
-#define NVDLA_CMAC_PIPELINE_STATUS_WIDTH  8       // Assumed value
+#define NVDLA_CMAC_PIPELINE_STATUS_WIDTH  2       // contains start and end operation flags
 
 } // namespace ilang
 

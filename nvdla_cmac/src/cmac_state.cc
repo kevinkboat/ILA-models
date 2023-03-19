@@ -17,12 +17,6 @@ namespace ilang {
         //////////////////////////////////////////////////////////////////////////////
         ///  REGISTER STATES
         //////////////////////////////////////////////////////////////////////////////
-        
-        // m.NewBvState("cmac_state", 2);
-
-        //////////////////////////////////////////////////////////////////////////////
-        ///  REGISTER STATES
-        //////////////////////////////////////////////////////////////////////////////
 
         // 0x7000
         m.NewBvState(NVDLA_CMAC_S_STATUS_0, NVDLA_CMAC_S_STATUS_WIDTH);
@@ -31,11 +25,6 @@ namespace ilang {
         // 0x7004
         m.NewBvState(NVDLA_CMAC_S_PRODUCER, NVDLA_CMAC_S_PRODUCER_WIDTH);
         m.NewBvState(NVDLA_CMAC_S_CONSUMER, NVDLA_CMAC_S_CONSUMER_WIDTH);
-
-        // // 0x7008
-        // m.NewBvState(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE), NVDLA_CMAC_D_OP_ENABLE_WIDTH);
-        // // 0x700c
-        // m.NewBvState(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG), NVDLA_CMAC_D_MISC_CFG_WIDTH);
 
         // Duplicated Register Group
         for (auto i = 0; i < 2; i++) {
@@ -49,8 +38,8 @@ namespace ilang {
         ///  MAC ARRAY STATES
         //////////////////////////////////////////////////////////////////////////////
 
-        // 16 Cached Weight Kernels
-        for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
+        // Cached Weight Kernels
+        for (auto i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS_ATOMIC_OP; i++) {
             m.NewMemState("cached_wt_kernel_" + (std::to_string(i)), NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
         } 
         
