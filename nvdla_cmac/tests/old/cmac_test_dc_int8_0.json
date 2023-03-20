@@ -23,19 +23,24 @@
             "cmac_csc2cmac_vld": true
         },
         {
+            "instr No.": 2,
+            "cmac_csc2cmac_vld": true,
+            "cmac_csc2cmac_reuse_weights": false,
+            // "cmac_csc2cmac_wt_x_y": 0    , for x,y in [0,1,...,63]
+            // "cmac_csc2cmac_wt_z": 0      , for z in [0,1,...,63]
+        },    
+        {
             "instr No.": 3,
             "cmac_csc2cmac_vld": true,
+            "cmac_csc2cmac_reuse_weights": true,
+            // "cmac_csc2cmac_wt_z": 0      , for z in [0,1,...,63]
+        }, 
+        {
+            "instr No.": 4,
+            "cmac_csc2cmac_vld": true,
+            "cmac_csc2cmac_reuse_weights": true,
             "cmac_csc2cmac_sending_last_batch": true,
-            "cmac_csc2cmac_wt_0_1": 1,
-            "cmac_csc2cmac_wt_1_2": 2,
-            "cmac_csc2cmac_wt_9_3": 3,
-            "cmac_csc2cmac_wt_16_1": -1,
-            "cmac_csc2cmac_wt_18_2": 100,
-            "cmac_csc2cmac_wt_30_3": -5,
-            "cmac_csc2cmac_wt_31_7": 100,
-            "cmac_csc2cmac_ft_1": -25,
-            "cmac_csc2cmac_ft_2": -10,
-            "cmac_csc2cmac_ft_3": 3
+            // "cmac_csc2cmac_wt_z": 0      , for z in [0,1,...,63]
         }
     ]
   }

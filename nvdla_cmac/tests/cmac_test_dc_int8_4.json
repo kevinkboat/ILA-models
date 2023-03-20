@@ -25,10 +25,15 @@
         {
             "instr No.": 3,
             "cmac_csc2cmac_vld": true,
-            "cmac_csc2cmac_sending_last_batch": true,
             "cmac_csc2cmac_wt_0_1": 1,
+            "cmac_csc2cmac_wt_0_2": 2,
+            "cmac_csc2cmac_wt_0_3": 5,
             "cmac_csc2cmac_wt_1_2": 2,
+            "cmac_csc2cmac_wt_1_3": -1,
+            "cmac_csc2cmac_wt_1_7": 8,
+            "cmac_csc2cmac_wt_9_2": 127,
             "cmac_csc2cmac_wt_9_3": 3,
+            "cmac_csc2cmac_wt_9_63": 4,
             "cmac_csc2cmac_wt_16_1": -1,
             "cmac_csc2cmac_wt_18_2": 100,
             "cmac_csc2cmac_wt_30_3": -5,
@@ -36,6 +41,20 @@
             "cmac_csc2cmac_ft_1": -25,
             "cmac_csc2cmac_ft_2": -10,
             "cmac_csc2cmac_ft_3": 3
+        },
+        {
+            "instr No.": 4,
+            "cmac_csc2cmac_vld": true,
+            "cmac_csc2cmac_reuse_weights": true,
+            "cmac_csc2cmac_ft_2": 1,
+            "cmac_csc2cmac_ft_7": 1
+        },
+        {
+            "instr No.": 5,
+            "cmac_csc2cmac_vld": true,
+            "cmac_csc2cmac_reuse_weights": true,
+            "cmac_csc2cmac_sending_last_batch": true,
+            "cmac_csc2cmac_ft_3": 10
         }
     ]
   }
