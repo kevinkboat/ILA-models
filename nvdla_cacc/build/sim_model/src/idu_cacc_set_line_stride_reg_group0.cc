@@ -1,7 +1,7 @@
 #include <cacc.h>
 bool cacc::decode_cacc_cacc_set_line_stride_reg_group0() {
-auto local_var_1 = cacc_csb2cacc_addr.range(16, 0);
-sc_biguint<17> local_var_2 = 36896;
+auto local_var_1 = cacc_csb2cacc_addr.range(15, 0);
+sc_biguint<16> local_var_2 = 36896;
 bool local_var_3 = (local_var_1 == local_var_2);
 bool local_var_6 = (cacc_cacc2csb_rdy & cacc_csb2cacc_vld);
 bool local_var_7 = (local_var_3 & local_var_6);

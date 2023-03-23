@@ -11,7 +11,6 @@
 
 using json = nlohmann::json;
 
-
 #define NUM_KERNEL_ELEM           64 
 #define NUM_OUTPUTS_PER_MAC_CELL  4
 #define DISABLE_TESTING           false

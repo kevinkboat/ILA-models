@@ -1,6 +1,8 @@
 #include <cacc.h>
 void cacc::setup_initial_condition() {
+cacc_cacc2csb_data_vld = 140731560130488;
 cacc_cacc_s_status = 0;
+cacc_cacc2csb_rdy = 140731560130488;
 cacc_cacc_s_pointer = 0;
 cacc_group0_cacc_d_op_enable = 0;
 cacc_group0_cacc_d_misc_cfg = 0;

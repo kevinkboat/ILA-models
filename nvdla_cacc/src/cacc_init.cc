@@ -11,7 +11,8 @@ namespace ilang {
         ///  OUTPUTS
         //////////////////////////////////////////////////////////////////////////////
 
-        
+        m.AddInit(m.state("cacc2csb_rdy") == BoolConst(true));
+        m.AddInit(m.state("cacc2csb_data_vld") == BoolConst(false));
 
         //////////////////////////////////////////////////////////////////////////////
         ///  INTERNAL STATES

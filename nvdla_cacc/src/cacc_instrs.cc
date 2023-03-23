@@ -88,7 +88,7 @@ namespace ilang {
         regGrp group1 = init_regGrp("group1_", m);
         regGrp consumer_reg = group0;                   // default value
 
-        auto cacc_csb_addr = Extract(m.input("csb2cacc_addr"), 16, 0);
+        auto cacc_csb_addr = Extract(m.input("csb2cacc_addr"), 15, 0);
         auto cacc_csb_valid = m.state("cacc2csb_rdy") & m.input("csb2cacc_vld");
         auto cacc_csb_write = m.input("csb2cacc_write");
         
