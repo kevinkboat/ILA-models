@@ -810,3 +810,32 @@ instr No. 27
 (State) cacc_group1_cacc_d_misc_cfg = 3
 (State) cacc_group1_cacc_d_op_enable = 2
 
+current simulation time: 	290 ns
+instr No. 28
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0
+(State) cacc_cacc_s_pointer = 0
+(State) cacc_group0_cacc_d_out_saturation = 26
+(State) cacc_group0_cacc_d_clip_cfg = 25
+(State) cacc_group0_cacc_d_op_enable = 16
+(State) cacc_group0_cacc_d_misc_cfg = 17
+(State) cacc_group0_cacc_d_dataout_size_0 = 18
+(State) cacc_group0_cacc_d_dataout_size_1 = 19
+(State) cacc_group0_cacc_d_dataout_addr = 20
+(State) cacc_group0_cacc_d_batch_number = 21
+(State) cacc_group0_cacc_d_line_stride = 22
+(State) cacc_group0_cacc_d_surf_stride = 23
+(State) cacc_group0_cacc_d_dataout_map = 24
+(State) cacc_group1_cacc_d_out_saturation = 12
+(State) cacc_group1_cacc_d_clip_cfg = 11
+(State) cacc_group1_cacc_d_dataout_map = 10
+(State) cacc_group1_cacc_d_surf_stride = 9
+(State) cacc_group1_cacc_d_line_stride = 8
+(State) cacc_group1_cacc_d_batch_number = 7
+(State) cacc_group1_cacc_d_dataout_addr = 6
+(State) cacc_group1_cacc_d_dataout_size_1 = 5
+(State) cacc_group1_cacc_d_dataout_size_0 = 4
+(State) cacc_group1_cacc_d_misc_cfg = 3
+(State) cacc_group1_cacc_d_op_enable = 2
+

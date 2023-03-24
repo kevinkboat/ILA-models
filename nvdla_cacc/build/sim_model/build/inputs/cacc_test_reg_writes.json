@@ -195,6 +195,13 @@
             "cacc_csb2cacc_data": "0x001b",
             "cacc_csb2cacc_write": true,
             "cacc_csb2cacc_vld": true
-        }           
+        },
+        {
+            "instr No.": 28,
+            "cacc_csb2cacc_addr": "0x9004",
+            "cacc_csb2cacc_data": "0xf9da",
+            "cacc_csb2cacc_write": true,
+            "cacc_csb2cacc_vld": true
+        }             
     ]
   }

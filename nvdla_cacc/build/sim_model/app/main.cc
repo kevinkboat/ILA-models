@@ -57,7 +57,9 @@ SC_MODULE(Source) {
     }
 
     input_done = 1;
-    std::cout << "read_file" << std::flush;
+    std::cout << "read inputs from: " << file_in << std::endl;
+    std::cout << std::endl;
+
   }
 
 };
@@ -106,6 +108,8 @@ SC_MODULE(testbench) {
 
     std::cout << "start running" << std::endl;
     std::cout << "*********** simulation start ***********" << std::endl;
+    std::cout << std::endl;
+
     wait(10, SC_NS);
 
     // Log final outputs
@@ -122,33 +126,33 @@ SC_MODULE(testbench) {
       fout << "(Output) cacc_cacc2csb_rdy = " << cacc_inst.cacc_cacc2csb_rdy << std::endl;
       fout << "(Output) cacc_cacc2csb_data_vld = " << cacc_inst.cacc_cacc2csb_data_vld << std::endl;
 
-      fout << "(State) cacc_cacc_s_status = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_cacc_s_status << std::endl;
-      fout << "(State) cacc_cacc_s_pointer = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_cacc_s_pointer << std::endl;
+      fout << "(State) cacc_cacc_s_status = " << cacc_inst.cacc_cacc_s_status << std::endl;
+      fout << "(State) cacc_cacc_s_pointer = " << cacc_inst.cacc_cacc_s_pointer << std::endl;
       
-      fout << "(State) cacc_group0_cacc_d_out_saturation = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_out_saturation << std::endl;
-      fout << "(State) cacc_group0_cacc_d_clip_cfg = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_clip_cfg << std::endl;
-      fout << "(State) cacc_group0_cacc_d_op_enable = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_op_enable << std::endl;
-      fout << "(State) cacc_group0_cacc_d_misc_cfg = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_misc_cfg << std::endl;
-      fout << "(State) cacc_group0_cacc_d_dataout_size_0 = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_dataout_size_0 << std::endl;
-      fout << "(State) cacc_group0_cacc_d_dataout_size_1 = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_dataout_size_1 << std::endl;
-      fout << "(State) cacc_group0_cacc_d_dataout_addr = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_dataout_addr << std::endl;
-      fout << "(State) cacc_group0_cacc_d_batch_number = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_batch_number << std::endl;
-      fout << "(State) cacc_group0_cacc_d_line_stride = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_line_stride << std::endl;
-      fout << "(State) cacc_group0_cacc_d_surf_stride = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_surf_stride << std::endl;
-      fout << "(State) cacc_group0_cacc_d_dataout_map = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group0_cacc_d_dataout_map << std::endl;
+      fout << "(State) cacc_group0_cacc_d_out_saturation = " << cacc_inst.cacc_group0_cacc_d_out_saturation << std::endl;
+      fout << "(State) cacc_group0_cacc_d_clip_cfg = " << cacc_inst.cacc_group0_cacc_d_clip_cfg << std::endl;
+      fout << "(State) cacc_group0_cacc_d_op_enable = " << cacc_inst.cacc_group0_cacc_d_op_enable << std::endl;
+      fout << "(State) cacc_group0_cacc_d_misc_cfg = " << cacc_inst.cacc_group0_cacc_d_misc_cfg << std::endl;
+      fout << "(State) cacc_group0_cacc_d_dataout_size_0 = " << cacc_inst.cacc_group0_cacc_d_dataout_size_0 << std::endl;
+      fout << "(State) cacc_group0_cacc_d_dataout_size_1 = " << cacc_inst.cacc_group0_cacc_d_dataout_size_1 << std::endl;
+      fout << "(State) cacc_group0_cacc_d_dataout_addr = " << cacc_inst.cacc_group0_cacc_d_dataout_addr << std::endl;
+      fout << "(State) cacc_group0_cacc_d_batch_number = " << cacc_inst.cacc_group0_cacc_d_batch_number << std::endl;
+      fout << "(State) cacc_group0_cacc_d_line_stride = " << cacc_inst.cacc_group0_cacc_d_line_stride << std::endl;
+      fout << "(State) cacc_group0_cacc_d_surf_stride = " << cacc_inst.cacc_group0_cacc_d_surf_stride << std::endl;
+      fout << "(State) cacc_group0_cacc_d_dataout_map = " << cacc_inst.cacc_group0_cacc_d_dataout_map << std::endl;
 
-      fout << "(State) cacc_group1_cacc_d_out_saturation = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_out_saturation << std::endl;
-      fout << "(State) cacc_group1_cacc_d_clip_cfg = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_clip_cfg << std::endl;
-      fout << "(State) cacc_group1_cacc_d_dataout_map = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_dataout_map << std::endl;
-      fout << "(State) cacc_group1_cacc_d_surf_stride = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_surf_stride << std::endl;
-      fout << "(State) cacc_group1_cacc_d_line_stride = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_line_stride << std::endl;
-      fout << "(State) cacc_group1_cacc_d_batch_number = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_batch_number << std::endl;
-      fout << "(State) cacc_group1_cacc_d_dataout_addr = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_dataout_addr << std::endl;
-      fout << "(State) cacc_group1_cacc_d_dataout_size_1 = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_dataout_size_1 << std::endl;
-      fout << "(State) cacc_group1_cacc_d_dataout_size_0 = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_dataout_size_0 << std::endl;
-      fout << "(State) cacc_group1_cacc_d_misc_cfg = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_misc_cfg << std::endl;
-      fout << "(State) cacc_group1_cacc_d_op_enable = " << (sc_dt::sc_bigint<32>) cacc_inst.cacc_group1_cacc_d_op_enable << std::endl;
-
+      fout << "(State) cacc_group1_cacc_d_out_saturation = " << cacc_inst.cacc_group1_cacc_d_out_saturation << std::endl;
+      fout << "(State) cacc_group1_cacc_d_clip_cfg = " << cacc_inst.cacc_group1_cacc_d_clip_cfg << std::endl;
+      fout << "(State) cacc_group1_cacc_d_dataout_map = " << cacc_inst.cacc_group1_cacc_d_dataout_map << std::endl;
+      fout << "(State) cacc_group1_cacc_d_surf_stride = " << cacc_inst.cacc_group1_cacc_d_surf_stride << std::endl;
+      fout << "(State) cacc_group1_cacc_d_line_stride = " << cacc_inst.cacc_group1_cacc_d_line_stride << std::endl;
+      fout << "(State) cacc_group1_cacc_d_batch_number = " << cacc_inst.cacc_group1_cacc_d_batch_number << std::endl;
+      fout << "(State) cacc_group1_cacc_d_dataout_addr = " << cacc_inst.cacc_group1_cacc_d_dataout_addr << std::endl;
+      fout << "(State) cacc_group1_cacc_d_dataout_size_1 = " << cacc_inst.cacc_group1_cacc_d_dataout_size_1 << std::endl;
+      fout << "(State) cacc_group1_cacc_d_dataout_size_0 = " << cacc_inst.cacc_group1_cacc_d_dataout_size_0 << std::endl;
+      fout << "(State) cacc_group1_cacc_d_misc_cfg = " << cacc_inst.cacc_group1_cacc_d_misc_cfg << std::endl;
+      fout << "(State) cacc_group1_cacc_d_op_enable = " << cacc_inst.cacc_group1_cacc_d_op_enable << std::endl;
+      
       fout << std::endl;
             
       wait(10, SC_NS);
@@ -157,10 +161,10 @@ SC_MODULE(testbench) {
 
     fout.close();
 
-    std::cout << "outputs have been stored at " << file_out << std::endl;
+    std::cout << "stored outputs in: " << file_out << std::endl;
 
     wait(100000, SC_NS);
-    std::cout << '\n' << std::endl;
+    std::cout << std::endl;
     std::cout << "************* sc_stop **************" << std::endl;
 
     cacc_inst.instr_log.close();
