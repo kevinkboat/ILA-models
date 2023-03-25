@@ -2775,10 +2775,10 @@ SC_MODULE(cmac) {
   sc_biguint<16> cmac_csb2cmac_addr;
   sc_in<sc_biguint<32>> cmac_csb2cmac_data_in;
   sc_biguint<32> cmac_csb2cmac_data;
-  sc_in<sc_biguint<1>> cmac_csb2cmac_write_in;
-  sc_biguint<1> cmac_csb2cmac_write;
-  sc_in<sc_biguint<1>> cmac_csb2cmac_vld_in;
-  sc_biguint<1> cmac_csb2cmac_vld;
+  sc_in<bool> cmac_csb2cmac_write_in;
+  bool cmac_csb2cmac_write;
+  sc_in<bool> cmac_csb2cmac_vld_in;
+  bool cmac_csb2cmac_vld;
   sc_in<sc_biguint<16>> cmac_csc2cmac_wt_0_0_in;
   sc_biguint<16> cmac_csc2cmac_wt_0_0;
   sc_in<sc_biguint<16>> cmac_csc2cmac_wt_0_1_in;
@@ -4294,8 +4294,8 @@ SC_MODULE(cmac) {
   std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> cmac_cmac2cacc_partial_sum_mac_2;
   std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> cmac_cmac2cacc_partial_sum_mac_1;
   std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> cmac_cmac2cacc_partial_sum_mac_0;
-  sc_biguint<1> cmac_cmac2csb_data_vld;
-  sc_biguint<1> cmac_cmac2csb_rdy;
+  bool cmac_cmac2csb_data_vld;
+  bool cmac_cmac2csb_rdy;
   std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> cmac_cmac2cacc_partial_sum_mac_11;
   std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> cmac_cmac2cacc_partial_sum_mac_12;
   std::unordered_map<int, sc_biguint<16>, MemAddrHashFunc> cmac_cmac2cacc_partial_sum_mac_13;

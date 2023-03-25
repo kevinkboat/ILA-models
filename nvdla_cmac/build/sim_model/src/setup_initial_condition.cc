@@ -1,7 +1,7 @@
 #include <cmac.h>
 void cmac::setup_initial_condition() {
-cmac_cmac2csb_rdy = 1;
-cmac_cmac2csb_data_vld = 1;
+cmac_cmac2csb_rdy = 140735267590472;
+cmac_cmac2csb_data_vld = 140735267590472;
 cmac_cmac2cacc_status = 0;
 cmac_cmac_s_status0 = 0;
 cmac_cmac_s_status1 = 0;

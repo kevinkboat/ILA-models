@@ -11,8 +11,8 @@ namespace ilang {
         ///  OUTPUTS
         //////////////////////////////////////////////////////////////////////////////
 
-        m.AddInit(m.state("cmac2csb_rdy") == BvConst(1,1));
-        m.AddInit(m.state("cmac2csb_data_vld") == BvConst(1,1));
+        m.AddInit(m.state("cmac2csb_rdy") == BoolConst(true));
+        m.AddInit(m.state("cmac2csb_data_vld") == BoolConst(false));
         m.AddInit(m.state("cmac2cacc_status") == BvConst(0,NVDLA_CMAC_PIPELINE_STATUS_WIDTH));
 
         //////////////////////////////////////////////////////////////////////////////

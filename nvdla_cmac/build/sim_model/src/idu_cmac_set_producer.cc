@@ -3,16 +3,10 @@ bool cmac::decode_cmac_cmac_set_producer() {
 auto local_var_1 = cmac_csb2cmac_addr.range(11, 0);
 sc_biguint<12> local_var_2 = 4;
 bool local_var_3 = (local_var_1 == local_var_2);
-sc_biguint<1> local_var_5 = 1;
-bool local_var_6 = (cmac_cmac2csb_rdy == local_var_5);
-sc_biguint<1> local_var_8 = 1;
-bool local_var_9 = (cmac_csb2cmac_vld == local_var_8);
-bool local_var_10 = (local_var_6 & local_var_9);
-bool local_var_11 = (local_var_3 & local_var_10);
-sc_biguint<1> local_var_13 = 1;
-bool local_var_14 = (cmac_csb2cmac_write == local_var_13);
-bool local_var_15 = (local_var_11 & local_var_14);
-auto& univ_var_1 = local_var_15;
+bool local_var_6 = (cmac_cmac2csb_rdy & cmac_csb2cmac_vld);
+bool local_var_7 = (local_var_3 & local_var_6);
+bool local_var_9 = (local_var_7 & cmac_csb2cmac_write);
+auto& univ_var_1 = local_var_9;
 return univ_var_1;
 }
 void cmac::update_cmac_cmac_set_producer() {

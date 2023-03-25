@@ -13,8 +13,8 @@ namespace ilang {
 
         m.NewBvInput("csb2cmac_addr", 16);
         m.NewBvInput("csb2cmac_data", 32);
-        m.NewBvInput("csb2cmac_write", 1);
-        m.NewBvInput("csb2cmac_vld", 1);
+        m.NewBoolInput("csb2cmac_write");
+        m.NewBoolInput("csb2cmac_vld");
 
         //////////////////////////////////////////////////////////////////////////////
         ///  FROM CSC

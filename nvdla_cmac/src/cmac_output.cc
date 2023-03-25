@@ -12,8 +12,8 @@ namespace ilang {
         ///  TO CSB
         //////////////////////////////////////////////////////////////////////////////
 
-        m.NewBvState("cmac2csb_rdy", 1);
-        m.NewBvState("cmac2csb_data_vld", 1);
+        m.NewBoolState("cmac2csb_rdy");
+        m.NewBoolState("cmac2csb_data_vld");
 
         //////////////////////////////////////////////////////////////////////////////
         ///  TO CACC 

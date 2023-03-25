@@ -78,8 +78,8 @@ namespace ilang {
         //////////////////////////////////////////////////////////////////////////////
 
         auto cmac_csb_addr = Extract(m.input("csb2cmac_addr"), 11, 0);
-        auto cmac_csb_valid = (m.state("cmac2csb_rdy") == BvConst(1,1)) & (m.input("csb2cmac_vld") == BvConst(1,1));
-        auto cmac_csb_write = m.input("csb2cmac_write") == BvConst(1,1);
+        auto cmac_csb_valid = m.state("cmac2csb_rdy") & m.input("csb2cmac_vld");
+        auto cmac_csb_write = m.input("csb2cmac_write");
         
         auto cmac_group0_unset = m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)) == BvConst(0,1);
         auto cmac_group1_unset = m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE)) == BvConst(0,1);

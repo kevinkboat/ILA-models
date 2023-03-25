@@ -12,8 +12,8 @@
 using json = nlohmann::json;
 
 #define NUM_KERNEL_ELEM           64 
-#define NUM_OUTPUTS_PER_MAC_CELL  4
-#define DISABLE_TESTING           false
+#define NUM_OUTPUTS_PER_MAC_CELL  8
+#define DISABLE_TESTING           true
 
 #define GET_JSON_INT(json_val, default_val) (!(json_val.is_null()) ? json_val.get<int>() : default_val)
 #define GET_JSON_INT_FROM_HEX_STR(json_val, default_val) (!(json_val.is_null()) ? (std::stoi(json_val.get<std::string>().c_str(), nullptr, 16)) : default_val)
@@ -39,8 +39,8 @@ SC_MODULE(Source) {
   // CSB inputs
   sc_out<sc_biguint<16>> cmac_csb2cmac_addr;
   sc_out<sc_biguint<32>> cmac_csb2cmac_data;
-  sc_out<sc_biguint<1>> cmac_csb2cmac_write;
-  sc_out<sc_biguint<1>> cmac_csb2cmac_vld;
+  sc_out<bool> cmac_csb2cmac_write;
+  sc_out<bool> cmac_csb2cmac_vld;
   
   // CSC non-array inputs
   sc_out<sc_biguint<2>> cmac_csc2cmac_status;
@@ -109,8 +109,8 @@ SC_MODULE(Source) {
     for (size_t i = 0; i < cmd_seq["program fragment"].size(); i++) {
       cmac_csb2cmac_addr = GET_JSON_INT_FROM_HEX_STR(cmd_seq["program fragment"][i]["cmac_csb2cmac_addr"], 0);
       cmac_csb2cmac_data = GET_JSON_INT_FROM_HEX_STR(cmd_seq["program fragment"][i]["cmac_csb2cmac_data"], 0);
-      cmac_csb2cmac_write = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_write"], 0);
-      cmac_csb2cmac_vld = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csb2cmac_vld"], 0);
+      cmac_csb2cmac_write = GET_JSON_BOOL(cmd_seq["program fragment"][i]["cmac_csb2cmac_write"], false);
+      cmac_csb2cmac_vld = GET_JSON_BOOL(cmd_seq["program fragment"][i]["cmac_csb2cmac_vld"], false);
     
       cmac_csc2cmac_status = GET_JSON_INT(cmd_seq["program fragment"][i]["cmac_csc2cmac_status"], 0);
       cmac_csc2cmac_reuse_weights = GET_JSON_BOOL(cmd_seq["program fragment"][i]["cmac_csc2cmac_reuse_weights"], false);
@@ -162,7 +162,8 @@ SC_MODULE(Source) {
     }
 
     input_done = 1;
-    std::cout << "read_file" << std::flush;
+    std::cout << "read inputs from: " << file_in << std::endl;
+    std::cout << std::endl;
   }
 
 };
@@ -176,8 +177,8 @@ SC_MODULE(testbench) {
 
   sc_signal<sc_biguint<16>> cmac_csb2cmac_addr_signal;
   sc_signal<sc_biguint<32>> cmac_csb2cmac_data_signal;
-  sc_signal<sc_biguint<1>> cmac_csb2cmac_write_signal;
-  sc_signal<sc_biguint<1>> cmac_csb2cmac_vld_signal;
+  sc_signal<bool> cmac_csb2cmac_write_signal;
+  sc_signal<bool> cmac_csb2cmac_vld_signal;
 
   sc_signal<sc_biguint<2>> cmac_csc2cmac_status_signal;
   sc_signal<bool> cmac_csc2cmac_reuse_weights_signal;
@@ -2464,7 +2465,6 @@ SC_MODULE(testbench) {
 
         /* Output format:
           instr No. [index]
-          consumer = [consumer_index]
           mac_0 [out1] [out2] ... [NUM_OUTPUTS_PER_MAC_CELL]
           mac_1 [out1] [out2] ... [NUM_OUTPUTS_PER_MAC_CELL]
           ...
@@ -2472,7 +2472,9 @@ SC_MODULE(testbench) {
         */
 
         fout << "instr No. " << std::dec << index++ << std::endl;
-        fout << "consumer = " << std::dec << cmac_inst.cmac_cmac_s_consumer << std::endl;
+        
+        // // consumer = [consumer_index]
+        // fout << "consumer = " << std::dec << cmac_inst.cmac_cmac_s_consumer << std::endl;
 
         print_cell_output(0, cmac_inst.cmac_cmac2cacc_partial_sum_mac_0);
         print_cell_output(1, cmac_inst.cmac_cmac2cacc_partial_sum_mac_1);
@@ -2505,7 +2507,7 @@ SC_MODULE(testbench) {
 
     fout.close();
 
-    std::cout << "outputs have been stored at " << file_out << std::endl;
+    std::cout << "stored outputs in: " << file_out << std::endl;
 
     wait(100000, SC_NS);
     std::cout << '\n' << std::endl;
