@@ -27,17 +27,6 @@ namespace ilang {
 
     regGrp init_regGrp(string prefix, Ila& m){
         regGrp reg;
-        // reg.cacc_op_enable_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_OP_ENABLE));
-        // reg.cacc_misc_cfg_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_MISC_CFG));
-        // reg.cacc_dataout_size_0_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_DATAOUT_SIZE_0));
-        // reg.cacc_dataout_size_1_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_DATAOUT_SIZE_1));
-        // reg.cacc_dataout_addr_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_DATAOUT_ADDR));
-        // reg.cacc_batches_number_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_BATCH_NUMBER));
-        // reg.cacc_line_stride_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_LINE_STRIDE));
-        // reg.cacc_surf_stride_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_SURF_STRIDE));
-        // reg.cacc_dataout_map_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_DATAOUT_MAP));
-        // reg.cacc_clip_cfg_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_CLIP_CFG));
-        // reg.cacc_saturation_reg = m.state(GetVarName(prefix + NVDLA_CACC_D_OUT_SATURATION));
 
         reg.cacc_op_enable = Extract(m.state(prefix + NVDLA_CACC_D_OP_ENABLE), 0, 0);
         reg.cacc_conv_mode = Extract(m.state(prefix + NVDLA_CACC_D_MISC_CFG), 0, 0);
