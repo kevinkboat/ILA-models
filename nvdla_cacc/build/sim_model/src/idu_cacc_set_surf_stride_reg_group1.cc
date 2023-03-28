@@ -14,8 +14,8 @@ auto local_var_16 = cacc_group1_cacc_d_op_enable.range(0, 0);
 sc_biguint<1> local_var_17 = 0;
 bool local_var_18 = (local_var_16 == local_var_17);
 bool local_var_19 = (local_var_14 & local_var_18);
-auto& univ_var_20 = local_var_19;
-return univ_var_20;
+auto& univ_var_19 = local_var_19;
+return univ_var_19;
 }
 void cacc::update_cacc_cacc_set_surf_stride_reg_group1() {
 auto cacc_csb2cacc_data_nxt_holder = cacc_csb2cacc_data;

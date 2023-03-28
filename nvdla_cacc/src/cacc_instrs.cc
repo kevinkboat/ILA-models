@@ -88,7 +88,7 @@ namespace ilang {
         ///  SET REGISTERS
         //////////////////////////////////////////////////////////////////////////////
 
-        { // Address 0x9004
+        { // Address 0x9004 (part read-only)
             auto instr = m.NewInstr("cacc_set_producer");
             instr.SetDecode(cacc_csb_addr == 0x9004 & cacc_csb_valid & cacc_csb_write);
 
@@ -163,11 +163,8 @@ namespace ilang {
                 instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CACC_D_CLIP_CFG)), m.input("csb2cacc_data"));
             }
 
-            { // Address 0x9030
-                auto instr = m.NewInstr("cacc_set_out_saturation_reg_group0");
-                instr.SetDecode(cacc_csb_addr == 0x9030 & cacc_csb_valid & cacc_csb_write & cacc_producer == BvConst(0,1) & cacc_group0_unset);
-                instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CACC_D_OUT_SATURATION)), m.input("csb2cacc_data"));
-            }
+
+            // Note: Address 0x9030 is read-only
         }
 
         {   // Group1 register writes
@@ -232,11 +229,7 @@ namespace ilang {
                 instr.SetUpdate(m.state(GetVarName("group1_", NVDLA_CACC_D_CLIP_CFG)), m.input("csb2cacc_data"));
             }
 
-            { // Address 0x9030
-                auto instr = m.NewInstr("cacc_set_out_saturation_reg_group1");
-                instr.SetDecode(cacc_csb_addr == 0x9030 & cacc_csb_valid & cacc_csb_write & cacc_producer == BvConst(1,1) & cacc_group1_unset);
-                instr.SetUpdate(m.state(GetVarName("group1_", NVDLA_CACC_D_OUT_SATURATION)), m.input("csb2cacc_data"));
-            }
+            // Note: Address 0x9030 is read-only
         }
 
 

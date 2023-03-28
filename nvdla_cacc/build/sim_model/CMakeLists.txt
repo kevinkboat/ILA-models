@@ -34,8 +34,6 @@ add_executable(cacc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_misc_cfg_reg_group1.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_op_enable_reg_group0.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_op_enable_reg_group1.cc
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_out_saturation_reg_group0.cc
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_out_saturation_reg_group1.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_producer.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_surf_stride_reg_group0.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_surf_stride_reg_group1.cc

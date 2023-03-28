@@ -657,54 +657,6 @@ src/idu_cacc_set_op_enable_reg_group1.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.s
 .PHONY : src/idu_cacc_set_op_enable_reg_group1.cc.s
 
-src/idu_cacc_set_out_saturation_reg_group0.o: src/idu_cacc_set_out_saturation_reg_group0.cc.o
-.PHONY : src/idu_cacc_set_out_saturation_reg_group0.o
-
-# target to build an object file
-src/idu_cacc_set_out_saturation_reg_group0.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_set_out_saturation_reg_group0.cc.o
-.PHONY : src/idu_cacc_set_out_saturation_reg_group0.cc.o
-
-src/idu_cacc_set_out_saturation_reg_group0.i: src/idu_cacc_set_out_saturation_reg_group0.cc.i
-.PHONY : src/idu_cacc_set_out_saturation_reg_group0.i
-
-# target to preprocess a source file
-src/idu_cacc_set_out_saturation_reg_group0.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_set_out_saturation_reg_group0.cc.i
-.PHONY : src/idu_cacc_set_out_saturation_reg_group0.cc.i
-
-src/idu_cacc_set_out_saturation_reg_group0.s: src/idu_cacc_set_out_saturation_reg_group0.cc.s
-.PHONY : src/idu_cacc_set_out_saturation_reg_group0.s
-
-# target to generate assembly for a file
-src/idu_cacc_set_out_saturation_reg_group0.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_set_out_saturation_reg_group0.cc.s
-.PHONY : src/idu_cacc_set_out_saturation_reg_group0.cc.s
-
-src/idu_cacc_set_out_saturation_reg_group1.o: src/idu_cacc_set_out_saturation_reg_group1.cc.o
-.PHONY : src/idu_cacc_set_out_saturation_reg_group1.o
-
-# target to build an object file
-src/idu_cacc_set_out_saturation_reg_group1.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_set_out_saturation_reg_group1.cc.o
-.PHONY : src/idu_cacc_set_out_saturation_reg_group1.cc.o
-
-src/idu_cacc_set_out_saturation_reg_group1.i: src/idu_cacc_set_out_saturation_reg_group1.cc.i
-.PHONY : src/idu_cacc_set_out_saturation_reg_group1.i
-
-# target to preprocess a source file
-src/idu_cacc_set_out_saturation_reg_group1.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_set_out_saturation_reg_group1.cc.i
-.PHONY : src/idu_cacc_set_out_saturation_reg_group1.cc.i
-
-src/idu_cacc_set_out_saturation_reg_group1.s: src/idu_cacc_set_out_saturation_reg_group1.cc.s
-.PHONY : src/idu_cacc_set_out_saturation_reg_group1.s
-
-# target to generate assembly for a file
-src/idu_cacc_set_out_saturation_reg_group1.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_set_out_saturation_reg_group1.cc.s
-.PHONY : src/idu_cacc_set_out_saturation_reg_group1.cc.s
-
 src/idu_cacc_set_producer.o: src/idu_cacc_set_producer.cc.o
 .PHONY : src/idu_cacc_set_producer.o
 
@@ -900,12 +852,6 @@ help:
 	@echo "... src/idu_cacc_set_op_enable_reg_group1.o"
 	@echo "... src/idu_cacc_set_op_enable_reg_group1.i"
 	@echo "... src/idu_cacc_set_op_enable_reg_group1.s"
-	@echo "... src/idu_cacc_set_out_saturation_reg_group0.o"
-	@echo "... src/idu_cacc_set_out_saturation_reg_group0.i"
-	@echo "... src/idu_cacc_set_out_saturation_reg_group0.s"
-	@echo "... src/idu_cacc_set_out_saturation_reg_group1.o"
-	@echo "... src/idu_cacc_set_out_saturation_reg_group1.i"
-	@echo "... src/idu_cacc_set_out_saturation_reg_group1.s"
 	@echo "... src/idu_cacc_set_producer.o"
 	@echo "... src/idu_cacc_set_producer.i"
 	@echo "... src/idu_cacc_set_producer.s"

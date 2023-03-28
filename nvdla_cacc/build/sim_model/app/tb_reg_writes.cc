@@ -10,8 +10,7 @@
 
 using json = nlohmann::json;
 
-#define NUM_OUTPUTS_PER_MAC_CELL  8
-#define NUM_CACC_OUTPUTS          16
+#define NUM_OUTPUTS_PER_MAC_CELL 8
 
 #define GET_JSON_INT(json_val, default_val) (!(json_val.is_null()) ? json_val.get<int>() : default_val)
 #define GET_JSON_INT_FROM_HEX_STR(json_val, default_val) (!(json_val.is_null()) ? (std::stoi(json_val.get<std::string>().c_str(), nullptr, 16)) : default_val)
@@ -359,19 +358,40 @@ SC_MODULE(testbench) {
     int index = 0;
 
     while (input_done == 0) {
-      // fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
-      
-      /*  Output format:
-            instr No. [index]
-            (Output) cacc_output_0: [data0]
-            (Output) cacc_output_1: [data1]
-            ...
-            (Output) cacc_output_15: [data15]
-      */
+      // std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
+
+      fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
       fout << "instr No. " << std::dec << index++ << std::endl;
-      for (auto i = 0; i < NUM_CACC_OUTPUTS; i++){
-        fout << "(Output) cacc_output_" << i << ": " << cacc_inst.cacc_cacc_output[i] << std::endl;
-      }
+      
+      fout << "(Output) cacc_cacc2csb_rdy = " << cacc_inst.cacc_cacc2csb_rdy << std::endl;
+      fout << "(Output) cacc_cacc2csb_data_vld = " << cacc_inst.cacc_cacc2csb_data_vld << std::endl;
+
+      fout << "(State) cacc_cacc_s_status = " << cacc_inst.cacc_cacc_s_status << std::endl;
+      fout << "(State) cacc_cacc_s_pointer = " << cacc_inst.cacc_cacc_s_pointer << std::endl;
+      
+      fout << "(State) cacc_group0_cacc_d_out_saturation = " << cacc_inst.cacc_group0_cacc_d_out_saturation << std::endl;
+      fout << "(State) cacc_group0_cacc_d_clip_cfg = " << cacc_inst.cacc_group0_cacc_d_clip_cfg << std::endl;
+      fout << "(State) cacc_group0_cacc_d_op_enable = " << cacc_inst.cacc_group0_cacc_d_op_enable << std::endl;
+      fout << "(State) cacc_group0_cacc_d_misc_cfg = " << cacc_inst.cacc_group0_cacc_d_misc_cfg << std::endl;
+      fout << "(State) cacc_group0_cacc_d_dataout_size_0 = " << cacc_inst.cacc_group0_cacc_d_dataout_size_0 << std::endl;
+      fout << "(State) cacc_group0_cacc_d_dataout_size_1 = " << cacc_inst.cacc_group0_cacc_d_dataout_size_1 << std::endl;
+      fout << "(State) cacc_group0_cacc_d_dataout_addr = " << cacc_inst.cacc_group0_cacc_d_dataout_addr << std::endl;
+      fout << "(State) cacc_group0_cacc_d_batch_number = " << cacc_inst.cacc_group0_cacc_d_batch_number << std::endl;
+      fout << "(State) cacc_group0_cacc_d_line_stride = " << cacc_inst.cacc_group0_cacc_d_line_stride << std::endl;
+      fout << "(State) cacc_group0_cacc_d_surf_stride = " << cacc_inst.cacc_group0_cacc_d_surf_stride << std::endl;
+      fout << "(State) cacc_group0_cacc_d_dataout_map = " << cacc_inst.cacc_group0_cacc_d_dataout_map << std::endl;
+
+      fout << "(State) cacc_group1_cacc_d_out_saturation = " << cacc_inst.cacc_group1_cacc_d_out_saturation << std::endl;
+      fout << "(State) cacc_group1_cacc_d_clip_cfg = " << cacc_inst.cacc_group1_cacc_d_clip_cfg << std::endl;
+      fout << "(State) cacc_group1_cacc_d_dataout_map = " << cacc_inst.cacc_group1_cacc_d_dataout_map << std::endl;
+      fout << "(State) cacc_group1_cacc_d_surf_stride = " << cacc_inst.cacc_group1_cacc_d_surf_stride << std::endl;
+      fout << "(State) cacc_group1_cacc_d_line_stride = " << cacc_inst.cacc_group1_cacc_d_line_stride << std::endl;
+      fout << "(State) cacc_group1_cacc_d_batch_number = " << cacc_inst.cacc_group1_cacc_d_batch_number << std::endl;
+      fout << "(State) cacc_group1_cacc_d_dataout_addr = " << cacc_inst.cacc_group1_cacc_d_dataout_addr << std::endl;
+      fout << "(State) cacc_group1_cacc_d_dataout_size_1 = " << cacc_inst.cacc_group1_cacc_d_dataout_size_1 << std::endl;
+      fout << "(State) cacc_group1_cacc_d_dataout_size_0 = " << cacc_inst.cacc_group1_cacc_d_dataout_size_0 << std::endl;
+      fout << "(State) cacc_group1_cacc_d_misc_cfg = " << cacc_inst.cacc_group1_cacc_d_misc_cfg << std::endl;
+      fout << "(State) cacc_group1_cacc_d_op_enable = " << cacc_inst.cacc_group1_cacc_d_op_enable << std::endl;
       
       fout << std::endl;
             

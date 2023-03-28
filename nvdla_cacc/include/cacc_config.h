@@ -15,16 +15,11 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 
 #define NVDLA_CACC_REG_WIDTH 32
 
-// 0x9000 
+// 0x9000
 #define NVDLA_CACC_S_STATUS "cacc_s_status"
 
-// 0x9004 
+// 0x9004 (partially read-only)
 #define NVDLA_CACC_S_POINTER "cacc_s_pointer"
-
-// #define NVDLA_CACC_S_PRODUCER "cacc_s_producer"
-// #define NVDLA_CACC_S_CONSUMER "cacc_s_consumer"
-// #define NVDLA_CACC_S_PRODUCER_WIDTH 1
-// #define NVDLA_CACC_S_CONSUMER_WIDTH 1
 
 // 0x9008 
 #define NVDLA_CACC_D_OP_ENABLE "cacc_d_op_enable"
@@ -56,7 +51,7 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 // 0x902c 
 #define NVDLA_CACC_D_CLIP_CFG "cacc_d_clip_cfg"
 
-// 0x9030 
+// 0x9030 (read-only)
 #define NVDLA_CACC_D_OUT_SATURATION "cacc_d_out_saturation"
 
 
@@ -76,29 +71,27 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 #define INT16 BvConst(1,2)
 #define FP16  BvConst(2,2)
 
-// //////////////////////////////////////////////////////////////////////////////
-// /// CONVOLUTION MODE
-// //////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+/// CONVOLUTION MODE
+//////////////////////////////////////////////////////////////////////////////
 
-// #define DIRECT    BvConst(0,1)
-// #define WINOGRAD  BvConst(1,1)
+#define DIRECT    BvConst(0,1)
+#define WINOGRAD  BvConst(1,1)
 
-// //////////////////////////////////////////////////////////////////////////////
-// ///  OTHER CONSTANTS
-// //////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+///  OTHER CONSTANTS
+//////////////////////////////////////////////////////////////////////////////
 
-// #define NVDLA_CACC_KERNEL_NUM_ELEM            64
-// #define NVDLA_CACC_KERNEL_MAX_ELEM_WIDTH      16      // size of int16/fp16
-// #define NVDLA_CACC_KERNEL_ADDR_WIDTH          6       // 2 ^ 6 = 64       
-// #define NVDLA_CACC_MAX_NUM_KERNELS_ATOMIC_OP  32      // max for int8 is 32, for int16/fp16 max is 16  
+#define NVDLA_CMAC_NUM_MAC_CELLS                16  
+#define NVDLA_CMAC_NUM_OUTPUTS_PER_MAC_CELL     8       
 
-// #define NVDLA_CACC_NUM_MAC_CELLS              16  
-// #define NVDLA_CACC_MAC_CELL_OUTPUT_ADDR_WIDTH 3       // 2 ^ 3 = 8 outputs. odd numbered outputs are for int8 only  
+#define NVDLA_CACC_OUTPUT_ADDR_WIDTH   4        // 2 ^ 4 = 16       
+#define NVDLA_CACC_OUTPUT_DATA_WIDTH   32       // width per unit output
 
-// #define NVDLA_CACC_INT16_DATA_WIDTH       16       
-// #define NVDLA_CACC_INT8_DATA_WIDTH        8    
+#define NVDLA_CACC_INT16_DATA_WIDTH       16       
+#define NVDLA_CACC_INT8_DATA_WIDTH        8    
 
-// #define NVDLA_CACC_PIPELINE_STATUS_WIDTH  2       // contains start and end operation flags
+#define NVDLA_CACC_PIPELINE_STATUS_WIDTH  2       // contains start and end operation flags
 
 } // namespace ilang
 
