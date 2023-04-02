@@ -32,7 +32,7 @@ namespace ilang {
         // Partial sums
         for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++){
             for (auto j = 0; j < NVDLA_CMAC_NUM_OUTPUTS_PER_MAC_CELL; j++){
-                m.NewBvInput("cmac2cacc_ps_mac_" + (std::to_string(i)) + "_" + (std::to_string(j)), NVDLA_CACC_INT16_DATA_WIDTH);
+                m.NewBvInput("cmac2cacc_ps_mac_" + (std::to_string(i)) + "_" + (std::to_string(j)), NVDLA_INT16_BIT_WIDTH);
             }
         }
 

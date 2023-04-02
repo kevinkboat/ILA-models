@@ -10,8 +10,7 @@
 
 using json = nlohmann::json;
 
-#define NUM_OUTPUTS_PER_MAC_CELL  8
-#define NUM_CACC_OUTPUTS          16
+#define NUM_OUTPUTS_PER_MAC_CELL 8
 
 #define GET_JSON_INT(json_val, default_val) (!(json_val.is_null()) ? json_val.get<int>() : default_val)
 #define GET_JSON_INT_FROM_HEX_STR(json_val, default_val) (!(json_val.is_null()) ? (std::stoi(json_val.get<std::string>().c_str(), nullptr, 16)) : default_val)
@@ -20,6 +19,17 @@ using json = nlohmann::json;
 std::string file_in;
 std::string file_out;
 std::ofstream fout;
+
+#define NVDLA_CONV_MAX_STRIPE_LEN         32
+
+// Print assembly sub group
+void print_assembly_subgroup(int num,  std::unordered_map<int, sc_biguint<48>, MemAddrHashFunc> data_addr){ 
+  fout << "asm_kernel_" << std::dec << num << " ";
+  for (int i = 0; i < NVDLA_CONV_MAX_STRIPE_LEN; i++){
+    fout << std::dec << (sc_dt::sc_bigint<48>) data_addr[i] << " ";
+  }
+  fout << std::endl;
+}
 
 // Module for reading inputs into ILA model
 SC_MODULE(Source) {
@@ -359,19 +369,76 @@ SC_MODULE(testbench) {
     int index = 0;
 
     while (input_done == 0) {
-      // fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
-      
-      /*  Output format:
-            instr No. [index]
-            (Output) cacc_output_0: [data0]
-            (Output) cacc_output_1: [data1]
-            ...
-            (Output) cacc_output_15: [data15]
-      */
+      // std::cout << "current simulation time: " << '\t' << sc_time_stamp() << "\r" << std::flush;
+
+      fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
       fout << "instr No. " << std::dec << index++ << std::endl;
-      for (auto i = 0; i < NUM_CACC_OUTPUTS; i++){
-        fout << "(Output) cacc_output_" << i << ": " << cacc_inst.cacc_cacc_output[i] << std::endl;
-      }
+      
+      fout << "(Output) cacc_cacc2csb_rdy = " << (bool) cacc_inst.cacc_cacc2csb_rdy << std::endl;
+      fout << "(Output) cacc_cacc2csb_data_vld = " << (bool) cacc_inst.cacc_cacc2csb_data_vld << std::endl;
+
+      fout << "(State) cacc_cacc_s_status = 0x" << std::hex << cacc_inst.cacc_cacc_s_status << std::endl;
+      fout << "(State) cacc_cacc_s_pointer = 0x" << std::hex << cacc_inst.cacc_cacc_s_pointer << std::endl;
+      
+      // fout << "(State) cacc_group0_cacc_d_out_saturation = " << std::dec << cacc_inst.cacc_group0_cacc_d_out_saturation << std::endl;
+      // fout << "(State) cacc_group0_cacc_d_clip_cfg = " << cacc_inst.cacc_group0_cacc_d_clip_cfg << std::endl;
+      fout << "(State) cacc_group0_cacc_d_op_enable = 0x" << cacc_inst.cacc_group0_cacc_d_op_enable << std::endl;
+      // fout << "(State) cacc_group0_cacc_d_misc_cfg = " << cacc_inst.cacc_group0_cacc_d_misc_cfg << std::endl;
+      // fout << "(State) cacc_group0_cacc_d_dataout_size_0 = " << cacc_inst.cacc_group0_cacc_d_dataout_size_0 << std::endl;
+      // fout << "(State) cacc_group0_cacc_d_dataout_size_1 = " << cacc_inst.cacc_group0_cacc_d_dataout_size_1 << std::endl;
+      // fout << "(State) cacc_group0_cacc_d_dataout_addr = " << cacc_inst.cacc_group0_cacc_d_dataout_addr << std::endl;
+      fout << "(State) cacc_group0_cacc_d_batch_number = " << cacc_inst.cacc_group0_cacc_d_batch_number << std::endl;
+      // fout << "(State) cacc_group0_cacc_d_line_stride = " << cacc_inst.cacc_group0_cacc_d_line_stride << std::endl;
+      // fout << "(State) cacc_group0_cacc_d_surf_stride = " << cacc_inst.cacc_group0_cacc_d_surf_stride << std::endl;
+      // fout << "(State) cacc_group0_cacc_d_dataout_map = " << cacc_inst.cacc_group0_cacc_d_dataout_map << std::endl;
+
+      // fout << "(State) cacc_group1_cacc_d_out_saturation = " << cacc_inst.cacc_group1_cacc_d_out_saturation << std::endl;
+      // fout << "(State) cacc_group1_cacc_d_clip_cfg = " << cacc_inst.cacc_group1_cacc_d_clip_cfg << std::endl;
+      // fout << "(State) cacc_group1_cacc_d_dataout_map = " << cacc_inst.cacc_group1_cacc_d_dataout_map << std::endl;
+      // fout << "(State) cacc_group1_cacc_d_surf_stride = " << cacc_inst.cacc_group1_cacc_d_surf_stride << std::endl;
+      // fout << "(State) cacc_group1_cacc_d_line_stride = " << cacc_inst.cacc_group1_cacc_d_line_stride << std::endl;
+      fout << "(State) cacc_group1_cacc_d_batch_number = " << cacc_inst.cacc_group1_cacc_d_batch_number << std::endl;
+      // fout << "(State) cacc_group1_cacc_d_dataout_addr = " << cacc_inst.cacc_group1_cacc_d_dataout_addr << std::endl;
+      // fout << "(State) cacc_group1_cacc_d_dataout_size_1 = " << cacc_inst.cacc_group1_cacc_d_dataout_size_1 << std::endl;
+      // fout << "(State) cacc_group1_cacc_d_dataout_size_0 = " << cacc_inst.cacc_group1_cacc_d_dataout_size_0 << std::endl;
+      fout << "(State) cacc_group1_cacc_d_op_enable = 0x" << cacc_inst.cacc_group1_cacc_d_op_enable << std::endl;
+      // fout << "(State) cacc_group1_cacc_d_misc_cfg = " << cacc_inst.cacc_group1_cacc_d_misc_cfg << std::endl;
+      fout << "(Debug) stripe_counter_pre_incr = " << std::dec << cacc_inst.cacc_tmp << std::endl;
+      fout << "(State) stripe_counter_post_incr = " << std::dec << cacc_inst.cacc_stripe_counter << std::endl;
+
+
+      print_assembly_subgroup(0, cacc_inst.cacc_assembly_kernel_0);
+      print_assembly_subgroup(1, cacc_inst.cacc_assembly_kernel_1);  
+      print_assembly_subgroup(2, cacc_inst.cacc_assembly_kernel_2);  
+      print_assembly_subgroup(3, cacc_inst.cacc_assembly_kernel_3);  
+      print_assembly_subgroup(4, cacc_inst.cacc_assembly_kernel_4);  
+      print_assembly_subgroup(5, cacc_inst.cacc_assembly_kernel_5);  
+      print_assembly_subgroup(6, cacc_inst.cacc_assembly_kernel_6);  
+      print_assembly_subgroup(7, cacc_inst.cacc_assembly_kernel_7);  
+      print_assembly_subgroup(8, cacc_inst.cacc_assembly_kernel_8);  
+      print_assembly_subgroup(9, cacc_inst.cacc_assembly_kernel_9);  
+      print_assembly_subgroup(10, cacc_inst.cacc_assembly_kernel_10);
+      print_assembly_subgroup(11, cacc_inst.cacc_assembly_kernel_11);
+      print_assembly_subgroup(12, cacc_inst.cacc_assembly_kernel_12);
+      print_assembly_subgroup(13, cacc_inst.cacc_assembly_kernel_13);
+      print_assembly_subgroup(14, cacc_inst.cacc_assembly_kernel_14);
+      print_assembly_subgroup(15, cacc_inst.cacc_assembly_kernel_15);
+      // print_assembly_subgroup(16, cacc_inst.cacc_assembly_kernel_16);
+      // print_assembly_subgroup(17, cacc_inst.cacc_assembly_kernel_17);
+      // print_assembly_subgroup(18, cacc_inst.cacc_assembly_kernel_18);
+      // print_assembly_subgroup(19, cacc_inst.cacc_assembly_kernel_19);
+      // print_assembly_subgroup(20, cacc_inst.cacc_assembly_kernel_20);
+      // print_assembly_subgroup(21, cacc_inst.cacc_assembly_kernel_21);
+      // print_assembly_subgroup(22, cacc_inst.cacc_assembly_kernel_22);
+      // print_assembly_subgroup(23, cacc_inst.cacc_assembly_kernel_23);
+      // print_assembly_subgroup(24, cacc_inst.cacc_assembly_kernel_24);
+      // print_assembly_subgroup(25, cacc_inst.cacc_assembly_kernel_25);
+      // print_assembly_subgroup(26, cacc_inst.cacc_assembly_kernel_26);
+      // print_assembly_subgroup(27, cacc_inst.cacc_assembly_kernel_27);
+      // print_assembly_subgroup(28, cacc_inst.cacc_assembly_kernel_28);
+      // print_assembly_subgroup(29, cacc_inst.cacc_assembly_kernel_29);
+      // print_assembly_subgroup(30, cacc_inst.cacc_assembly_kernel_30);
+      // print_assembly_subgroup(31, cacc_inst.cacc_assembly_kernel_31);
       
       fout << std::endl;
             

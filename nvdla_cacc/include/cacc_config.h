@@ -79,17 +79,40 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 #define WINOGRAD  BvConst(1,1)
 
 //////////////////////////////////////////////////////////////////////////////
+/// CSC to CACC STATUS
+//////////////////////////////////////////////////////////////////////////////
+
+#define STOP          BvConst(0,2)    // default
+#define RUN           BvConst(1,2)
+#define ACK           BvConst(2,2)
+#define LAST_BATCH    BvConst(3,2)    // cacc should truncate outputs
+
+// RUN and LAST_BATCH have bit 0 equal to 1
+
+//////////////////////////////////////////////////////////////////////////////
 ///  OTHER CONSTANTS
 //////////////////////////////////////////////////////////////////////////////
 
+// General
+#define NVDLA_INT16_BIT_WIDTH       16      
+
+// Inputs
+#define NVDLA_CMAC_MAX_NUM_KERNELS        32
 #define NVDLA_CMAC_NUM_MAC_CELLS                16  
-#define NVDLA_CMAC_NUM_OUTPUTS_PER_MAC_CELL     8       
+#define NVDLA_CMAC_NUM_OUTPUTS_PER_MAC_CELL     8     
 
-#define NVDLA_CACC_OUTPUT_ADDR_WIDTH   4        // 2 ^ 4 = 16       
-#define NVDLA_CACC_OUTPUT_DATA_WIDTH   32       // width per unit output
+#define NVDLA_CACC_ACCU_INT16_BIT_WIDTH   48      
+#define NVDLA_CONV_MAX_STRIPE_LEN         32
+#define NVDLA_CONV_STRIPE_ADDR_WIDTH      5     /// 2 ^ 5 = 32  (max stripe_len)
 
-#define NVDLA_CACC_INT16_DATA_WIDTH       16       
-#define NVDLA_CACC_INT8_DATA_WIDTH        8    
+// Outputs
+#define NVDLA_CACC_OUTPUT_BIT_WIDTH     32       // width per unit output
+#define NVDLA_CACC_OUTPUT_ADDR_WIDTH    5        // 2 ^ 5 = 32 (delivered in two batches with 16 outputs each)      
+
+
+// #define NVDLA_CMAC_OUTPUT_ADDR_WIDTH            3     // 2^3 = 8       
+// #define NVDLA_CACC_ASSEMBLY_GROUP_MAX_UNIT_WIDTH  136 * 8   // = 136B for int8 
+// #define NVDLA_CACC_INT8_DATA_WIDTH        8    
 
 #define NVDLA_CACC_PIPELINE_STATUS_WIDTH  2       // contains start and end operation flags
 

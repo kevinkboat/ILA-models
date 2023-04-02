@@ -26,7 +26,8 @@ namespace ilang {
         //     //...
         // }
 
-        m.NewMemState("cacc_output", NVDLA_CACC_OUTPUT_ADDR_WIDTH, NVDLA_CACC_OUTPUT_DATA_WIDTH);
+        // doubles as delivery group
+        m.NewMemState("cacc_output", NVDLA_CACC_OUTPUT_ADDR_WIDTH, NVDLA_CACC_OUTPUT_BIT_WIDTH);
         
     }
 

@@ -405,6 +405,54 @@ if (valid_cacc() && decode_cacc_cacc_set_clip_cfg_reg_group1()) {
   LogInstrSequence("cacc_set_clip_cfg_reg_group1", exec_time);
 #endif
 }
+if (valid_cacc() && decode_cacc_cacc_start_from_idle()) {
+#ifdef ILATOR_PROFILING
+  auto start = std::chrono::high_resolution_clock::now();
+#endif
+  update_cacc_cacc_start_from_idle();
+  
+#ifdef ILATOR_PROFILING
+  auto stop = std::chrono::high_resolution_clock::now();
+  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
+  LogInstrSequence("cacc_start_from_idle", exec_time);
+#endif
+}
+if (valid_cacc() && decode_cacc_pend2busy()) {
+#ifdef ILATOR_PROFILING
+  auto start = std::chrono::high_resolution_clock::now();
+#endif
+  update_cacc_pend2busy();
+  
+#ifdef ILATOR_PROFILING
+  auto stop = std::chrono::high_resolution_clock::now();
+  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
+  LogInstrSequence("pend2busy", exec_time);
+#endif
+}
+if (valid_cacc() && decode_cacc_cacc_dc_accumulate()) {
+#ifdef ILATOR_PROFILING
+  auto start = std::chrono::high_resolution_clock::now();
+#endif
+  update_cacc_cacc_dc_accumulate();
+  
+#ifdef ILATOR_PROFILING
+  auto stop = std::chrono::high_resolution_clock::now();
+  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
+  LogInstrSequence("cacc_dc_accumulate", exec_time);
+#endif
+}
+if (valid_cacc() && decode_cacc_cacc_truncate()) {
+#ifdef ILATOR_PROFILING
+  auto start = std::chrono::high_resolution_clock::now();
+#endif
+  update_cacc_cacc_truncate();
+  
+#ifdef ILATOR_PROFILING
+  auto stop = std::chrono::high_resolution_clock::now();
+  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
+  LogInstrSequence("cacc_truncate", exec_time);
+#endif
+}
 while (1) {
   int schedule_counter = 0;
   if (schedule_counter == 0) {

@@ -225,6 +225,30 @@ src/constant_memory_def.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/constant_memory_def.cc.s
 .PHONY : src/constant_memory_def.cc.s
 
+src/idu_cacc_dc_accumulate.o: src/idu_cacc_dc_accumulate.cc.o
+.PHONY : src/idu_cacc_dc_accumulate.o
+
+# target to build an object file
+src/idu_cacc_dc_accumulate.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o
+.PHONY : src/idu_cacc_dc_accumulate.cc.o
+
+src/idu_cacc_dc_accumulate.i: src/idu_cacc_dc_accumulate.cc.i
+.PHONY : src/idu_cacc_dc_accumulate.i
+
+# target to preprocess a source file
+src/idu_cacc_dc_accumulate.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.i
+.PHONY : src/idu_cacc_dc_accumulate.cc.i
+
+src/idu_cacc_dc_accumulate.s: src/idu_cacc_dc_accumulate.cc.s
+.PHONY : src/idu_cacc_dc_accumulate.s
+
+# target to generate assembly for a file
+src/idu_cacc_dc_accumulate.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.s
+.PHONY : src/idu_cacc_dc_accumulate.cc.s
+
 src/idu_cacc_set_batch_number_reg_group0.o: src/idu_cacc_set_batch_number_reg_group0.cc.o
 .PHONY : src/idu_cacc_set_batch_number_reg_group0.o
 
@@ -729,6 +753,78 @@ src/idu_cacc_set_surf_stride_reg_group1.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.s
 .PHONY : src/idu_cacc_set_surf_stride_reg_group1.cc.s
 
+src/idu_cacc_start_from_idle.o: src/idu_cacc_start_from_idle.cc.o
+.PHONY : src/idu_cacc_start_from_idle.o
+
+# target to build an object file
+src/idu_cacc_start_from_idle.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o
+.PHONY : src/idu_cacc_start_from_idle.cc.o
+
+src/idu_cacc_start_from_idle.i: src/idu_cacc_start_from_idle.cc.i
+.PHONY : src/idu_cacc_start_from_idle.i
+
+# target to preprocess a source file
+src/idu_cacc_start_from_idle.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.i
+.PHONY : src/idu_cacc_start_from_idle.cc.i
+
+src/idu_cacc_start_from_idle.s: src/idu_cacc_start_from_idle.cc.s
+.PHONY : src/idu_cacc_start_from_idle.s
+
+# target to generate assembly for a file
+src/idu_cacc_start_from_idle.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.s
+.PHONY : src/idu_cacc_start_from_idle.cc.s
+
+src/idu_cacc_truncate.o: src/idu_cacc_truncate.cc.o
+.PHONY : src/idu_cacc_truncate.o
+
+# target to build an object file
+src/idu_cacc_truncate.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o
+.PHONY : src/idu_cacc_truncate.cc.o
+
+src/idu_cacc_truncate.i: src/idu_cacc_truncate.cc.i
+.PHONY : src/idu_cacc_truncate.i
+
+# target to preprocess a source file
+src/idu_cacc_truncate.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.i
+.PHONY : src/idu_cacc_truncate.cc.i
+
+src/idu_cacc_truncate.s: src/idu_cacc_truncate.cc.s
+.PHONY : src/idu_cacc_truncate.s
+
+# target to generate assembly for a file
+src/idu_cacc_truncate.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.s
+.PHONY : src/idu_cacc_truncate.cc.s
+
+src/idu_pend2busy.o: src/idu_pend2busy.cc.o
+.PHONY : src/idu_pend2busy.o
+
+# target to build an object file
+src/idu_pend2busy.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o
+.PHONY : src/idu_pend2busy.cc.o
+
+src/idu_pend2busy.i: src/idu_pend2busy.cc.i
+.PHONY : src/idu_pend2busy.i
+
+# target to preprocess a source file
+src/idu_pend2busy.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_pend2busy.cc.i
+.PHONY : src/idu_pend2busy.cc.i
+
+src/idu_pend2busy.s: src/idu_pend2busy.cc.s
+.PHONY : src/idu_pend2busy.s
+
+# target to generate assembly for a file
+src/idu_pend2busy.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/idu_pend2busy.cc.s
+.PHONY : src/idu_pend2busy.cc.s
+
 src/memory_update_functions_0.o: src/memory_update_functions_0.cc.o
 .PHONY : src/memory_update_functions_0.o
 
@@ -752,6 +848,54 @@ src/memory_update_functions_0.s: src/memory_update_functions_0.cc.s
 src/memory_update_functions_0.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.s
 .PHONY : src/memory_update_functions_0.cc.s
+
+src/memory_update_functions_1.o: src/memory_update_functions_1.cc.o
+.PHONY : src/memory_update_functions_1.o
+
+# target to build an object file
+src/memory_update_functions_1.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o
+.PHONY : src/memory_update_functions_1.cc.o
+
+src/memory_update_functions_1.i: src/memory_update_functions_1.cc.i
+.PHONY : src/memory_update_functions_1.i
+
+# target to preprocess a source file
+src/memory_update_functions_1.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.i
+.PHONY : src/memory_update_functions_1.cc.i
+
+src/memory_update_functions_1.s: src/memory_update_functions_1.cc.s
+.PHONY : src/memory_update_functions_1.s
+
+# target to generate assembly for a file
+src/memory_update_functions_1.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.s
+.PHONY : src/memory_update_functions_1.cc.s
+
+src/memory_update_functions_2.o: src/memory_update_functions_2.cc.o
+.PHONY : src/memory_update_functions_2.o
+
+# target to build an object file
+src/memory_update_functions_2.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o
+.PHONY : src/memory_update_functions_2.cc.o
+
+src/memory_update_functions_2.i: src/memory_update_functions_2.cc.i
+.PHONY : src/memory_update_functions_2.i
+
+# target to preprocess a source file
+src/memory_update_functions_2.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.i
+.PHONY : src/memory_update_functions_2.cc.i
+
+src/memory_update_functions_2.s: src/memory_update_functions_2.cc.s
+.PHONY : src/memory_update_functions_2.s
+
+# target to generate assembly for a file
+src/memory_update_functions_2.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacc.dir/build.make CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.s
+.PHONY : src/memory_update_functions_2.cc.s
 
 src/setup_initial_condition.o: src/setup_initial_condition.cc.o
 .PHONY : src/setup_initial_condition.o
@@ -798,6 +942,9 @@ help:
 	@echo "... src/constant_memory_def.o"
 	@echo "... src/constant_memory_def.i"
 	@echo "... src/constant_memory_def.s"
+	@echo "... src/idu_cacc_dc_accumulate.o"
+	@echo "... src/idu_cacc_dc_accumulate.i"
+	@echo "... src/idu_cacc_dc_accumulate.s"
 	@echo "... src/idu_cacc_set_batch_number_reg_group0.o"
 	@echo "... src/idu_cacc_set_batch_number_reg_group0.i"
 	@echo "... src/idu_cacc_set_batch_number_reg_group0.s"
@@ -861,9 +1008,24 @@ help:
 	@echo "... src/idu_cacc_set_surf_stride_reg_group1.o"
 	@echo "... src/idu_cacc_set_surf_stride_reg_group1.i"
 	@echo "... src/idu_cacc_set_surf_stride_reg_group1.s"
+	@echo "... src/idu_cacc_start_from_idle.o"
+	@echo "... src/idu_cacc_start_from_idle.i"
+	@echo "... src/idu_cacc_start_from_idle.s"
+	@echo "... src/idu_cacc_truncate.o"
+	@echo "... src/idu_cacc_truncate.i"
+	@echo "... src/idu_cacc_truncate.s"
+	@echo "... src/idu_pend2busy.o"
+	@echo "... src/idu_pend2busy.i"
+	@echo "... src/idu_pend2busy.s"
 	@echo "... src/memory_update_functions_0.o"
 	@echo "... src/memory_update_functions_0.i"
 	@echo "... src/memory_update_functions_0.s"
+	@echo "... src/memory_update_functions_1.o"
+	@echo "... src/memory_update_functions_1.i"
+	@echo "... src/memory_update_functions_1.s"
+	@echo "... src/memory_update_functions_2.o"
+	@echo "... src/memory_update_functions_2.i"
+	@echo "... src/memory_update_functions_2.s"
 	@echo "... src/setup_initial_condition.o"
 	@echo "... src/setup_initial_condition.i"
 	@echo "... src/setup_initial_condition.s"

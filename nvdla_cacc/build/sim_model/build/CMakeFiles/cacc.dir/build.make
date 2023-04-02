@@ -125,10 +125,24 @@ CMakeFiles/cacc.dir/src/constant_memory_def.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/constant_memory_def.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/constant_memory_def.cc -o CMakeFiles/cacc.dir/src/constant_memory_def.cc.s
 
+CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o: CMakeFiles/cacc.dir/flags.make
+CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_dc_accumulate.cc
+CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_dc_accumulate.cc
+
+CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_dc_accumulate.cc > CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.i
+
+CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_dc_accumulate.cc -o CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.s
+
 CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_batch_number_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_batch_number_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_batch_number_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_batch_number_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_clip_cfg_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_clip_cfg_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_clip_cfg_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_clip_cfg_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_addr_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_addr_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_addr_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_addr_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_addr_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_map_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_map_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.i: cmake_force
@@ -226,7 +240,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_map_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_map_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.i: cmake_force
@@ -240,7 +254,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_map_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_size_0_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_size_0_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.i: cmake_force
@@ -254,7 +268,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_size_0_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_size_0_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.i: cmake_force
@@ -268,7 +282,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_0_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_size_1_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_size_1_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.i: cmake_force
@@ -282,7 +296,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_size_1_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_dataout_size_1_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.i: cmake_force
@@ -296,7 +310,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_dataout_size_1_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_line_stride_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_line_stride_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.i: cmake_force
@@ -310,7 +324,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_line_stride_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_line_stride_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.i: cmake_force
@@ -324,7 +338,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_line_stride_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_misc_cfg_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_misc_cfg_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.i: cmake_force
@@ -338,7 +352,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_misc_cfg_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_misc_cfg_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.i: cmake_force
@@ -352,7 +366,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_misc_cfg_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_op_enable_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_op_enable_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.i: cmake_force
@@ -366,7 +380,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_op_enable_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_op_enable_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.i: cmake_force
@@ -380,7 +394,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_producer.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_producer.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.i: cmake_force
@@ -394,7 +408,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_surf_stride_reg_group0.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_surf_stride_reg_group0.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.i: cmake_force
@@ -408,7 +422,7 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.s: cmake_force
 CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_surf_stride_reg_group1.cc
 CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_surf_stride_reg_group1.cc
 
 CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.i: cmake_force
@@ -419,10 +433,52 @@ CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_set_surf_stride_reg_group1.cc -o CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.s
 
+CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o: CMakeFiles/cacc.dir/flags.make
+CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_start_from_idle.cc
+CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_start_from_idle.cc
+
+CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_start_from_idle.cc > CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.i
+
+CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_start_from_idle.cc -o CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.s
+
+CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o: CMakeFiles/cacc.dir/flags.make
+CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_truncate.cc
+CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o -MF CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o.d -o CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_truncate.cc
+
+CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_truncate.cc > CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.i
+
+CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_cacc_truncate.cc -o CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.s
+
+CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o: CMakeFiles/cacc.dir/flags.make
+CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_pend2busy.cc
+CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o -MF CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o.d -o CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_pend2busy.cc
+
+CMakeFiles/cacc.dir/src/idu_pend2busy.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cacc.dir/src/idu_pend2busy.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_pend2busy.cc > CMakeFiles/cacc.dir/src/idu_pend2busy.cc.i
+
+CMakeFiles/cacc.dir/src/idu_pend2busy.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/idu_pend2busy.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/idu_pend2busy.cc -o CMakeFiles/cacc.dir/src/idu_pend2busy.cc.s
+
 CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_0.cc
 CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o -MF CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o.d -o CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_0.cc
 
 CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.i: cmake_force
@@ -433,10 +489,38 @@ CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_0.cc -o CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.s
 
+CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o: CMakeFiles/cacc.dir/flags.make
+CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_1.cc
+CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o -MF CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o.d -o CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_1.cc
+
+CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_1.cc > CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.i
+
+CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_1.cc -o CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.s
+
+CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o: CMakeFiles/cacc.dir/flags.make
+CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_2.cc
+CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o -MF CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o.d -o CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_2.cc
+
+CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_2.cc > CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.i
+
+CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/memory_update_functions_2.cc -o CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.s
+
 CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o: CMakeFiles/cacc.dir/flags.make
 CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o: /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/setup_initial_condition.cc
 CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o: CMakeFiles/cacc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o -MF CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o.d -o CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o -c /root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/src/setup_initial_condition.cc
 
 CMakeFiles/cacc.dir/src/setup_initial_condition.cc.i: cmake_force
@@ -453,6 +537,7 @@ cacc_OBJECTS = \
 "CMakeFiles/cacc.dir/src/all_valid_funcs_in_hier.cc.o" \
 "CMakeFiles/cacc.dir/src/compute.cc.o" \
 "CMakeFiles/cacc.dir/src/constant_memory_def.cc.o" \
+"CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o" \
 "CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o" \
 "CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o" \
 "CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o" \
@@ -474,7 +559,12 @@ cacc_OBJECTS = \
 "CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o" \
 "CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o" \
 "CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o" \
+"CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o" \
+"CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o" \
+"CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o" \
 "CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o" \
+"CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o" \
+"CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o" \
 "CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o"
 
 # External object files for target cacc
@@ -484,6 +574,7 @@ cacc: CMakeFiles/cacc.dir/app/main.cc.o
 cacc: CMakeFiles/cacc.dir/src/all_valid_funcs_in_hier.cc.o
 cacc: CMakeFiles/cacc.dir/src/compute.cc.o
 cacc: CMakeFiles/cacc.dir/src/constant_memory_def.cc.o
+cacc: CMakeFiles/cacc.dir/src/idu_cacc_dc_accumulate.cc.o
 cacc: CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group0.cc.o
 cacc: CMakeFiles/cacc.dir/src/idu_cacc_set_batch_number_reg_group1.cc.o
 cacc: CMakeFiles/cacc.dir/src/idu_cacc_set_clip_cfg_reg_group0.cc.o
@@ -505,12 +596,17 @@ cacc: CMakeFiles/cacc.dir/src/idu_cacc_set_op_enable_reg_group1.cc.o
 cacc: CMakeFiles/cacc.dir/src/idu_cacc_set_producer.cc.o
 cacc: CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group0.cc.o
 cacc: CMakeFiles/cacc.dir/src/idu_cacc_set_surf_stride_reg_group1.cc.o
+cacc: CMakeFiles/cacc.dir/src/idu_cacc_start_from_idle.cc.o
+cacc: CMakeFiles/cacc.dir/src/idu_cacc_truncate.cc.o
+cacc: CMakeFiles/cacc.dir/src/idu_pend2busy.cc.o
 cacc: CMakeFiles/cacc.dir/src/memory_update_functions_0.cc.o
+cacc: CMakeFiles/cacc.dir/src/memory_update_functions_1.cc.o
+cacc: CMakeFiles/cacc.dir/src/memory_update_functions_2.cc.o
 cacc: CMakeFiles/cacc.dir/src/setup_initial_condition.cc.o
 cacc: CMakeFiles/cacc.dir/build.make
 cacc: /root/systemc-2.3.3/build/src/libsystemc.so.2.3.3
 cacc: CMakeFiles/cacc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking CXX executable cacc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/ILAng/build/ILA-models/nvdla_cacc/build/sim_model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX executable cacc"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cacc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

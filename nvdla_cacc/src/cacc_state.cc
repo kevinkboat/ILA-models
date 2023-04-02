@@ -11,9 +11,12 @@ namespace ilang {
         ///  FOR DEBUGGING
         //////////////////////////////////////////////////////////////////////////////
         
-        // m.NewBvState("tmp", NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
+        m.NewBvState("tmp", NVDLA_CACC_REG_WIDTH);
         // m.NewMemState("tmp_mem", NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
 
+
+        m.NewBvState("stripe_counter", NVDLA_CONV_STRIPE_ADDR_WIDTH);
+        
         //////////////////////////////////////////////////////////////////////////////
         ///  REGISTER STATES
         //////////////////////////////////////////////////////////////////////////////
@@ -66,7 +69,9 @@ namespace ilang {
         ///  OTHER STATES
         //////////////////////////////////////////////////////////////////////////////
 
-        
+        for(auto i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS; i++){
+            m.NewMemState("assembly_kernel_" + (std::to_string(i)), NVDLA_CONV_STRIPE_ADDR_WIDTH, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+        } 
         
     }
 

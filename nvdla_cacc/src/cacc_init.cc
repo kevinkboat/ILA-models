@@ -18,6 +18,10 @@ namespace ilang {
         ///  INTERNAL STATES
         //////////////////////////////////////////////////////////////////////////////
         
+        // For debugging
+        m.AddInit(m.state("tmp") == BvConst(0, NVDLA_CACC_REG_WIDTH));
+        m.AddInit(m.state("stripe_counter") == BvConst(0, NVDLA_CONV_STRIPE_ADDR_WIDTH));
+
         m.AddInit(m.state(NVDLA_CACC_S_STATUS) == BvConst(0, NVDLA_CACC_REG_WIDTH));        
         m.AddInit(m.state(NVDLA_CACC_S_POINTER) == BvConst(0, NVDLA_CACC_REG_WIDTH));
 
