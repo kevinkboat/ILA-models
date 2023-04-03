@@ -104,20 +104,23 @@ sc_biguint<32> local_var_53 = (local_var_52 & local_var_46);
 sc_biguint<32> local_var_54 = (local_var_48 | local_var_53);
 auto local_var_55 = (local_var_35) ? local_var_45 : local_var_54;
 auto local_var_55_nxt_holder = local_var_55;
-auto local_var_59 = (local_var_35) ? cacc_group0_cacc_d_batch_number : cacc_group1_cacc_d_batch_number;
-auto local_var_60 = local_var_59.range(4, 0);
-sc_biguint<5> local_var_61 = 1;
-sc_biguint<5> local_var_62 = (local_var_60 - local_var_61);
-bool local_var_63 = (cacc_stripe_counter == local_var_62);
-bool local_var_64 = !local_var_63;
-sc_biguint<5> local_var_65 = 1;
-sc_biguint<5> local_var_66 = (cacc_stripe_counter + local_var_65);
-sc_biguint<5> local_var_67 = 0;
-auto local_var_68 = (local_var_64) ? local_var_66 : local_var_67;
-auto local_var_68_nxt_holder = local_var_68;
-auto local_var_69 = (cacc_stripe_counter[4] == 1) ? (~cacc_stripe_counter) : cacc_stripe_counter;
-local_var_69 = (cacc_stripe_counter[4] == 1) ? (~local_var_69) : local_var_69;
-auto local_var_69_nxt_holder = local_var_69;
+sc_biguint<32> local_var_56 = 0;
+auto local_var_58 = (local_var_35) ? local_var_56 : cacc_group0_cacc_d_out_saturation;
+auto local_var_58_nxt_holder = local_var_58;
+bool local_var_59 = !local_var_35;
+auto local_var_61 = (local_var_59) ? local_var_56 : cacc_group1_cacc_d_out_saturation;
+auto local_var_61_nxt_holder = local_var_61;
+auto local_var_65 = (local_var_35) ? cacc_group0_cacc_d_batch_number : cacc_group1_cacc_d_batch_number;
+auto local_var_66 = local_var_65.range(4, 0);
+sc_biguint<5> local_var_67 = 1;
+sc_biguint<5> local_var_68 = (local_var_66 - local_var_67);
+bool local_var_69 = (cacc_stripe_counter == local_var_68);
+bool local_var_70 = !local_var_69;
+sc_biguint<5> local_var_71 = 1;
+sc_biguint<5> local_var_72 = (cacc_stripe_counter + local_var_71);
+sc_biguint<5> local_var_73 = 0;
+auto local_var_74 = (local_var_70) ? local_var_72 : local_var_73;
+auto local_var_74_nxt_holder = local_var_74;
 for (auto& it : local_var_0) {
   cacc_assembly_kernel_0[it.first] = it.second;
 }
@@ -215,8 +218,9 @@ for (auto& it : local_var_31) {
   cacc_assembly_kernel_9[it.first] = it.second;
 }
 cacc_cacc_s_status = local_var_55_nxt_holder;
-cacc_stripe_counter = local_var_68_nxt_holder;
-cacc_tmp = local_var_69_nxt_holder;
+cacc_group0_cacc_d_out_saturation = local_var_58_nxt_holder;
+cacc_group1_cacc_d_out_saturation = local_var_61_nxt_holder;
+cacc_stripe_counter = local_var_74_nxt_holder;
 #ifdef ILATOR_VERBOSE
 instr_update_log << "No." << std::dec << GetInstrCntr() << '\t' << "cacc_dc_accumulate state updates:" << std::endl;
 instr_update_log << "    cacc_assembly_kernel_0 get updated" << std::endl;
@@ -252,8 +256,9 @@ instr_update_log << "    cacc_assembly_kernel_7 get updated" << std::endl;
 instr_update_log << "    cacc_assembly_kernel_8 get updated" << std::endl;
 instr_update_log << "    cacc_assembly_kernel_9 get updated" << std::endl;
 instr_update_log << "    cacc_cacc_s_status => " << std::hex << "0x" << cacc_cacc_s_status << std::endl; 
+instr_update_log << "    cacc_group0_cacc_d_out_saturation => " << std::hex << "0x" << cacc_group0_cacc_d_out_saturation << std::endl; 
+instr_update_log << "    cacc_group1_cacc_d_out_saturation => " << std::hex << "0x" << cacc_group1_cacc_d_out_saturation << std::endl; 
 instr_update_log << "    cacc_stripe_counter => " << std::hex << "0x" << cacc_stripe_counter << std::endl; 
-instr_update_log << "    cacc_tmp => " << std::hex << "0x" << cacc_tmp << std::endl; 
 instr_update_log << std::endl;
 #endif
 }

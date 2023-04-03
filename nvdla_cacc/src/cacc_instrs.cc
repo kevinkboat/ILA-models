@@ -8,6 +8,27 @@ using namespace std;
 
 namespace ilang {
 
+    ExprRef abs_int48(ExprRef num){
+        auto sign_idx = 47;
+        auto sign_bit = SelectBit(num, sign_idx);
+        auto mask = (BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << sign_idx) - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+        auto absVal_data = Ite(sign_bit == BvConst(1, 1), (~num) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), num);
+        return absVal_data & mask;
+    }
+
+    // Return 16-bit representation of int8
+    ExprRef fp44_to_fp32(ExprRef num){
+        // Placeholder
+        return BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+    }
+
+    // Return 16-bit representation of int8
+    ExprRef int8_to_int16(ExprRef num){
+        auto bv7_unsigned = num & BvConst(0x7F, NVDLA_INT16_BIT_WIDTH);
+        auto bv = Ite(SelectBit(num, 7) == 0, bv7_unsigned, bv7_unsigned | BvConst(0xFF80, NVDLA_INT16_BIT_WIDTH));
+        return bv;
+    }
+
     // Return the next state of the register
     ExprRef get_updated_reg_value(ExprRef old_reg, ExprRef new_value, int mask_val, int offset){
         auto mask = BvConst((mask_val << offset), NVDLA_CACC_REG_WIDTH);
@@ -15,21 +36,48 @@ namespace ilang {
         return tmp;
     }
 
+    // Sum of fp44 (a) and fp16 numbers (b). Note these numbers are stored as 48 bit states
+    ExprRef accu_fp16_add(ExprRef a, ExprRef b){
+        // Placeholder code
+        return BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+    }
 
-        // cacc_op_enable = Extract(m.state(prefix + NVDLA_CACC_D_OP_ENABLE), 0, 0);
-        // cacc_conv_mode = Extract(m.state(prefix + NVDLA_CACC_D_MISC_CFG), 0, 0);
-        // cacc_data_precision = Extract(m.state(prefix + NVDLA_CACC_D_MISC_CFG), 13, 12);
-        // cacc_dataout_width = Extract(m.state(prefix + NVDLA_CACC_D_DATAOUT_SIZE_0), 12, 0);
-        // cacc_dataout_height = Extract(m.state(prefix + NVDLA_CACC_D_DATAOUT_SIZE_0), 28, 16);
-        // cacc_dataout_channel = Extract(m.state(prefix + NVDLA_CACC_D_DATAOUT_SIZE_1), 12, 0);
-        // cacc_dataout_addr = Extract(m.state(prefix + NVDLA_CACC_D_DATAOUT_ADDR), 31, 5);
-        // cacc_batches = Extract(m.state(prefix + NVDLA_CACC_D_BATCH_NUMBER), 4, 0);
-        // cacc_line_stride = Extract(m.state(prefix + NVDLA_CACC_D_LINE_STRIDE), 23, 5);
-        // cacc_surf_stride = Extract(m.state(prefix + NVDLA_CACC_D_SURF_STRIDE), 23, 5);
-        // cacc_line_packed = Extract(m.state(prefix + NVDLA_CACC_D_DATAOUT_MAP), 0, 0);
-        // cacc_surf_packed = Extract(m.state(prefix + NVDLA_CACC_D_DATAOUT_MAP), 16, 16);
-        // cacc_clip_truncate = Extract(m.state(prefix + NVDLA_CACC_D_CLIP_CFG), 4, 0);
-        // cacc_sat_count = Extract(m.state(prefix + NVDLA_CACC_D_OUT_SATURATION), 31, 0);
+    // a is assumed to be 48 bits and b can be int16/int8/fp16
+    ExprRef accu_add(ExprRef data_precision, ExprRef a, ExprRef b){
+        auto res = Ite(data_precision == INT16, a + b.SExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
+                    Ite(data_precision == INT8, a + (int8_to_int16(b)).SExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
+                    Ite(data_precision == FP16, accu_fp16_add(a, b), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH))));
+        return res;
+    }
+
+    // Check overflow
+    ExprRef saturation_clip(ExprRef sum){
+        // extract sign bit
+        auto is_negative = SelectBit(sum, 47) == BvConst(1, 1);
+        auto absVal_data = abs_int48(sum);
+
+        auto res = Ite(!is_negative & (absVal_data > MAX_INT32), MAX_INT32,
+                    Ite(is_negative & (absVal_data > MIN_ABS_INT32), MIN_ABS_INT32, sum));
+        return res;
+    }
+
+    // Truncate op. Adapted from https://github.com/nvdla/hw/blob/nvdlav1/cmod/cacc/NV_NVDLA_cacc.cpp#L853
+    ExprRef truncate(ExprRef trunc_factor, ExprRef sum){
+        // extract data 
+        auto absVal_data = abs_int48(sum);
+        auto is_negative = SelectBit(sum, 47) == BvConst(1,1);
+       
+        auto K = trunc_factor + BvConst(0, 5);
+        auto clip_truncate = BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) | K.ZExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+        
+        auto rouding_addend = Ite(clip_truncate == BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), 
+                            BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << (clip_truncate - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH)));
+
+        auto tmp = absVal_data + rouding_addend;
+        tmp = tmp >> clip_truncate;
+        tmp = Ite(is_negative, (~tmp) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), tmp);
+        return tmp;
+    }
 
     //////////////////////////////////////////////////////////////////////////////
     /// ILA INSTRUCTIONS
@@ -258,6 +306,7 @@ namespace ilang {
             instr.SetDecode((cacc_group0_status == BUSY ^ cacc_group1_status == BUSY) & accumulate_flag);
 
             auto addr = stripe_counter;
+            auto saturation_count = BvConst(0, NVDLA_CACC_REG_WIDTH);
             for(auto i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS; i++){
                 auto assembly_group_i = m.state("assembly_kernel_" + (std::to_string(i)));
                 auto mem = assembly_group_i;
@@ -265,17 +314,39 @@ namespace ilang {
                 auto mac_id = i % NVDLA_CMAC_NUM_MAC_CELLS;
                 auto idx = int(i / NVDLA_CMAC_NUM_MAC_CELLS);
                 auto data = m.input("cmac2cacc_ps_mac_" + (std::to_string(mac_id)) + "_" + (std::to_string(idx)));
-                data = data.ZExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH) + assembly_group_i.Load(addr);
 
-                mem = mem.Store(addr, data);
+                auto data_precision = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_MISC_CFG)), 
+                                                        m.state(GetVarName("group1_", NVDLA_CACC_D_MISC_CFG)));
+                data_precision = Extract(data_precision, 13, 12);
+                
+                // calculate sum
+                auto sum = accu_add(data_precision, assembly_group_i.Load(addr), data);
+                // mem = mem.Store(addr, sum);
+
+                
+                // truncate sum
+                auto clip_truncate_reg = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_CLIP_CFG)), 
+                                                        m.state(GetVarName("group1_", NVDLA_CACC_D_CLIP_CFG)));
+                auto clip_truncate = Extract(clip_truncate_reg, 4, 0);
+                auto truncated_sum = truncate(clip_truncate, sum);
+                mem = mem.Store(addr, truncated_sum);
+
+                // // // clip sum
+                // auto clipped_sum = saturation_clip(truncated_sum);
+                // saturation_count = Ite(clipped_sum != truncated_sum, saturation_count + BvConst(1, NVDLA_CACC_REG_WIDTH), saturation_count);
+                // // mem = mem.Store(addr, clipped_sum);
+
                 instr.SetUpdate(assembly_group_i, mem);
             }  
 
             // State Updates
+            auto group0_sat_reg = m.state(GetVarName("group0_", NVDLA_CACC_D_OUT_SATURATION));
+            auto group1_sat_reg = m.state(GetVarName("group1_", NVDLA_CACC_D_OUT_SATURATION));
+            instr.SetUpdate(group0_sat_reg, Ite(group0_active, saturation_count, group0_sat_reg));
+            instr.SetUpdate(group1_sat_reg, Ite(!group0_active, saturation_count, group1_sat_reg));
+
             instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, PEND, 3, 0), 
                                                                 get_updated_reg_value(cacc_status_reg, PEND, 3, 16)));
-
-            instr.SetUpdate(m.state("tmp"), addr.ZExt(NVDLA_CACC_REG_WIDTH));
 
             auto num_batches = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_BATCH_NUMBER)), 
                                                     m.state(GetVarName("group1_", NVDLA_CACC_D_BATCH_NUMBER)));
@@ -286,10 +357,34 @@ namespace ilang {
                                                                 BvConst(0, NVDLA_CONV_STRIPE_ADDR_WIDTH)));
         }
 
-        { // Truncate
-            auto instr = m.NewInstr("cacc_truncate");
 
+        { // Truncate
+            auto instr = m.NewInstr("cacc_dc_truncate");
             instr.SetDecode((cacc_group0_status == PEND ^ cacc_group1_status == PEND) & truncate_flag);
+
+            for (int i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS; i++){
+                auto assembly_group_i = m.state("assembly_kernel_" + (std::to_string(i)));
+                auto delivery_group_i = m.state("cacc_output_" + (std::to_string(i)));
+                                
+                auto mem_ptr = MemConst(0, {}, NVDLA_CONV_STRIPE_ADDR_WIDTH, NVDLA_CACC_OUTPUT_BIT_WIDTH).get();
+                for (int j = 0; j < NVDLA_CONV_MAX_STRIPE_LEN; j++){
+                    auto data = assembly_group_i.Load(BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH));
+
+                    auto data_precision = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_MISC_CFG)), 
+                                                        m.state(GetVarName("group1_", NVDLA_CACC_D_MISC_CFG)));
+                    data_precision = Extract(data_precision, 13, 12);
+
+                    auto lower_31 = data & MAX_INT32;
+                    data = Ite(data_precision == FP16, fp44_to_fp32(data),
+                            Ite(SelectBit(data, 31) == BvConst(1, 1), (lower_31 | MIN_ABS_INT32), lower_31));
+                    data = Extract(data, 31, 0);
+                    
+                    auto new_mem = ExprRef(mem_ptr).Store(BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH), data);
+                    mem_ptr = new_mem.get();
+                }
+
+                instr.SetUpdate(delivery_group_i, ExprRef(mem_ptr));
+            }
 
             // State updates
             auto group0_enable = m.state(GetVarName("group0_", NVDLA_CACC_D_OP_ENABLE));
@@ -301,8 +396,7 @@ namespace ilang {
                                                                 get_updated_reg_value(cacc_status_reg, IDLE, 3, 16)));
 
             instr.SetUpdate(cacc_pointer_reg, get_updated_reg_value(cacc_pointer_reg, ~cacc_consumer, 1, 16));
-            
-
+        
         }
     }
 

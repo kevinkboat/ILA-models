@@ -17,6 +17,7 @@ add_executable(cacc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/compute.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/constant_memory_def.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_dc_accumulate.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_dc_truncate.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_batch_number_reg_group0.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_batch_number_reg_group1.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_clip_cfg_reg_group0.cc
@@ -39,11 +40,28 @@ add_executable(cacc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_surf_stride_reg_group0.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_set_surf_stride_reg_group1.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_start_from_idle.cc
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cacc_truncate.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_pend2busy.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_0.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_1.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_10.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_11.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_12.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_13.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_14.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_15.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_16.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_17.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_18.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_19.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_2.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_20.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_3.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_4.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_5.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_6.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_7.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_8.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_9.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/setup_initial_condition.cc
 )
 

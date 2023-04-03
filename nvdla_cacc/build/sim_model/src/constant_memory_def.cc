@@ -95,3 +95,99 @@ std::unordered_map<int, sc_biguint<48>, MemAddrHashFunc> cacc::univ_var_72 = {
 std::unordered_map<int, sc_biguint<48>, MemAddrHashFunc> cacc::univ_var_74 = {
 
 };
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_123 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_125 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_147 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_169 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_175 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_177 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_179 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_181 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_183 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_185 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_127 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_129 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_131 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_133 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_135 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_137 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_139 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_141 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_143 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_145 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_149 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_151 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_153 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_155 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_157 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_159 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_161 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_163 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_165 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_167 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_171 = {
+
+};
+std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> cacc::univ_var_173 = {
+
+};

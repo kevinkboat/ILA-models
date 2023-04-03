@@ -94,14 +94,19 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 //////////////////////////////////////////////////////////////////////////////
 
 // General
-#define NVDLA_INT16_BIT_WIDTH       16      
+#define NVDLA_INT16_BIT_WIDTH       16    
+#define MAX_INT32             BvConst(0x7FFFFFFF, 48)
+#define MIN_ABS_INT32         BvConst(0x80000000, 48)
 
 // Inputs
 #define NVDLA_CMAC_MAX_NUM_KERNELS        32
 #define NVDLA_CMAC_NUM_MAC_CELLS                16  
 #define NVDLA_CMAC_NUM_OUTPUTS_PER_MAC_CELL     8     
 
-#define NVDLA_CACC_ACCU_INT16_BIT_WIDTH   48      
+#define NVDLA_CACC_ACCU_INT8_BIT_WIDTH    34    
+#define NVDLA_CACC_ACCU_INT16_BIT_WIDTH   48        // max bit_width  
+#define NVDLA_CACC_ACCU_FP16_BIT_WIDTH    44    
+
 #define NVDLA_CONV_MAX_STRIPE_LEN         32
 #define NVDLA_CONV_STRIPE_ADDR_WIDTH      5     /// 2 ^ 5 = 32  (max stripe_len)
 

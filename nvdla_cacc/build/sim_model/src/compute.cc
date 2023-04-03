@@ -441,16 +441,16 @@ if (valid_cacc() && decode_cacc_cacc_dc_accumulate()) {
   LogInstrSequence("cacc_dc_accumulate", exec_time);
 #endif
 }
-if (valid_cacc() && decode_cacc_cacc_truncate()) {
+if (valid_cacc() && decode_cacc_cacc_dc_truncate()) {
 #ifdef ILATOR_PROFILING
   auto start = std::chrono::high_resolution_clock::now();
 #endif
-  update_cacc_cacc_truncate();
+  update_cacc_cacc_dc_truncate();
   
 #ifdef ILATOR_PROFILING
   auto stop = std::chrono::high_resolution_clock::now();
   auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
-  LogInstrSequence("cacc_truncate", exec_time);
+  LogInstrSequence("cacc_dc_truncate", exec_time);
 #endif
 }
 while (1) {
