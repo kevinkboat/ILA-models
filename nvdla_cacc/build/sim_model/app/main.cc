@@ -21,15 +21,25 @@ std::string file_out;
 std::ofstream fout;
 
 #define NVDLA_CONV_MAX_STRIPE_LEN         32
+#define PRINT_NUM_WIDTH                   1
 
 // Print assembly sub group
 void print_assembly_subgroup(int num,  std::unordered_map<int, sc_biguint<48>, MemAddrHashFunc> data_addr){ 
   fout << "asm_kernel_" << std::dec << num << " ";
   for (int i = 0; i < NVDLA_CONV_MAX_STRIPE_LEN; i++){
-    fout << std::dec << (sc_dt::sc_bigint<48>) data_addr[i] << " ";
+    fout << std::dec << std::setw(PRINT_NUM_WIDTH) << (sc_dt::sc_bigint<48>) data_addr[i] << " ";
   }
   fout << std::endl;
 }
+
+// Print assembly sub group
+void print_delivery_subgroup(int num,  std::unordered_map<int, sc_biguint<32>, MemAddrHashFunc> data_addr){ 
+  fout << "delivery_group_" << std::dec << num << " ";
+  for (int i = 0; i < NVDLA_CONV_MAX_STRIPE_LEN; i++){
+    fout << std::dec << std::setw(PRINT_NUM_WIDTH) << (sc_dt::sc_bigint<32>) data_addr[i] << " ";
+  }
+  fout << std::endl;
+} 
 
 // Module for reading inputs into ILA model
 SC_MODULE(Source) {
@@ -411,14 +421,14 @@ SC_MODULE(testbench) {
       print_assembly_subgroup(1, cacc_inst.cacc_assembly_kernel_1);  
       print_assembly_subgroup(2, cacc_inst.cacc_assembly_kernel_2);  
       print_assembly_subgroup(3, cacc_inst.cacc_assembly_kernel_3);  
-      print_assembly_subgroup(4, cacc_inst.cacc_assembly_kernel_4);  
-      print_assembly_subgroup(5, cacc_inst.cacc_assembly_kernel_5);  
+      // print_assembly_subgroup(4, cacc_inst.cacc_assembly_kernel_4);  
+      // print_assembly_subgroup(5, cacc_inst.cacc_assembly_kernel_5);  
       // print_assembly_subgroup(6, cacc_inst.cacc_assembly_kernel_6);  
       // print_assembly_subgroup(7, cacc_inst.cacc_assembly_kernel_7);  
-      // print_assembly_subgroup(8, cacc_inst.cacc_assembly_kernel_8);  
-      // print_assembly_subgroup(9, cacc_inst.cacc_assembly_kernel_9);  
-      // print_assembly_subgroup(10, cacc_inst.cacc_assembly_kernel_10);
-      // print_assembly_subgroup(11, cacc_inst.cacc_assembly_kernel_11);
+      print_assembly_subgroup(8, cacc_inst.cacc_assembly_kernel_8);  
+      print_assembly_subgroup(9, cacc_inst.cacc_assembly_kernel_9);  
+      print_assembly_subgroup(10, cacc_inst.cacc_assembly_kernel_10);
+      print_assembly_subgroup(11, cacc_inst.cacc_assembly_kernel_11);
       // print_assembly_subgroup(12, cacc_inst.cacc_assembly_kernel_12);
       // print_assembly_subgroup(13, cacc_inst.cacc_assembly_kernel_13);
       // print_assembly_subgroup(14, cacc_inst.cacc_assembly_kernel_14);
@@ -427,18 +437,51 @@ SC_MODULE(testbench) {
       print_assembly_subgroup(17, cacc_inst.cacc_assembly_kernel_17);
       print_assembly_subgroup(18, cacc_inst.cacc_assembly_kernel_18);
       print_assembly_subgroup(19, cacc_inst.cacc_assembly_kernel_19);
-      print_assembly_subgroup(20, cacc_inst.cacc_assembly_kernel_20);
-      print_assembly_subgroup(21, cacc_inst.cacc_assembly_kernel_21);
-      print_assembly_subgroup(22, cacc_inst.cacc_assembly_kernel_22);
+      // print_assembly_subgroup(20, cacc_inst.cacc_assembly_kernel_20);
+      // print_assembly_subgroup(21, cacc_inst.cacc_assembly_kernel_21);
+      // print_assembly_subgroup(22, cacc_inst.cacc_assembly_kernel_22);
       // print_assembly_subgroup(23, cacc_inst.cacc_assembly_kernel_23);
-      // print_assembly_subgroup(24, cacc_inst.cacc_assembly_kernel_24);
-      // print_assembly_subgroup(25, cacc_inst.cacc_assembly_kernel_25);
-      // print_assembly_subgroup(26, cacc_inst.cacc_assembly_kernel_26);
-      // print_assembly_subgroup(27, cacc_inst.cacc_assembly_kernel_27);
+      print_assembly_subgroup(24, cacc_inst.cacc_assembly_kernel_24);
+      print_assembly_subgroup(25, cacc_inst.cacc_assembly_kernel_25);
+      print_assembly_subgroup(26, cacc_inst.cacc_assembly_kernel_26);
+      print_assembly_subgroup(27, cacc_inst.cacc_assembly_kernel_27);
       // print_assembly_subgroup(28, cacc_inst.cacc_assembly_kernel_28);
       // print_assembly_subgroup(29, cacc_inst.cacc_assembly_kernel_29);
       // print_assembly_subgroup(30, cacc_inst.cacc_assembly_kernel_30);
       // print_assembly_subgroup(31, cacc_inst.cacc_assembly_kernel_31);
+
+      print_delivery_subgroup(0, cacc_inst.cacc_cacc_output_0);
+      print_delivery_subgroup(1, cacc_inst.cacc_cacc_output_1);
+      print_delivery_subgroup(2, cacc_inst.cacc_cacc_output_2);
+      print_delivery_subgroup(3, cacc_inst.cacc_cacc_output_3);
+      // print_delivery_subgroup(4, cacc_inst.cacc_cacc_output_4);
+      // print_delivery_subgroup(5, cacc_inst.cacc_cacc_output_5);
+      // print_delivery_subgroup(6, cacc_inst.cacc_cacc_output_6);
+      // print_delivery_subgroup(7, cacc_inst.cacc_cacc_output_7);
+      print_delivery_subgroup(8, cacc_inst.cacc_cacc_output_8);
+      print_delivery_subgroup(9, cacc_inst.cacc_cacc_output_9);
+      print_delivery_subgroup(10, cacc_inst.cacc_cacc_output_10);
+      print_delivery_subgroup(11, cacc_inst.cacc_cacc_output_11);
+      // print_delivery_subgroup(12, cacc_inst.cacc_cacc_output_12);
+      // print_delivery_subgroup(13, cacc_inst.cacc_cacc_output_13);
+      // print_delivery_subgroup(14, cacc_inst.cacc_cacc_output_14);
+      // print_delivery_subgroup(15, cacc_inst.cacc_cacc_output_15);
+      print_delivery_subgroup(16, cacc_inst.cacc_cacc_output_16);
+      print_delivery_subgroup(17, cacc_inst.cacc_cacc_output_17);
+      print_delivery_subgroup(18, cacc_inst.cacc_cacc_output_18);
+      print_delivery_subgroup(19, cacc_inst.cacc_cacc_output_19);
+      // print_delivery_subgroup(20, cacc_inst.cacc_cacc_output_20);
+      // print_delivery_subgroup(21, cacc_inst.cacc_cacc_output_21);
+      // print_delivery_subgroup(22, cacc_inst.cacc_cacc_output_22);
+      // print_delivery_subgroup(23, cacc_inst.cacc_cacc_output_23);
+      print_delivery_subgroup(24, cacc_inst.cacc_cacc_output_24);
+      print_delivery_subgroup(25, cacc_inst.cacc_cacc_output_25);
+      print_delivery_subgroup(26, cacc_inst.cacc_cacc_output_26);
+      print_delivery_subgroup(27, cacc_inst.cacc_cacc_output_27);
+      // print_delivery_subgroup(28, cacc_inst.cacc_cacc_output_28);
+      // print_delivery_subgroup(29, cacc_inst.cacc_cacc_output_29);
+      // print_delivery_subgroup(30, cacc_inst.cacc_cacc_output_30);
+      // print_delivery_subgroup(31, cacc_inst.cacc_cacc_output_31);
       
       fout << std::endl;
             
