@@ -10,8 +10,8 @@ bool local_var_7 = (local_var_3 ^ local_var_6);
 sc_biguint<2> local_var_9 = 2;
 bool local_var_10 = (cacc_cmac2cacc_status == local_var_9);
 bool local_var_11 = (local_var_7 & local_var_10);
-auto& univ_var_87 = local_var_11;
-return univ_var_87;
+auto& univ_var_151 = local_var_11;
+return univ_var_151;
 }
 void cacc::update_cacc_pend2busy() {
 auto local_var_1 = cacc_cacc_s_pointer.range(16, 16);

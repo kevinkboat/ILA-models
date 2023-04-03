@@ -31,7 +31,7 @@ instr No. 1
 (State) cacc_cacc_s_status = 0x000000000
 (State) cacc_cacc_s_pointer = 0x000000000
 (State) cacc_group0_cacc_d_op_enable = 0x000000000
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_group0_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
@@ -54,10 +54,10 @@ current simulation time: 	30 ns
 instr No. 2
 (Output) cacc_cacc2csb_rdy = 1
 (Output) cacc_cacc2csb_data_vld = 1
-(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_status = 0x000000000
 (State) cacc_cacc_s_pointer = 0x000000000
-(State) cacc_group0_cacc_d_op_enable = 0x000000001
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_group0_cacc_d_op_enable = 0x000000000
+(State) cacc_group0_cacc_d_batch_number = 000000020
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
@@ -80,14 +80,14 @@ current simulation time: 	40 ns
 instr No. 3
 (Output) cacc_cacc2csb_rdy = 1
 (Output) cacc_cacc2csb_data_vld = 1
-(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_status = 0x000000002
 (State) cacc_cacc_s_pointer = 0x000000000
 (State) cacc_group0_cacc_d_op_enable = 0x000000001
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_group0_cacc_d_batch_number = 000000020
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
-(State) stripe_counter_post_incr = 1
+(State) stripe_counter_post_incr = 0
 asm_kernel_0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
@@ -106,23 +106,23 @@ current simulation time: 	50 ns
 instr No. 4
 (Output) cacc_cacc2csb_rdy = 1
 (Output) cacc_cacc2csb_data_vld = 1
-(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_status = 0x000000001
 (State) cacc_cacc_s_pointer = 0x000000000
 (State) cacc_group0_cacc_d_op_enable = 0x000000001
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_group0_cacc_d_batch_number = 000000020
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
 (State) stripe_counter_post_incr = 1
-asm_kernel_0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
@@ -132,23 +132,23 @@ current simulation time: 	60 ns
 instr No. 5
 (Output) cacc_cacc2csb_rdy = 1
 (Output) cacc_cacc2csb_data_vld = 1
-(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_status = 0x000000002
 (State) cacc_cacc_s_pointer = 0x000000000
 (State) cacc_group0_cacc_d_op_enable = 0x000000001
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_group0_cacc_d_batch_number = 000000020
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
-(State) stripe_counter_post_incr = 0
-asm_kernel_0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+(State) stripe_counter_post_incr = 1
+asm_kernel_0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_16 0 65535 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_17 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_18 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
@@ -158,23 +158,23 @@ current simulation time: 	70 ns
 instr No. 6
 (Output) cacc_cacc2csb_rdy = 1
 (Output) cacc_cacc2csb_data_vld = 1
-(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_status = 0x000000001
 (State) cacc_cacc_s_pointer = 0x000000000
 (State) cacc_group0_cacc_d_op_enable = 0x000000001
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_group0_cacc_d_batch_number = 000000020
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
-(State) stripe_counter_post_incr = 0
-asm_kernel_0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+(State) stripe_counter_post_incr = 2
+asm_kernel_0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_16 0 65535 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_17 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_18 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
@@ -184,23 +184,23 @@ current simulation time: 	80 ns
 instr No. 7
 (Output) cacc_cacc2csb_rdy = 1
 (Output) cacc_cacc2csb_data_vld = 1
-(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_status = 0x000000002
 (State) cacc_cacc_s_pointer = 0x000000000
 (State) cacc_group0_cacc_d_op_enable = 0x000000001
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_group0_cacc_d_batch_number = 000000020
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
-(State) stripe_counter_post_incr = 1
-asm_kernel_0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+(State) stripe_counter_post_incr = 2
+asm_kernel_0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_16 0 65535 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_17 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_18 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
@@ -210,23 +210,23 @@ current simulation time: 	90 ns
 instr No. 8
 (Output) cacc_cacc2csb_rdy = 1
 (Output) cacc_cacc2csb_data_vld = 1
-(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_status = 0x000000001
 (State) cacc_cacc_s_pointer = 0x000000000
 (State) cacc_group0_cacc_d_op_enable = 0x000000001
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_group0_cacc_d_batch_number = 000000020
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
-(State) stripe_counter_post_incr = 1
-asm_kernel_0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+(State) stripe_counter_post_incr = 3
+asm_kernel_0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_16 0 65535 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_17 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_18 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
@@ -236,23 +236,1635 @@ current simulation time: 	100 ns
 instr No. 9
 (Output) cacc_cacc2csb_rdy = 1
 (Output) cacc_cacc2csb_data_vld = 1
-(State) cacc_cacc_s_status = 0x000000000
-(State) cacc_cacc_s_pointer = 0x000010000
-(State) cacc_group0_cacc_d_op_enable = 0x000000000
-(State) cacc_group0_cacc_d_batch_number = 000000002
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 3
+asm_kernel_0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	110 ns
+instr No. 10
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 4
+asm_kernel_0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	120 ns
+instr No. 11
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 4
+asm_kernel_0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	130 ns
+instr No. 12
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 5
+asm_kernel_0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	140 ns
+instr No. 13
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 5
+asm_kernel_0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	150 ns
+instr No. 14
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 6
+asm_kernel_0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	160 ns
+instr No. 15
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 6
+asm_kernel_0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	170 ns
+instr No. 16
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 7
+asm_kernel_0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	180 ns
+instr No. 17
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 7
+asm_kernel_0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	190 ns
+instr No. 18
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 8
+asm_kernel_0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	200 ns
+instr No. 19
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 8
+asm_kernel_0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	210 ns
+instr No. 20
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 9
+asm_kernel_0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	220 ns
+instr No. 21
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 9
+asm_kernel_0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	230 ns
+instr No. 22
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 10
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	240 ns
+instr No. 23
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 10
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	250 ns
+instr No. 24
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 11
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	260 ns
+instr No. 25
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 11
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	270 ns
+instr No. 26
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 12
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	280 ns
+instr No. 27
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 12
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	290 ns
+instr No. 28
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 13
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	300 ns
+instr No. 29
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 13
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	310 ns
+instr No. 30
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 14
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	320 ns
+instr No. 31
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 14
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	330 ns
+instr No. 32
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 15
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	340 ns
+instr No. 33
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 15
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	350 ns
+instr No. 34
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 16
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	360 ns
+instr No. 35
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 16
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	370 ns
+instr No. 36
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 17
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	380 ns
+instr No. 37
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 17
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	390 ns
+instr No. 38
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 18
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	400 ns
+instr No. 39
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 18
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	410 ns
+instr No. 40
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 19
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	420 ns
+instr No. 41
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 19
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	430 ns
+instr No. 42
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 20
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	440 ns
+instr No. 43
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 20
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	450 ns
+instr No. 44
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 21
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	460 ns
+instr No. 45
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 21
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	470 ns
+instr No. 46
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 22
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	480 ns
+instr No. 47
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 22
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	490 ns
+instr No. 48
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 23
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	500 ns
+instr No. 49
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 23
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	510 ns
+instr No. 50
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 24
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	520 ns
+instr No. 51
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 24
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	530 ns
+instr No. 52
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 25
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	540 ns
+instr No. 53
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 25
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	550 ns
+instr No. 54
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 26
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	560 ns
+instr No. 55
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 26
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	570 ns
+instr No. 56
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 27
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	580 ns
+instr No. 57
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 27
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	590 ns
+instr No. 58
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 28
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	600 ns
+instr No. 59
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 28
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	610 ns
+instr No. 60
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 29
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	620 ns
+instr No. 61
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 29
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	630 ns
+instr No. 62
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 30
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	640 ns
+instr No. 63
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 30
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	650 ns
+instr No. 64
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 31
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	660 ns
+instr No. 65
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 31
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 0 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	670 ns
+instr No. 66
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
 (State) cacc_group1_cacc_d_batch_number = 000000000
 (State) cacc_group1_cacc_d_op_enable = 0x000000000
 (Debug) stripe_counter_pre_incr = 0
 (State) stripe_counter_post_incr = 0
-asm_kernel_0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_1 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_2 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
 asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_16 0 65535 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_17 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-asm_kernel_18 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	680 ns
+instr No. 67
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 0
+asm_kernel_0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+asm_kernel_1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 
+asm_kernel_17 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_18 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	690 ns
+instr No. 68
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 1
+asm_kernel_0 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+asm_kernel_1 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_2 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 131062 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 
+asm_kernel_17 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_18 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	700 ns
+instr No. 69
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 1
+asm_kernel_0 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+asm_kernel_1 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_2 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 131062 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 
+asm_kernel_17 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_18 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	710 ns
+instr No. 70
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000001
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 2
+asm_kernel_0 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+asm_kernel_1 4 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_2 6 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 131062 131062 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 
+asm_kernel_17 4 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_18 6 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_22 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+current simulation time: 	720 ns
+instr No. 71
+(Output) cacc_cacc2csb_rdy = 1
+(Output) cacc_cacc2csb_data_vld = 1
+(State) cacc_cacc_s_status = 0x000000002
+(State) cacc_cacc_s_pointer = 0x000000000
+(State) cacc_group0_cacc_d_op_enable = 0x000000001
+(State) cacc_group0_cacc_d_batch_number = 000000020
+(State) cacc_group1_cacc_d_batch_number = 000000000
+(State) cacc_group1_cacc_d_op_enable = 0x000000000
+(Debug) stripe_counter_pre_incr = 0
+(State) stripe_counter_post_incr = 2
+asm_kernel_0 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+asm_kernel_1 4 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_2 6 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+asm_kernel_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+asm_kernel_16 131062 131062 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 65531 
+asm_kernel_17 4 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+asm_kernel_18 6 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
 asm_kernel_19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 asm_kernel_21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 

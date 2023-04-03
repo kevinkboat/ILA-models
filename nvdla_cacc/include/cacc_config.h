@@ -96,7 +96,9 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 // General
 #define NVDLA_INT16_BIT_WIDTH       16    
 #define MAX_INT32             BvConst(0x7FFFFFFF, 48)
-#define MIN_ABS_INT32         BvConst(0x80000000, 48)
+#define ABS_MIN_INT32         BvConst(0x80000000, 48)
+
+#define NVDLA_CACC_STATUS_REG_MASK    3           // 3 = 0b11
 
 // Inputs
 #define NVDLA_CMAC_MAX_NUM_KERNELS        32
@@ -113,11 +115,6 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 // Outputs
 #define NVDLA_CACC_OUTPUT_BIT_WIDTH     32       // width per unit output
 #define NVDLA_CACC_OUTPUT_ADDR_WIDTH    5        // 2 ^ 5 = 32 (delivered in two batches with 16 outputs each)      
-
-
-// #define NVDLA_CMAC_OUTPUT_ADDR_WIDTH            3     // 2^3 = 8       
-// #define NVDLA_CACC_ASSEMBLY_GROUP_MAX_UNIT_WIDTH  136 * 8   // = 136B for int8 
-// #define NVDLA_CACC_INT8_DATA_WIDTH        8    
 
 #define NVDLA_CACC_PIPELINE_STATUS_WIDTH  2       // contains start and end operation flags
 

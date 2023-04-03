@@ -8,75 +8,101 @@ using namespace std;
 
 namespace ilang {
 
-    ExprRef abs_int48(ExprRef num){
-        auto sign_idx = 47;
-        auto sign_bit = SelectBit(num, sign_idx);
-        auto mask = (BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << sign_idx) - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
-        auto absVal_data = Ite(sign_bit == BvConst(1, 1), (~num) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), num);
-        return absVal_data & mask;
-    }
+    //////////////////////////////////////////////////////////////////////////////
+    /// UNINTERPRETED FUNCTIONS
+    //////////////////////////////////////////////////////////////////////////////
 
-    // Return 16-bit representation of int8
+    // Return 32-bit respresention of fp44 in the lower 32 bits of a 44-bit costant.
     ExprRef fp44_to_fp32(ExprRef num){
-        // Placeholder
+        // <Implement code>
         return BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
     }
 
-    // Return 16-bit representation of int8
+    // Return sum of fp44 and fp16 numbers (a and b respectively). Output should be stored in 
+    // in a 48-bit state.
+    ExprRef accu_fp16_add(ExprRef a, ExprRef b){
+        // <Implement code>
+        return BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    /// HELPER FUNCTIONS
+    //////////////////////////////////////////////////////////////////////////////
+
+    // Return |num|, where num has type int48.
+    ExprRef abs_int48(ExprRef num){
+        auto sign_idx = 47;
+        auto is_negative = SelectBit(num, sign_idx) == BvConst(1, 1);
+        auto abs_val = Ite(is_negative, (~num) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), num);
+        auto mask = (BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << sign_idx) - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+        return abs_val & mask;
+    }
+
+    // Cast int8 to int16.
     ExprRef int8_to_int16(ExprRef num){
         auto bv7_unsigned = num & BvConst(0x7F, NVDLA_INT16_BIT_WIDTH);
         auto bv = Ite(SelectBit(num, 7) == 0, bv7_unsigned, bv7_unsigned | BvConst(0xFF80, NVDLA_INT16_BIT_WIDTH));
         return bv;
     }
-
-    // Return the next state of the register
+    
+    // Return the new register state after new_value is inserted in the field specified by the
+    // given mask_value and offset 
     ExprRef get_updated_reg_value(ExprRef old_reg, ExprRef new_value, int mask_val, int offset){
         auto mask = BvConst((mask_val << offset), NVDLA_CACC_REG_WIDTH);
         auto tmp = (old_reg & (~mask)) | ((new_value.ZExt(NVDLA_CACC_REG_WIDTH) << offset) & mask);
         return tmp;
     }
 
-    // Sum of fp44 (a) and fp16 numbers (b). Note these numbers are stored as 48 bit states
-    ExprRef accu_fp16_add(ExprRef a, ExprRef b){
-        // Placeholder code
-        return BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
-    }
-
-    // a is assumed to be 48 bits and b can be int16/int8/fp16
+    // Return a + b. Result is sign extended to fit a 48-bit state.
     ExprRef accu_add(ExprRef data_precision, ExprRef a, ExprRef b){
-        auto res = Ite(data_precision == INT16, a + b.SExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
-                    Ite(data_precision == INT8, a + (int8_to_int16(b)).SExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
+        auto res = Ite(data_precision == INT8, a + (int8_to_int16(b)).SExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
+                    Ite(data_precision == INT16, a + b.SExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
                     Ite(data_precision == FP16, accu_fp16_add(a, b), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH))));
         return res;
     }
 
-    // Check overflow
-    ExprRef saturation_clip(ExprRef sum){
-        // extract sign bit
-        auto is_negative = SelectBit(sum, 47) == BvConst(1, 1);
-        auto absVal_data = abs_int48(sum);
-
-        auto res = Ite(!is_negative & (absVal_data > MAX_INT32), MAX_INT32,
-                    Ite(is_negative & (absVal_data > MIN_ABS_INT32), MIN_ABS_INT32, sum));
+    // Result is equivalent to Concat(sign, (abs_val >> clip_truncate) + 0.5), where sign is determined by is_negative.
+    // Note: Code was adapted from https://github.com/nvdla/hw/blob/nvdlav1/cmod/cacc/NV_NVDLA_cacc.cpp#L853
+    ExprRef truncate(ExprRef clip_truncate, ExprRef abs_val, ExprRef is_negative){
+        auto shamt = clip_truncate + BvConst(0, 5);          // needed to prevent errors
+        shamt = BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) | shamt.ZExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+        // shamt is in48 representation of clip_truncate
+        
+        auto rouding_addend = Ite(clip_truncate == BvConst(0, 5), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), 
+                            BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << (shamt - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH)));
+        auto res = (abs_val + rouding_addend) >> shamt;
+        res = Ite(is_negative, (~res) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), res);
         return res;
     }
 
-    // Truncate op. Adapted from https://github.com/nvdla/hw/blob/nvdlav1/cmod/cacc/NV_NVDLA_cacc.cpp#L853
-    ExprRef truncate(ExprRef trunc_factor, ExprRef sum){
-        // extract data 
-        auto absVal_data = abs_int48(sum);
-        auto is_negative = SelectBit(sum, 47) == BvConst(1,1);
-       
-        auto K = trunc_factor + BvConst(0, 5);
-        auto clip_truncate = BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) | K.ZExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
-        
-        auto rouding_addend = Ite(clip_truncate == BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), 
-                            BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << (clip_truncate - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH)));
+    // Constrain sums to range [MIN_INT32, MAX_INT32]. Sums that are out of this range are
+    // snapped to the closest boundary.
+    ExprRef saturation_clip(ExprRef abs_val, ExprRef is_negative){
+        auto res = Ite(!is_negative & (abs_val > MAX_INT32), MAX_INT32,
+                    Ite(is_negative & (abs_val > ABS_MIN_INT32), ABS_MIN_INT32, abs_val));
+        return res;
+    }
 
-        auto tmp = absVal_data + rouding_addend;
-        tmp = tmp >> clip_truncate;
-        tmp = Ite(is_negative, (~tmp) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), tmp);
-        return tmp;
+    // Add a to b, truncate the sum based on user specification, and enforce output saturation constraints.
+    // Note a is assumed to be 48-bit state and b is taken as data type specified by data_precision. The
+    // output is constrained as a 32-bit number, although it is stored in a 48-bit state.
+    ExprRef add_trunc_sat(ExprRef data_precision, ExprRef clip_truncate, ExprRef a, ExprRef b){
+        // Accumulate
+        auto sum = accu_add(data_precision, a, b);
+        auto abs_sum = abs_int48(sum);
+        auto is_negative = SelectBit(sum, 47) == BvConst(1,1);
+
+        // Truncate
+        auto truncated_sum = truncate(clip_truncate, abs_sum, is_negative);
+        abs_sum = abs_int48(truncated_sum);
+        is_negative = SelectBit(truncated_sum, 47) == BvConst(1,1);
+
+        // Saturation
+        auto clipped_sum = saturation_clip(abs_sum, is_negative);
+        auto is_sat = clipped_sum == MAX_INT32 | clipped_sum == ABS_MIN_INT32;
+        
+        auto res = Ite(is_sat, clipped_sum, truncated_sum);
+        return res;
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -86,10 +112,9 @@ namespace ilang {
     void DefineCACCInstrs(Ila& m) {
 
         //////////////////////////////////////////////////////////////////////////////
-        ///  VARIABLES
+        ///  GLOBAL VARIABLES
         //////////////////////////////////////////////////////////////////////////////
 
-        // For single reg group
         auto cacc_status_reg = m.state(NVDLA_CACC_S_STATUS);
         auto cacc_group0_status = Extract(m.state(NVDLA_CACC_S_STATUS), 1, 0);
         auto cacc_group1_status = Extract(m.state(NVDLA_CACC_S_STATUS), 17, 16);
@@ -110,6 +135,11 @@ namespace ilang {
         auto truncate_flag = m.input("cmac2cacc_status") == LAST_BATCH;
         auto stripe_counter = m.state("stripe_counter");
 
+        auto conv_mode = BvConst(0, 1);         // default is DC mode
+        auto data_precision = BvConst(0,2);     // defualt value is INT8
+        auto clip_truncate = BvConst(0, 5);
+        auto num_batches = BvConst(0, 5);
+
         //////////////////////////////////////////////////////////////////////////////
         ///  SET REGISTERS
         //////////////////////////////////////////////////////////////////////////////
@@ -118,12 +148,8 @@ namespace ilang {
             auto instr = m.NewInstr("cacc_set_producer");
             instr.SetDecode(cacc_csb_addr == 0x9004 & cacc_csb_valid & cacc_csb_write);
 
-            // Note: Status bits are stored in the same memory address but are read-only.
+            // Note: Consumer bit is stored in the same register but is a read-only field.
             auto old_state = m.state(NVDLA_CACC_S_POINTER);
-
-            // Producer bit is stored in index 0
-            // auto mask = BvConst(1, NVDLA_CACC_REG_WIDTH);
-            // auto tmp = (old_state & (~mask)) | (m.input("csb2cacc_data") & mask);
             instr.SetUpdate(old_state, get_updated_reg_value(old_state, m.input("csb2cacc_data"), 1, 0));
         }
 
@@ -188,7 +214,6 @@ namespace ilang {
                 instr.SetDecode(cacc_csb_addr == 0x902c & cacc_csb_valid & cacc_csb_write & cacc_producer == BvConst(0,1) & cacc_group0_unset);
                 instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CACC_D_CLIP_CFG)), m.input("csb2cacc_data"));
             }
-
 
             // Note: Address 0x9030 is read-only
         }
@@ -269,41 +294,60 @@ namespace ilang {
             auto group1_ok = cacc_consumer == BvConst(1,1) & !cacc_group1_unset & (cacc_group1_status == IDLE);
             instr.SetDecode(group0_ok ^ group1_ok);
             
-            // Update status
-            instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, BUSY, 3, 0),
-                                                                get_updated_reg_value(cacc_status_reg, BUSY, 3, 16)));
+            // Cache consumer states
+            auto consumer_misc_cfg = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_MISC_CFG)), 
+                                                        m.state(GetVarName("group1_", NVDLA_CACC_D_MISC_CFG)));
+            conv_mode = Extract(consumer_misc_cfg, 0, 0);
+            data_precision = Extract(consumer_misc_cfg, 13, 12);
 
+            auto clip_truncate_cfg = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_CLIP_CFG)), 
+                                                m.state(GetVarName("group1_", NVDLA_CACC_D_CLIP_CFG)));
+            clip_truncate = Extract(clip_truncate_cfg, 4, 0);
+
+            auto batch_num_reg = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_BATCH_NUMBER)), 
+                                                    m.state(GetVarName("group1_", NVDLA_CACC_D_BATCH_NUMBER)));
+            num_batches = Extract(batch_num_reg, 4, 0);
+
+            // Update status
+            instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, BUSY, NVDLA_CACC_STATUS_REG_MASK, 0),
+                                                                get_updated_reg_value(cacc_status_reg, BUSY, NVDLA_CACC_STATUS_REG_MASK, 16)));
+
+            // Reset stripe counter
             instr.SetUpdate(stripe_counter, BvConst(0, NVDLA_CONV_STRIPE_ADDR_WIDTH));
 
-            // reset assembly group
+            // Reset assembly and delivery groups (reset value = 0)
             for(auto i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS; i++){
-                auto mem_ptr = MemConst(0, {}, NVDLA_CONV_STRIPE_ADDR_WIDTH, NVDLA_CACC_ACCU_INT16_BIT_WIDTH).get();
+                auto mem_ptr_assembly = MemConst(0, {}, NVDLA_CONV_STRIPE_ADDR_WIDTH, NVDLA_CACC_ACCU_INT16_BIT_WIDTH).get();
+                auto mem_ptr_delivery = MemConst(0, {}, NVDLA_CONV_STRIPE_ADDR_WIDTH, NVDLA_CACC_OUTPUT_BIT_WIDTH).get();
+                
                 for(auto j = 0; j < NVDLA_CONV_MAX_STRIPE_LEN; j++){
-                    auto data = BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
-                    auto new_mem = ExprRef(mem_ptr).Store(BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH), data);
-                    mem_ptr = new_mem.get();
+                    auto addr = BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH);
+
+                    auto new_mem = ExprRef(mem_ptr_assembly).Store(addr, BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH));
+                    mem_ptr_assembly = new_mem.get();
+                    
+                    new_mem = ExprRef(mem_ptr_delivery).Store(addr, BvConst(0, NVDLA_CACC_OUTPUT_BIT_WIDTH));
+                    mem_ptr_delivery = new_mem.get();
                 }
-                instr.SetUpdate(m.state("assembly_kernel_" + (std::to_string(i))), ExprRef(mem_ptr));
+                instr.SetUpdate(m.state("assembly_kernel_" + (std::to_string(i))), ExprRef(mem_ptr_assembly));
+                instr.SetUpdate(m.state("cacc_output_" + (std::to_string(i))), ExprRef(mem_ptr_delivery));
             } 
-            
         }
 
         { // Pend2Busy
             auto instr = m.NewInstr("pend2busy");
-
             instr.SetDecode((cacc_group0_status == PEND ^ cacc_group1_status == PEND) & m.input("cmac2cacc_status") == ACK);
-            instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, BUSY, 3, 0),
-                                                                get_updated_reg_value(cacc_status_reg, BUSY, 3, 16)));
+            instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, BUSY, NVDLA_CACC_STATUS_REG_MASK, 0),
+                                                                get_updated_reg_value(cacc_status_reg, BUSY, NVDLA_CACC_STATUS_REG_MASK, 16)));
         }
 
         //////////////////////////////////////////////////////////////////////////////
         ///  COMPUTATION
         //////////////////////////////////////////////////////////////////////////////
 
-        { // Accumulate
+        { // Accumulate (DC mode)
             auto instr = m.NewInstr("cacc_dc_accumulate");
-
-            instr.SetDecode((cacc_group0_status == BUSY ^ cacc_group1_status == BUSY) & accumulate_flag);
+            instr.SetDecode((cacc_group0_status == BUSY ^ cacc_group1_status == BUSY) & accumulate_flag & conv_mode == DIRECT);
 
             auto addr = stripe_counter;
             auto saturation_count = BvConst(0, NVDLA_CACC_REG_WIDTH);
@@ -311,46 +355,32 @@ namespace ilang {
                 auto assembly_group_i = m.state("assembly_kernel_" + (std::to_string(i)));
                 auto mem = assembly_group_i;
                 
-                auto mac_id = i % NVDLA_CMAC_NUM_MAC_CELLS;
-                auto idx = int(i / NVDLA_CMAC_NUM_MAC_CELLS);
-                auto data = m.input("cmac2cacc_ps_mac_" + (std::to_string(mac_id)) + "_" + (std::to_string(idx)));
-
-                auto data_precision = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_MISC_CFG)), 
-                                                        m.state(GetVarName("group1_", NVDLA_CACC_D_MISC_CFG)));
-                data_precision = Extract(data_precision, 13, 12);
+                // Inputs are grouped by mac cell, each of which has multiple output channels 
+                auto mac_idx = i % NVDLA_CMAC_NUM_MAC_CELLS;
+                auto out_idx = int(i / NVDLA_CMAC_NUM_MAC_CELLS);
+                auto data = m.input("cmac2cacc_ps_mac_" + (std::to_string(mac_idx)) + "_" + (std::to_string(out_idx)));
                 
-                // calculate sum
-                auto sum = accu_add(data_precision, assembly_group_i.Load(addr), data);
-                // mem = mem.Store(addr, sum);
+                auto cached_val = assembly_group_i.Load(addr);
+                auto already_sat = cached_val == MAX_INT32 | cached_val == ABS_MIN_INT32;
 
-                
-                // truncate sum
-                auto clip_truncate_reg = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_CLIP_CFG)), 
-                                                        m.state(GetVarName("group1_", NVDLA_CACC_D_CLIP_CFG)));
-                auto clip_truncate = Extract(clip_truncate_reg, 4, 0);
-                auto truncated_sum = truncate(clip_truncate, sum);
-                mem = mem.Store(addr, truncated_sum);
-
-                // // // clip sum
-                // auto clipped_sum = saturation_clip(truncated_sum);
-                // saturation_count = Ite(clipped_sum != truncated_sum, saturation_count + BvConst(1, NVDLA_CACC_REG_WIDTH), saturation_count);
-                // // mem = mem.Store(addr, clipped_sum);
-
+                // Perform computation iff cached value is not saturated.
+                auto res = Ite(!already_sat, add_trunc_sat(data_precision, clip_truncate, cached_val, data), cached_val);
+                mem = mem.Store(addr, res);
                 instr.SetUpdate(assembly_group_i, mem);
+
+                // Update saturation count
+                auto res_is_sat = res == MAX_INT32 | res == ABS_MIN_INT32;
+                saturation_count = Ite(!already_sat & res_is_sat, saturation_count + BvConst(1, NVDLA_CACC_REG_WIDTH), saturation_count);                
             }  
 
             // State Updates
             auto group0_sat_reg = m.state(GetVarName("group0_", NVDLA_CACC_D_OUT_SATURATION));
             auto group1_sat_reg = m.state(GetVarName("group1_", NVDLA_CACC_D_OUT_SATURATION));
-            instr.SetUpdate(group0_sat_reg, Ite(group0_active, saturation_count, group0_sat_reg));
-            instr.SetUpdate(group1_sat_reg, Ite(!group0_active, saturation_count, group1_sat_reg));
+            instr.SetUpdate(group0_sat_reg, Ite(group0_active, group0_sat_reg + saturation_count, group0_sat_reg));
+            instr.SetUpdate(group1_sat_reg, Ite(!group0_active, group1_sat_reg + saturation_count, group1_sat_reg));
 
-            instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, PEND, 3, 0), 
-                                                                get_updated_reg_value(cacc_status_reg, PEND, 3, 16)));
-
-            auto num_batches = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_BATCH_NUMBER)), 
-                                                    m.state(GetVarName("group1_", NVDLA_CACC_D_BATCH_NUMBER)));
-            num_batches = Extract(num_batches, 4, 0);
+            instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, PEND, NVDLA_CACC_STATUS_REG_MASK, 0), 
+                                                                get_updated_reg_value(cacc_status_reg, PEND, NVDLA_CACC_STATUS_REG_MASK, 16)));
 
             auto wrap_around = stripe_counter == (num_batches - BvConst(1, NVDLA_CONV_STRIPE_ADDR_WIDTH));
             instr.SetUpdate(stripe_counter, Ite(!wrap_around, stripe_counter + BvConst(1, NVDLA_CONV_STRIPE_ADDR_WIDTH), 
@@ -358,9 +388,9 @@ namespace ilang {
         }
 
 
-        { // Truncate
+        { // Truncate (DC mode)
             auto instr = m.NewInstr("cacc_dc_truncate");
-            instr.SetDecode((cacc_group0_status == PEND ^ cacc_group1_status == PEND) & truncate_flag);
+            instr.SetDecode((cacc_group0_status == PEND ^ cacc_group1_status == PEND) & truncate_flag & conv_mode == DIRECT);
 
             for (int i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS; i++){
                 auto assembly_group_i = m.state("assembly_kernel_" + (std::to_string(i)));
@@ -368,18 +398,18 @@ namespace ilang {
                                 
                 auto mem_ptr = MemConst(0, {}, NVDLA_CONV_STRIPE_ADDR_WIDTH, NVDLA_CACC_OUTPUT_BIT_WIDTH).get();
                 for (int j = 0; j < NVDLA_CONV_MAX_STRIPE_LEN; j++){
-                    auto data = assembly_group_i.Load(BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH));
-
-                    auto data_precision = Ite(group0_active, m.state(GetVarName("group0_", NVDLA_CACC_D_MISC_CFG)), 
-                                                        m.state(GetVarName("group1_", NVDLA_CACC_D_MISC_CFG)));
-                    data_precision = Extract(data_precision, 13, 12);
-
+                    auto addr = BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH);
+                    
+                    auto data = assembly_group_i.Load(addr);
+                    auto is_negative = SelectBit(data, 47) == BvConst(1, 1);
                     auto lower_31 = data & MAX_INT32;
+                    
+                    // cast other data types to 32-bit state
                     data = Ite(data_precision == FP16, fp44_to_fp32(data),
-                            Ite(SelectBit(data, 31) == BvConst(1, 1), (lower_31 | MIN_ABS_INT32), lower_31));
+                            Ite(is_negative, (lower_31 | ABS_MIN_INT32), lower_31));
                     data = Extract(data, 31, 0);
                     
-                    auto new_mem = ExprRef(mem_ptr).Store(BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH), data);
+                    auto new_mem = ExprRef(mem_ptr).Store(addr, data);
                     mem_ptr = new_mem.get();
                 }
 
@@ -392,11 +422,10 @@ namespace ilang {
             instr.SetUpdate(group0_enable, Ite(group0_active, get_updated_reg_value(group0_enable, BvConst(0,1), 1, 0), group0_enable));
             instr.SetUpdate(group1_enable, Ite(!group0_active, get_updated_reg_value(group1_enable, BvConst(0,1), 1, 0), group1_enable));
         
-            instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, IDLE, 3, 0), 
-                                                                get_updated_reg_value(cacc_status_reg, IDLE, 3, 16)));
+            instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, IDLE, NVDLA_CACC_STATUS_REG_MASK, 0), 
+                                                                get_updated_reg_value(cacc_status_reg, IDLE, NVDLA_CACC_STATUS_REG_MASK, 16)));
 
             instr.SetUpdate(cacc_pointer_reg, get_updated_reg_value(cacc_pointer_reg, ~cacc_consumer, 1, 16));
-        
         }
     }
 
