@@ -387,6 +387,11 @@ SC_MODULE(testbench) {
       fout << "(Output) cacc_cacc2csb_rdy = " << (bool) cacc_inst.cacc_cacc2csb_rdy << std::endl;
       fout << "(Output) cacc_cacc2csb_data_vld = " << (bool) cacc_inst.cacc_cacc2csb_data_vld << std::endl;
 
+      bool group0_active = (cacc_inst.cacc_cacc_s_status & 0x10000) == 0;
+      int num_batches = group0_active ? (int) cacc_inst.cacc_group0_cacc_d_batch_number: 
+                                        (int) cacc_inst.cacc_group1_cacc_d_batch_number;
+      fout << "(State) consumer_num_batches = " << std::dec << num_batches << std::endl;
+      
       fout << "(State) cacc_cacc_s_status = 0x" << std::hex << cacc_inst.cacc_cacc_s_status << std::endl;
       fout << "(State) cacc_cacc_s_pointer = 0x" << std::hex << cacc_inst.cacc_cacc_s_pointer << std::endl;
       
