@@ -9,8 +9,11 @@ bool local_var_6 = (local_var_4 == local_var_5);
 bool local_var_7 = (local_var_3 ^ local_var_6);
 sc_biguint<2> local_var_9 = 2;
 bool local_var_10 = (cacc_cmac2cacc_status == local_var_9);
-bool local_var_11 = (local_var_7 & local_var_10);
-auto& univ_var_151 = local_var_11;
+sc_biguint<2> local_var_11 = 3;
+bool local_var_12 = (cacc_cmac2cacc_status == local_var_11);
+bool local_var_13 = (local_var_10 | local_var_12);
+bool local_var_14 = (local_var_7 & local_var_13);
+auto& univ_var_151 = local_var_14;
 return univ_var_151;
 }
 void cacc::update_cacc_pend2busy() {

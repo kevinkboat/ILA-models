@@ -96,7 +96,8 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 // General
 #define NVDLA_INT16_BIT_WIDTH       16    
 #define MAX_INT32             BvConst(0x7FFFFFFF, 48)
-#define ABS_MIN_INT32         BvConst(0x80000000, 48)
+#define MIN_INT32             BvConst(0xFFFF80000000, 48)
+// #define MASK_INT32            BvConst(0xFFFFFFFFFFFF, 48)
 
 #define NVDLA_CACC_STATUS_REG_MASK    3           // 3 = 0b11
 

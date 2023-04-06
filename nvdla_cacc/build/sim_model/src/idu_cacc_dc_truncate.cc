@@ -1,10 +1,10 @@
 #include <cacc.h>
 bool cacc::decode_cacc_cacc_dc_truncate() {
 auto local_var_1 = cacc_cacc_s_status.range(1, 0);
-sc_biguint<2> local_var_2 = 1;
+sc_biguint<2> local_var_2 = 2;
 bool local_var_3 = (local_var_1 == local_var_2);
 auto local_var_4 = cacc_cacc_s_status.range(17, 16);
-sc_biguint<2> local_var_5 = 1;
+sc_biguint<2> local_var_5 = 2;
 bool local_var_6 = (local_var_4 == local_var_5);
 bool local_var_7 = (local_var_3 ^ local_var_6);
 sc_biguint<2> local_var_9 = 3;

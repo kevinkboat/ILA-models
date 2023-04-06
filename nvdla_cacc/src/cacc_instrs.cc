@@ -12,10 +12,10 @@ namespace ilang {
     /// UNINTERPRETED FUNCTIONS
     //////////////////////////////////////////////////////////////////////////////
 
-    // Return 32-bit respresention of fp44 in the lower 32 bits of a 44-bit costant.
+    // Return 32-bit respresention of fp44.
     ExprRef fp44_to_fp32(ExprRef num){
         // <Implement code>
-        return BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+        return BvConst(0, NVDLA_CACC_OUTPUT_BIT_WIDTH);
     }
 
     // Return sum of fp44 and fp16 numbers (a and b respectively). Output should be stored in 
@@ -33,9 +33,8 @@ namespace ilang {
     ExprRef abs_int48(ExprRef num){
         auto sign_idx = 47;
         auto is_negative = SelectBit(num, sign_idx) == BvConst(1, 1);
-        auto abs_val = Ite(is_negative, (~num) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), num);
-        auto mask = (BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << sign_idx) - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
-        return abs_val & mask;
+        auto abs_val = Ite(is_negative, (~num) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), num);  
+        return abs_val;
     }
 
     // Cast int8 to int16.
@@ -43,6 +42,24 @@ namespace ilang {
         auto bv7_unsigned = num & BvConst(0x7F, NVDLA_INT16_BIT_WIDTH);
         auto bv = Ite(SelectBit(num, 7) == 0, bv7_unsigned, bv7_unsigned | BvConst(0xFF80, NVDLA_INT16_BIT_WIDTH));
         return bv;
+    }
+
+    // General sign_extend.
+    ExprRef sign_extend(ExprRef num, int new_length){
+        int sign_idx = num.bit_width() - 1;
+        auto is_negative = SelectBit(num, sign_idx) == BvConst(1, 1);
+        auto mask = (BvConst(1, new_length) << (sign_idx + 1)) - BvConst(1, new_length);
+        auto trailing_ones = ~mask;
+
+        auto tmp = num.ZExt(new_length);
+        tmp = Ite(is_negative, trailing_ones | tmp, tmp);
+        return tmp;
+    }
+
+    // Returns true iff num (assumed to be a 48-bit state) is beyond the scope int32 values. 
+    // Otherwise returns false.
+    ExprRef is_int32_saturated(ExprRef num){
+        return num == MAX_INT32 | num == MIN_INT32;
     }
     
     // Return the new register state after new_value is inserted in the field specified by the
@@ -55,16 +72,18 @@ namespace ilang {
 
     // Return a + b. Result is sign extended to fit a 48-bit state.
     ExprRef accu_add(ExprRef data_precision, ExprRef a, ExprRef b){
-        auto res = Ite(data_precision == INT8, a + (int8_to_int16(b)).SExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
-                    Ite(data_precision == INT16, a + b.SExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
-                    Ite(data_precision == FP16, accu_fp16_add(a, b), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH))));
+        auto res = Ite(data_precision == INT8 | data_precision == INT16, a + sign_extend(b, NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
+                    Ite(data_precision == FP16, accu_fp16_add(a, b), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH)));
         return res;
     }
 
-    // Result is equivalent to Concat(sign, (abs_val >> clip_truncate) + 0.5), where sign is determined by is_negative.
+    // Result is equivalent to Concat(sign(sum), (|sum| >> clip_truncate) + 0.5).
+    // We don't have to worry about overflow since this operation only reduces the magnitude of the original nuumber.
     // Note: Code was adapted from https://github.com/nvdla/hw/blob/nvdlav1/cmod/cacc/NV_NVDLA_cacc.cpp#L853
-    ExprRef truncate(ExprRef clip_truncate, ExprRef abs_val, ExprRef is_negative){
-        auto shamt = clip_truncate + BvConst(0, 5);          // needed to prevent errors
+    ExprRef truncate(ExprRef clip_truncate, ExprRef sum){
+        auto abs_val = abs_int48(sum);
+        auto is_negative = SelectBit(sum, 47) == BvConst(1,1);
+        auto shamt = clip_truncate + BvConst(0, 5);
         shamt = BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) | shamt.ZExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
         // shamt is in48 representation of clip_truncate
         
@@ -75,34 +94,26 @@ namespace ilang {
         return res;
     }
 
-    // Constrain sums to range [MIN_INT32, MAX_INT32]. Sums that are out of this range are
+    // Constrain int48 num to range [MIN_INT32, MAX_INT32]. Numbers that are out of this range are
     // snapped to the closest boundary.
-    ExprRef saturation_clip(ExprRef abs_val, ExprRef is_negative){
-        auto res = Ite(!is_negative & (abs_val > MAX_INT32), MAX_INT32,
-                    Ite(is_negative & (abs_val > ABS_MIN_INT32), ABS_MIN_INT32, abs_val));
+    ExprRef saturation_clip(ExprRef num){
+        auto is_negative = SelectBit(num, 47) == BvConst(1,1); 
+        auto res = Ite(!is_negative & (num >= MAX_INT32), MAX_INT32,
+                    Ite(is_negative & (num <= MIN_INT32), MIN_INT32, num));
         return res;
     }
 
     // Add a to b, truncate the sum based on user specification, and enforce output saturation constraints.
     // Note a is assumed to be 48-bit state and b is taken as data type specified by data_precision. The
     // output is constrained as a 32-bit number, although it is stored in a 48-bit state.
-    ExprRef add_trunc_sat(ExprRef data_precision, ExprRef clip_truncate, ExprRef a, ExprRef b){
+    ExprRef add_trunc_clip(ExprRef data_precision, ExprRef clip_truncate, ExprRef a, ExprRef b){
         // Accumulate
         auto sum = accu_add(data_precision, a, b);
-        auto abs_sum = abs_int48(sum);
-        auto is_negative = SelectBit(sum, 47) == BvConst(1,1);
-
         // Truncate
-        auto truncated_sum = truncate(clip_truncate, abs_sum, is_negative);
-        abs_sum = abs_int48(truncated_sum);
-        is_negative = SelectBit(truncated_sum, 47) == BvConst(1,1);
-
+        auto truncated_sum = truncate(clip_truncate, sum);
         // Saturation
-        auto clipped_sum = saturation_clip(abs_sum, is_negative);
-        auto is_sat = clipped_sum == MAX_INT32 | clipped_sum == ABS_MIN_INT32;
-        
-        auto res = Ite(is_sat, clipped_sum, truncated_sum);
-        return res;
+        auto clipped_sum = saturation_clip(truncated_sum);
+        return clipped_sum;
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -131,7 +142,7 @@ namespace ilang {
         auto cacc_group0_unset = Extract(m.state(GetVarName("group0_", NVDLA_CACC_D_OP_ENABLE)), 0, 0) == BvConst(0, 1);
         auto cacc_group1_unset = Extract(m.state(GetVarName("group1_", NVDLA_CACC_D_OP_ENABLE)), 0, 0) == BvConst(0, 1);
 
-        auto accumulate_flag = Extract(m.input("cmac2cacc_status"), 0, 0) == BvConst(1,1);
+        auto accumulate_flag = m.input("cmac2cacc_status") == RUN;
         auto truncate_flag = m.input("cmac2cacc_status") == LAST_BATCH;
         auto stripe_counter = m.state("stripe_counter");
 
@@ -336,7 +347,8 @@ namespace ilang {
 
         { // Pend2Busy
             auto instr = m.NewInstr("pend2busy");
-            instr.SetDecode((cacc_group0_status == PEND ^ cacc_group1_status == PEND) & m.input("cmac2cacc_status") == ACK);
+            auto sig_advance = m.input("cmac2cacc_status") == ACK | truncate_flag;
+            instr.SetDecode((cacc_group0_status == PEND ^ cacc_group1_status == PEND) & sig_advance);
             instr.SetUpdate(cacc_status_reg, Ite(group0_active, get_updated_reg_value(cacc_status_reg, BUSY, NVDLA_CACC_STATUS_REG_MASK, 0),
                                                                 get_updated_reg_value(cacc_status_reg, BUSY, NVDLA_CACC_STATUS_REG_MASK, 16)));
         }
@@ -361,15 +373,15 @@ namespace ilang {
                 auto data = m.input("cmac2cacc_ps_mac_" + (std::to_string(mac_idx)) + "_" + (std::to_string(out_idx)));
                 
                 auto cached_val = assembly_group_i.Load(addr);
-                auto already_sat = cached_val == MAX_INT32 | cached_val == ABS_MIN_INT32;
+                auto already_sat = is_int32_saturated(cached_val);
 
                 // Perform computation iff cached value is not saturated.
-                auto res = Ite(!already_sat, add_trunc_sat(data_precision, clip_truncate, cached_val, data), cached_val);
+                auto res = Ite(!already_sat, add_trunc_clip(data_precision, clip_truncate, cached_val, data), cached_val);
                 mem = mem.Store(addr, res);
                 instr.SetUpdate(assembly_group_i, mem);
 
                 // Update saturation count
-                auto res_is_sat = res == MAX_INT32 | res == ABS_MIN_INT32;
+                auto res_is_sat = is_int32_saturated(res);
                 saturation_count = Ite(!already_sat & res_is_sat, saturation_count + BvConst(1, NVDLA_CACC_REG_WIDTH), saturation_count);                
             }  
 
@@ -390,7 +402,7 @@ namespace ilang {
 
         { // Truncate (DC mode)
             auto instr = m.NewInstr("cacc_dc_truncate");
-            instr.SetDecode((cacc_group0_status == PEND ^ cacc_group1_status == PEND) & truncate_flag & conv_mode == DIRECT);
+            instr.SetDecode((cacc_group0_status == BUSY ^ cacc_group1_status == BUSY) & truncate_flag & conv_mode == DIRECT);
 
             for (int i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS; i++){
                 auto assembly_group_i = m.state("assembly_kernel_" + (std::to_string(i)));
@@ -398,16 +410,11 @@ namespace ilang {
                                 
                 auto mem_ptr = MemConst(0, {}, NVDLA_CONV_STRIPE_ADDR_WIDTH, NVDLA_CACC_OUTPUT_BIT_WIDTH).get();
                 for (int j = 0; j < NVDLA_CONV_MAX_STRIPE_LEN; j++){
+                    
+                    // get data and cast to 32-bit form
                     auto addr = BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH);
-                    
                     auto data = assembly_group_i.Load(addr);
-                    auto is_negative = SelectBit(data, 47) == BvConst(1, 1);
-                    auto lower_31 = data & MAX_INT32;
-                    
-                    // cast other data types to 32-bit state
-                    data = Ite(data_precision == FP16, fp44_to_fp32(data),
-                            Ite(is_negative, (lower_31 | ABS_MIN_INT32), lower_31));
-                    data = Extract(data, 31, 0);
+                    data = Ite(data_precision == FP16, fp44_to_fp32(data), Extract(data, 31, 0));
                     
                     auto new_mem = ExprRef(mem_ptr).Store(addr, data);
                     mem_ptr = new_mem.get();
