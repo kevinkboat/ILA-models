@@ -12,12 +12,14 @@
 using json = nlohmann::json;
 
 #define NUM_OUTPUTS_PER_MAC_CELL 8
-#define DISABLE_TESTING           true
-#define SUPPRESS_ASM_GRP          true
+// #define DISABLE_TESTING           true
+// #define SUPPRESS_ASM_GRP          false
 
 #define GET_JSON_INT(json_val, default_val) (!(json_val.is_null()) ? json_val.get<int>() : default_val)
 #define GET_JSON_INT_FROM_HEX_STR(json_val, default_val) (!(json_val.is_null()) ? (std::stoi(json_val.get<std::string>().c_str(), nullptr, 16)) : default_val)
 #define GET_JSON_BOOL(json_val, default_val) (!(json_val.is_null()) ? json_val.get<bool>() : default_val)
+
+bool DISABLE_TESTING, SUPPRESS_ASM_GRP;
 
 std::string file_in;
 std::string file_out;
@@ -382,55 +384,28 @@ SC_MODULE(testbench) {
     fout.open(file_out, ios::out | ios::trunc);
 
     int index = 0;
-    int next_batch_num = 0;
+
+    // Initial values for config states. These will be updated before they are used.
+    int prev_batch_num;
+    bool prev_precision_int8;
 
     while (input_done == 0) {
-        
-        bool group0_active = (cacc_inst.cacc_cacc_s_pointer & 0x10000) == 0;
-        int num_batches = next_batch_num;
-        next_batch_num = group0_active ? (cacc_inst.cacc_group0_cacc_d_batch_number).to_int(): 
-                                          (cacc_inst.cacc_group1_cacc_d_batch_number).to_int();
-        int consumer_misc_cfg_reg = group0_active ? (cacc_inst.cacc_group0_cacc_d_misc_cfg).to_int(): 
-                                          (cacc_inst.cacc_group0_cacc_d_misc_cfg).to_int();
-        bool precision_int8 = (consumer_misc_cfg_reg & 0x3000) == 0;
 
-        if (DISABLE_TESTING && (cacc_inst.cacc_cmac2cacc_status == 3)){
-        // fout << "current simulation time: " << '\t' << sc_time_stamp() << std::endl;
+      // Formatting variables
+      int num_batches = prev_batch_num;
+      bool precision_int8 = prev_precision_int8;
+
+      // Next state update for formatting variables
+      bool group0_active = (cacc_inst.cacc_cacc_s_pointer.to_uint() & 0x10000) == 0;
+      int consumer_misc_cfg_reg = group0_active ? (cacc_inst.cacc_group0_cacc_d_misc_cfg).to_uint(): 
+                                  (cacc_inst.cacc_group1_cacc_d_misc_cfg).to_uint();
+      prev_precision_int8 = (consumer_misc_cfg_reg & 0x3000) == 0;
+      
+      prev_batch_num = group0_active ? (cacc_inst.cacc_group0_cacc_d_batch_number).to_uint(): 
+                                        (cacc_inst.cacc_group1_cacc_d_batch_number).to_uint();
+
+      if (DISABLE_TESTING && (cacc_inst.cacc_cmac2cacc_status == 3)){
         fout << "instr No. " << std::dec << index++ << std::endl;
-        
-        // fout << "(Output) cacc_cacc2csb_rdy = " << (bool) cacc_inst.cacc_cacc2csb_rdy << std::endl;
-        // fout << "(Output) cacc_cacc2csb_data_vld = " << (bool) cacc_inst.cacc_cacc2csb_data_vld << std::endl;            
-        // fout << "(State) consumer_num_batches = " << std::dec << num_batches << std::endl;
-        
-        // fout << "(State) cacc_cacc_s_status = 0x" << std::hex << cacc_inst.cacc_cacc_s_status << std::endl;
-        // fout << "(State) cacc_cacc_s_pointer = 0x" << std::hex << cacc_inst.cacc_cacc_s_pointer << std::endl;
-        
-        // // fout << "(State) cacc_group0_cacc_d_out_saturation = " << std::dec << cacc_inst.cacc_group0_cacc_d_out_saturation << std::endl;
-        // // fout << "(State) cacc_group0_cacc_d_clip_cfg = " << cacc_inst.cacc_group0_cacc_d_clip_cfg << std::endl;
-        // fout << "(State) cacc_group0_cacc_d_op_enable = 0x" << cacc_inst.cacc_group0_cacc_d_op_enable << std::endl;
-        // // fout << "(State) cacc_group0_cacc_d_misc_cfg = " << cacc_inst.cacc_group0_cacc_d_misc_cfg << std::endl;
-        // // fout << "(State) cacc_group0_cacc_d_dataout_size_0 = " << cacc_inst.cacc_group0_cacc_d_dataout_size_0 << std::endl;
-        // // fout << "(State) cacc_group0_cacc_d_dataout_size_1 = " << cacc_inst.cacc_group0_cacc_d_dataout_size_1 << std::endl;
-        // // fout << "(State) cacc_group0_cacc_d_dataout_addr = " << cacc_inst.cacc_group0_cacc_d_dataout_addr << std::endl;
-        // fout << "(State) cacc_group0_cacc_d_batch_number = " << cacc_inst.cacc_group0_cacc_d_batch_number << std::endl;
-        // // fout << "(State) cacc_group0_cacc_d_line_stride = " << cacc_inst.cacc_group0_cacc_d_line_stride << std::endl;
-        // // fout << "(State) cacc_group0_cacc_d_surf_stride = " << cacc_inst.cacc_group0_cacc_d_surf_stride << std::endl;
-        // // fout << "(State) cacc_group0_cacc_d_dataout_map = " << cacc_inst.cacc_group0_cacc_d_dataout_map << std::endl;
-
-        // // fout << "(State) cacc_group1_cacc_d_out_saturation = " << cacc_inst.cacc_group1_cacc_d_out_saturation << std::endl;
-        // // fout << "(State) cacc_group1_cacc_d_clip_cfg = " << cacc_inst.cacc_group1_cacc_d_clip_cfg << std::endl;
-        // // fout << "(State) cacc_group1_cacc_d_dataout_map = " << cacc_inst.cacc_group1_cacc_d_dataout_map << std::endl;
-        // // fout << "(State) cacc_group1_cacc_d_surf_stride = " << cacc_inst.cacc_group1_cacc_d_surf_stride << std::endl;
-        // // fout << "(State) cacc_group1_cacc_d_line_stride = " << cacc_inst.cacc_group1_cacc_d_line_stride << std::endl;
-        // fout << "(State) cacc_group1_cacc_d_batch_number = " << cacc_inst.cacc_group1_cacc_d_batch_number << std::endl;
-        // // fout << "(State) cacc_group1_cacc_d_dataout_addr = " << cacc_inst.cacc_group1_cacc_d_dataout_addr << std::endl;
-        // // fout << "(State) cacc_group1_cacc_d_dataout_size_1 = " << cacc_inst.cacc_group1_cacc_d_dataout_size_1 << std::endl;
-        // // fout << "(State) cacc_group1_cacc_d_dataout_size_0 = " << cacc_inst.cacc_group1_cacc_d_dataout_size_0 << std::endl;
-        // fout << "(State) cacc_group1_cacc_d_op_enable = 0x" << cacc_inst.cacc_group1_cacc_d_op_enable << std::endl;
-        // // fout << "(State) cacc_group1_cacc_d_misc_cfg = " << cacc_inst.cacc_group1_cacc_d_misc_cfg << std::endl;
-        // fout << "(Debug) stripe_counter_pre_incr = " << std::dec << cacc_inst.cacc_tmp << std::endl;
-        // fout << "(State) stripe_counter_post_incr = " << std::dec << cacc_inst.cacc_stripe_counter << std::endl;
-
 
         if (!SUPPRESS_ASM_GRP){
           print_assembly_subgroup(0, cacc_inst.cacc_assembly_kernel_0, num_batches);
@@ -527,12 +502,14 @@ SC_MODULE(testbench) {
 };
 
 int sc_main(int argc, char *argv[]) {
-  if (argc != 3) {
-      std::cout << "Usage: ./cacc [prog_frag_in_path] [result_out_dump_path]" << std::endl;
+  if (argc != 5) {
+      std::cout << "Usage: ./cacc disable_testing(T/F) suppress_asm_group(T/F) [prog_frag_in_path] [result_out_dump_path]" << std::endl;
       return 0;
   } else {
-      file_in = argv[1];
-      file_out = argv[2];
+      DISABLE_TESTING = (std::string(argv[1]) == "T");
+      SUPPRESS_ASM_GRP = (std::string(argv[2]) == "T");
+      file_in = argv[3];
+      file_out = argv[4];
   }
 
   // Begin simulation

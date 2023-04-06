@@ -45,8 +45,7 @@ namespace ilang {
     }
 
     // General sign_extend.
-    ExprRef sign_extend(ExprRef num, int new_length){
-        int sign_idx = num.bit_width() - 1;
+    ExprRef sign_extend(ExprRef num, int sign_idx, int new_length){
         auto is_negative = SelectBit(num, sign_idx) == BvConst(1, 1);
         auto mask = (BvConst(1, new_length) << (sign_idx + 1)) - BvConst(1, new_length);
         auto trailing_ones = ~mask;
@@ -72,8 +71,9 @@ namespace ilang {
 
     // Return a + b. Result is sign extended to fit a 48-bit state.
     ExprRef accu_add(ExprRef data_precision, ExprRef a, ExprRef b){
-        auto res = Ite(data_precision == INT8 | data_precision == INT16, a + sign_extend(b, NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
-                    Ite(data_precision == FP16, accu_fp16_add(a, b), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH)));
+        auto res = Ite(data_precision == INT8, a + sign_extend(b, 7, NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
+                    Ite(data_precision == INT16, a + sign_extend(b, 15, NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
+                    Ite(data_precision == FP16, accu_fp16_add(a, b), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH))));
         return res;
     }
 

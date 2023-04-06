@@ -1,0 +1,18 @@
+instr No. 10
+delivery_group_0 256 256 0 
+delivery_group_1 45 0 0 
+delivery_group_2 127 0 0 
+delivery_group_3 32767 1 0 
+delivery_group_4 -32768 -1 0 
+delivery_group_5 -32768 -1 0 
+delivery_group_6 -128 120 -152 
+delivery_group_7 -7439 7439 0 
+delivery_group_8 -6 0 0 
+delivery_group_9 0 0 0 
+delivery_group_10 0 0 0 
+delivery_group_11 0 0 0 
+delivery_group_12 0 0 0 
+delivery_group_13 0 0 0 
+delivery_group_14 0 0 970 
+delivery_group_15 100 0 0 
+
