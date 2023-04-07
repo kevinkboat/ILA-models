@@ -29,19 +29,12 @@ namespace ilang {
     /// HELPER FUNCTIONS
     //////////////////////////////////////////////////////////////////////////////
 
-    // Return |num|, where num has type int48.
-    ExprRef abs_int48(ExprRef num){
-        auto sign_idx = 47;
-        auto is_negative = SelectBit(num, sign_idx) == BvConst(1, 1);
-        auto abs_val = Ite(is_negative, (~num) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), num);  
-        return abs_val;
-    }
-
-    // Cast int8 to int16.
-    ExprRef int8_to_int16(ExprRef num){
-        auto bv7_unsigned = num & BvConst(0x7F, NVDLA_INT16_BIT_WIDTH);
-        auto bv = Ite(SelectBit(num, 7) == 0, bv7_unsigned, bv7_unsigned | BvConst(0xFF80, NVDLA_INT16_BIT_WIDTH));
-        return bv;
+    // Return the new register state after new_value is inserted in the field specified by the
+    // given mask_value and offset 
+    ExprRef get_updated_reg_value(ExprRef old_reg, ExprRef new_value, int mask_val, int offset){
+        auto mask = BvConst((mask_val << offset), NVDLA_CACC_REG_WIDTH);
+        auto tmp = (old_reg & (~mask)) | ((new_value.ZExt(NVDLA_CACC_REG_WIDTH) << offset) & mask);
+        return tmp;
     }
 
     // General sign_extend.
@@ -60,37 +53,12 @@ namespace ilang {
     ExprRef is_int32_saturated(ExprRef num){
         return num == MAX_INT32 | num == MIN_INT32;
     }
-    
-    // Return the new register state after new_value is inserted in the field specified by the
-    // given mask_value and offset 
-    ExprRef get_updated_reg_value(ExprRef old_reg, ExprRef new_value, int mask_val, int offset){
-        auto mask = BvConst((mask_val << offset), NVDLA_CACC_REG_WIDTH);
-        auto tmp = (old_reg & (~mask)) | ((new_value.ZExt(NVDLA_CACC_REG_WIDTH) << offset) & mask);
-        return tmp;
-    }
 
     // Return a + b. Result is sign extended to fit a 48-bit state.
     ExprRef accu_add(ExprRef data_precision, ExprRef a, ExprRef b){
         auto res = Ite(data_precision == INT8, a + sign_extend(b, 7, NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
                     Ite(data_precision == INT16, a + sign_extend(b, 15, NVDLA_CACC_ACCU_INT16_BIT_WIDTH),
                     Ite(data_precision == FP16, accu_fp16_add(a, b), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH))));
-        return res;
-    }
-
-    // Result is equivalent to Concat(sign(sum), (|sum| >> clip_truncate) + 0.5).
-    // We don't have to worry about overflow since this operation only reduces the magnitude of the original nuumber.
-    // Note: Code was adapted from https://github.com/nvdla/hw/blob/nvdlav1/cmod/cacc/NV_NVDLA_cacc.cpp#L853
-    ExprRef truncate(ExprRef clip_truncate, ExprRef sum){
-        auto abs_val = abs_int48(sum);
-        auto is_negative = SelectBit(sum, 47) == BvConst(1,1);
-        auto shamt = clip_truncate + BvConst(0, 5);
-        shamt = BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) | shamt.ZExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
-        // shamt is in48 representation of clip_truncate
-        
-        auto rouding_addend = Ite(clip_truncate == BvConst(0, 5), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), 
-                            BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << (shamt - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH)));
-        auto res = (abs_val + rouding_addend) >> shamt;
-        res = Ite(is_negative, (~res) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), res);
         return res;
     }
 
@@ -103,17 +71,40 @@ namespace ilang {
         return res;
     }
 
-    // Add a to b, truncate the sum based on user specification, and enforce output saturation constraints.
+    // Add a to b and enforce output saturation constraints.
     // Note a is assumed to be 48-bit state and b is taken as data type specified by data_precision. The
     // output is constrained as a 32-bit number, although it is stored in a 48-bit state.
-    ExprRef add_trunc_clip(ExprRef data_precision, ExprRef clip_truncate, ExprRef a, ExprRef b){
+    ExprRef add_clip_32bit(ExprRef data_precision, ExprRef a, ExprRef b){
         // Accumulate
         auto sum = accu_add(data_precision, a, b);
-        // Truncate
-        auto truncated_sum = truncate(clip_truncate, sum);
-        // Saturation
-        auto clipped_sum = saturation_clip(truncated_sum);
+        // Clip
+        auto clipped_sum = saturation_clip(sum);
         return clipped_sum;
+    }
+
+    // Return |num|, where num has type int48.
+    ExprRef abs_int48(ExprRef num){
+        auto sign_idx = 47;
+        auto is_negative = SelectBit(num, sign_idx) == BvConst(1, 1);
+        auto abs_val = Ite(is_negative, (~num) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), num);  
+        return abs_val;
+    }
+
+    // Result is equivalent to Concat(sign(num), (|num| >> clip_truncate) + 0.5).
+    // We don't have to worry about overflow since this operation only reduces the magnitude of the original nuumber.
+    // Note: Code was adapted from https://github.com/nvdla/hw/blob/nvdlav1/cmod/cacc/NV_NVDLA_cacc.cpp#L853
+    ExprRef truncate(ExprRef clip_truncate, ExprRef num){
+        auto abs_val = abs_int48(num);
+        auto is_negative = SelectBit(num, 47) == BvConst(1,1);
+        auto shamt = clip_truncate + BvConst(0, 5);
+        shamt = BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) | shamt.ZExt(NVDLA_CACC_ACCU_INT16_BIT_WIDTH);
+        // shamt is in48 representation of clip_truncate
+        
+        auto rouding_addend = Ite(clip_truncate == BvConst(0, 5), BvConst(0, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), 
+                            BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH) << (shamt - BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH)));
+        auto res = (abs_val + rouding_addend) >> shamt;
+        res = Ite(is_negative, (~res) + BvConst(1, NVDLA_CACC_ACCU_INT16_BIT_WIDTH), res);
+        return res;
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -376,7 +367,8 @@ namespace ilang {
                 auto already_sat = is_int32_saturated(cached_val);
 
                 // Perform computation iff cached value is not saturated.
-                auto res = Ite(!already_sat, add_trunc_clip(data_precision, clip_truncate, cached_val, data), cached_val);
+                auto res = Ite(!already_sat, add_clip_32bit(data_precision, cached_val, data), cached_val);
+                // res is a 32-bit number in a 48-bit state. In case of integers, res is sign extended to occupy 48 bits
                 mem = mem.Store(addr, res);
                 instr.SetUpdate(assembly_group_i, mem);
 
@@ -410,12 +402,16 @@ namespace ilang {
                                 
                 auto mem_ptr = MemConst(0, {}, NVDLA_CONV_STRIPE_ADDR_WIDTH, NVDLA_CACC_OUTPUT_BIT_WIDTH).get();
                 for (int j = 0; j < NVDLA_CONV_MAX_STRIPE_LEN; j++){
-                    
-                    // get data and cast to 32-bit form
+                    // get data 
                     auto addr = BvConst(j, NVDLA_CONV_STRIPE_ADDR_WIDTH);
                     auto data = assembly_group_i.Load(addr);
-                    data = Ite(data_precision == FP16, fp44_to_fp32(data), Extract(data, 31, 0));
+
+                    // Truncate and clip
+                    data = truncate(clip_truncate, data); 
+                    data = saturation_clip(data);
                     
+                    // Cast to 32-bit state and store
+                    data = Ite(data_precision == FP16, fp44_to_fp32(data), Extract(data, 31, 0));                                                           
                     auto new_mem = ExprRef(mem_ptr).Store(addr, data);
                     mem_ptr = new_mem.get();
                 }

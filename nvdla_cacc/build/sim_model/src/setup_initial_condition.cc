@@ -1,7 +1,7 @@
 #include <cacc.h>
 void cacc::setup_initial_condition() {
-cacc_cacc2csb_rdy = 140727873151336;
-cacc_cacc2csb_data_vld = 140727873151336;
+cacc_cacc2csb_rdy = 140723871824872;
+cacc_cacc2csb_data_vld = 140723871824872;
 cacc_tmp = 0;
 cacc_stripe_counter = 0;
 cacc_cacc_s_status = 0;

@@ -49,8 +49,31 @@ add_executable(cacc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_13.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_14.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_15.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_16.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_17.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_18.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_19.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_2.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_20.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_21.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_22.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_23.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_24.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_25.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_26.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_27.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_28.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_29.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_3.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_30.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_31.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_32.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_33.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_34.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_35.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_36.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_37.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_38.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_4.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_5.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/memory_update_functions_6.cc
