@@ -26,7 +26,6 @@ std::string file_out;
 std::ofstream fout;
 
 #define NVDLA_CONV_MAX_STRIPE_LEN         32
-#define PRINT_NUM_WIDTH                   1
 
 // Print assembly sub group
 void print_assembly_subgroup(int num,  std::unordered_map<int, sc_biguint<48>, MemAddrHashFunc> data_addr, int num_batches){ 
