@@ -12,8 +12,8 @@ bool local_var_11 = (cmac_cmac_s_consumer == local_var_10);
 bool local_var_12 = (local_var_9 & local_var_11);
 bool local_var_13 = (local_var_6 | local_var_12);
 bool local_var_15 = (local_var_13 & cmac_csc2cmac_vld);
-auto& univ_var_7 = local_var_15;
-return univ_var_7;
+auto& univ_var_39 = local_var_15;
+return univ_var_39;
 }
 void cmac::update_cmac_pend2busy() {
 sc_biguint<2> local_var_1 = 1;

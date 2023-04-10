@@ -13,12 +13,13 @@ using json = nlohmann::json;
 
 #define NUM_KERNEL_ELEM           64 
 #define NUM_OUTPUTS_PER_MAC_CELL  8
-#define DISABLE_TESTING           true
+// #define DISABLE_TESTING           true
 
 #define GET_JSON_INT(json_val, default_val) (!(json_val.is_null()) ? json_val.get<int>() : default_val)
 #define GET_JSON_INT_FROM_HEX_STR(json_val, default_val) (!(json_val.is_null()) ? (std::stoi(json_val.get<std::string>().c_str(), nullptr, 16)) : default_val)
 #define GET_JSON_BOOL(json_val, default_val) (!(json_val.is_null()) ? json_val.get<bool>() : default_val)
 
+bool DISABLE_TESTING;
 std::string file_in;
 std::string file_out;
 std::ofstream fout;
@@ -2520,12 +2521,13 @@ SC_MODULE(testbench) {
 };
 
 int sc_main(int argc, char *argv[]) {
-  if (argc != 3) {
-      std::cout << "Usage: ./cmac [prog_frag_in_path] [result_out_dump_path]" << std::endl;
+  if (argc != 4) {
+      std::cout << "Usage: ./cmac disable_testing(T/F) [prog_frag_in_path] [result_out_dump_path]" << std::endl;
       return 0;
   } else {
-      file_in = argv[1];
-      file_out = argv[2];
+      DISABLE_TESTING = (std::string(argv[1]) == "T");
+      file_in = argv[2];
+      file_out = argv[3];
   }
 
   // Begin simulation

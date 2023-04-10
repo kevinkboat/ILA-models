@@ -20,6 +20,18 @@ namespace ilang {
         return bv;
     }
 
+    // General sign_extend.
+    ExprRef sign_extend(ExprRef num, int sign_idx, int new_length){
+        auto is_negative = SelectBit(num, sign_idx) == BvConst(1, 1);
+        auto mask = (BvConst(1, new_length) << (sign_idx + 1)) - BvConst(1, new_length);
+        auto trailing_ones = ~mask;
+
+        auto tmp = num.ZExt(new_length);
+        tmp = Ite(is_negative, trailing_ones | tmp, tmp);
+        return tmp;
+    }
+
+
     // Sum of fp16 numbers
     ExprRef fp16_add(ExprRef a, ExprRef b){
         // Place holder code
@@ -32,40 +44,6 @@ namespace ilang {
         return BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
     }
 
-    // (For Winograd mode) Matrix multiplication of two bit vectors. out_addr_width is an optional argument that is used to specify result size
-    // iff the matrix operation results in a smaller output address width.
-    ExprRef matrix_mul(ExprRef& a, ExprRef& b, tuple<int, int> a_size, tuple<int, int> b_size, int out_addr_width = 0, int shamt = 0){
-        // get dimensions
-        int a_rows = get<0>(a_size);
-        int ab_dim_shared = get<1>((a_size));
-        int b_cols = get<1>(b_size);
-
-        // output dimensions
-        int res_size = a_rows * b_cols;
-        int res_addr_width = ceil(log2(res_size));
-        res_addr_width = (res_addr_width > out_addr_width)? res_addr_width : out_addr_width;
-
-        // compute output
-        auto res = MemConst(0, {}, res_addr_width, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
-        for (int i = 0; i < a_rows; i++){
-            for (int j = 0; j < b_cols; j++){
-                // Reset sum
-                auto sum = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
-                for (int k = 0; k < ab_dim_shared; k++){
-                    // sum += a[i][k] + b[k][j]
-                    sum = sum + a.Load(BvConst(i * ab_dim_shared + k, res_addr_width)) * b.Load(BvConst(k * b_cols + j, NVDLA_CMAC_KERNEL_ADDR_WIDTH)); 
-                }
-                
-                // Apply shift
-                sum = (shamt < 0) ? sum >> -shamt : sum << shamt;
-                
-                // res[i][j] = sum
-                res = res.Store(BvConst(i * b_cols + j, res_addr_width), sum);
-            }
-        }
-
-        return res;
-    }
 
     //////////////////////////////////////////////////////////////////////////////
     /// ILA INSTRUCTIONS
@@ -149,6 +127,15 @@ namespace ilang {
             instr.SetUpdate(cmac_group0_status, Ite(group0_ok, BUSY, cmac_group0_status));
             instr.SetUpdate(cmac_group1_status, Ite(group1_ok, BUSY, cmac_group1_status)); 
 
+            // reset partial sums
+            for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
+                // Reset output channels
+                auto mem = MemConst(0, {}, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
+                mem = mem.Store(BvConst(0, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH));
+                // update state
+                instr.SetUpdate(m.state("cmac2cacc_partial_sum_mac_" + (std::to_string(i))), mem);                   
+            }
+
             // Cold start
             using_stale_data = BoolConst(true);
         }
@@ -179,6 +166,7 @@ namespace ilang {
                 for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
                     
                     auto wt = m.input("csc2cmac_wt_" + (std::to_string(i)) + "_" + (std::to_string(j)));
+                    // wt = Ite(data_precision == INT8, sign_extend(num, 7, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH), wt);
                     wt = Ite(data_precision == INT8, int8_to_int16(wt), wt);
 
                     // Update memory and store new address
@@ -246,57 +234,6 @@ namespace ilang {
             instr.SetUpdate(cmac_consumer, Ite(done, ~cmac_consumer, cmac_consumer));
         }
 
-        { // (Winograd mode) Compute partial sum using cached weights
-            auto instr = m.NewInstr("cmac_conv_winograd");
-            instr.SetDecode((cmac_group0_status == BUSY | cmac_group1_status == BUSY) & !using_stale_data & (conv_mode == WINOGRAD));
-
-            // Constant matrices used in winograd mode
-            auto C = MemConst(0, {{0,1},{5,1}, {6,0xFFFF}, {7,1}, {8,0xFFFF}, {9,1}, {10,1}, {15, 0xFFFF}}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH); 
-            tuple<int, int> C_size = make_tuple(4, 4);
-
-            auto double_G = MemConst(0, {{0,2}, {3,1}, {4,1}, {5,1}, {6,1}, {7, 0xFFFF}, {8,1}, {11, 2}}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH); 
-            tuple<int, int> double_G_size = make_tuple(4, 3);
-
-            auto A_T = MemConst(0, {{0,1}, {1,1}, {2,1}, {5,1}, {6,0xFFFF}, {7,0xFFFF}}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
-            tuple<int, int> A_T_size = make_tuple(2, 4);
-
-            for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
-                // Reset output channels
-                auto mem_ptr = MemConst(0, {}, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH).get();
-                auto sum = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);                
-                
-                //*********** <Insert code here> ****************
-                // matrix_mul(arr1, arr2, arr1_size, arr2_size, NVDLA_CMAC_KERNEL_ADDR_WIDTH, shamt);
-
-                // Note: ILAng doesn't allow loads from local memory variables. Will have to break down computation into multiple
-                //      steps if that functionality is needed. 
-                // sum = ...
-                // **********************************************
-
-                sum = Ite(data_precision == INT8, int8_to_int16(sum), sum);
-
-                // Update memory and store new address
-                auto new_mem = ExprRef(mem_ptr).Store(BvConst(0, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum);
-                // auto new_mem = ExprRef(mem_ptr).Store(BvConst(1, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum);
-                // auto new_mem = ExprRef(mem_ptr).Store(BvConst(2, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum);
-                // auto new_mem = ExprRef(mem_ptr).Store(BvConst(3, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum);
-                mem_ptr = new_mem.get();
-
-                // update state
-                instr.SetUpdate(m.state("cmac2cacc_partial_sum_mac_" + (std::to_string(i))), ExprRef(mem_ptr));                   
-            }
-
-            auto group0_active = cmac_consumer == BvConst(0,1);
-            instr.SetUpdate(cmac_group0_status, Ite(group0_active, IDLE, cmac_group0_status));
-            instr.SetUpdate(cmac_group1_status, Ite(!group0_active, IDLE, cmac_group1_status));
-
-            auto group0_enable = m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE));
-            auto group1_enable = m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE));
-            instr.SetUpdate(group0_enable, Ite(group0_active, BvConst(0,1), group0_enable));
-            instr.SetUpdate(group1_enable, Ite(!group0_active, BvConst(0,1), group1_enable));
-            
-            instr.SetUpdate(cmac_consumer, ~cmac_consumer);
-        }
     }
 
 } // namespace ilang

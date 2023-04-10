@@ -18,7 +18,6 @@ add_executable(cmac
   ${CMAKE_CURRENT_SOURCE_DIR}/src/constant_memory_def.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cmac_cache_weights.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cmac_conv_direct.cc
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cmac_conv_winograd.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cmac_set_config_group0.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cmac_set_config_group1.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/idu_cmac_set_producer.cc

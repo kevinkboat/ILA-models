@@ -11,8 +11,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/cmac.dir/src/idu_cmac_cache_weights.cc.o.d"
   "CMakeFiles/cmac.dir/src/idu_cmac_conv_direct.cc.o"
   "CMakeFiles/cmac.dir/src/idu_cmac_conv_direct.cc.o.d"
-  "CMakeFiles/cmac.dir/src/idu_cmac_conv_winograd.cc.o"
-  "CMakeFiles/cmac.dir/src/idu_cmac_conv_winograd.cc.o.d"
   "CMakeFiles/cmac.dir/src/idu_cmac_set_config_group0.cc.o"
   "CMakeFiles/cmac.dir/src/idu_cmac_set_config_group0.cc.o.d"
   "CMakeFiles/cmac.dir/src/idu_cmac_set_config_group1.cc.o"

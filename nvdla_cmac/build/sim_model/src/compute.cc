@@ -2248,18 +2248,6 @@ if (valid_cmac() && decode_cmac_cmac_conv_direct()) {
   LogInstrSequence("cmac_conv_direct", exec_time);
 #endif
 }
-if (valid_cmac() && decode_cmac_cmac_conv_winograd()) {
-#ifdef ILATOR_PROFILING
-  auto start = std::chrono::high_resolution_clock::now();
-#endif
-  update_cmac_cmac_conv_winograd();
-  
-#ifdef ILATOR_PROFILING
-  auto stop = std::chrono::high_resolution_clock::now();
-  auto exec_time = std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count();
-  LogInstrSequence("cmac_conv_winograd", exec_time);
-#endif
-}
 while (1) {
   int schedule_counter = 0;
   if (schedule_counter == 0) {

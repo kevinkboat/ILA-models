@@ -1,0 +1,50 @@
+{
+    "program fragment": [
+        {
+            "instr No.": 0,
+            "cmac_csb2cmac_data": "0x0000",
+            "cmac_csb2cmac_addr": "0x004",
+            "cmac_csb2cmac_write": true,
+            "cmac_csb2cmac_vld": true
+        },
+        {
+            "instr No.": 1,
+            "cmac_csb2cmac_data": "0x0000",
+            "cmac_csb2cmac_addr": "0x00c",
+            "cmac_csb2cmac_write": true,
+            "cmac_csb2cmac_vld": true
+        },
+        {
+            "instr No.": 2,
+            "cmac_csb2cmac_data": "0x0001",
+            "cmac_csb2cmac_addr": "0x0008",
+            "cmac_csb2cmac_write": true,
+            "cmac_csb2cmac_vld": true,
+            "cmac_csc2cmac_vld": true
+        },
+        {
+            "instr No.": 3,
+            "cmac_csc2cmac_vld": true,
+            "cmac_csc2cmac_sending_last_batch": true,
+            
+            "cmac_csc2cmac_wt_0_0": 127,
+            "cmac_csc2cmac_wt_1_0": 128,
+            "cmac_csc2cmac_wt_3_0": -128,
+            "cmac_csc2cmac_wt_4_1": 3,
+            "cmac_csc2cmac_wt_15_2": 7,
+            "cmac_csc2cmac_wt_16_3": 100,
+            "cmac_csc2cmac_wt_27_1": -5,
+            "cmac_csc2cmac_wt_31_2": -111,
+
+            "cmac_csc2cmac_ft_0": 1,
+            "cmac_csc2cmac_ft_1": -5,
+            "cmac_csc2cmac_ft_2": 2,
+            "cmac_csc2cmac_ft_3": 7,
+            
+            "cmac_csc2cmac_wt_30_32": -111,            
+            "cmac_csc2cmac_ft_32": 255,
+
+            "cmac_csc2cmac_wt_28_22": 73
+        }
+    ]
+  }

@@ -273,30 +273,6 @@ src/idu_cmac_conv_direct.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/idu_cmac_conv_direct.cc.s
 .PHONY : src/idu_cmac_conv_direct.cc.s
 
-src/idu_cmac_conv_winograd.o: src/idu_cmac_conv_winograd.cc.o
-.PHONY : src/idu_cmac_conv_winograd.o
-
-# target to build an object file
-src/idu_cmac_conv_winograd.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/idu_cmac_conv_winograd.cc.o
-.PHONY : src/idu_cmac_conv_winograd.cc.o
-
-src/idu_cmac_conv_winograd.i: src/idu_cmac_conv_winograd.cc.i
-.PHONY : src/idu_cmac_conv_winograd.i
-
-# target to preprocess a source file
-src/idu_cmac_conv_winograd.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/idu_cmac_conv_winograd.cc.i
-.PHONY : src/idu_cmac_conv_winograd.cc.i
-
-src/idu_cmac_conv_winograd.s: src/idu_cmac_conv_winograd.cc.s
-.PHONY : src/idu_cmac_conv_winograd.s
-
-# target to generate assembly for a file
-src/idu_cmac_conv_winograd.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cmac.dir/build.make CMakeFiles/cmac.dir/src/idu_cmac_conv_winograd.cc.s
-.PHONY : src/idu_cmac_conv_winograd.cc.s
-
 src/idu_cmac_set_config_group0.o: src/idu_cmac_set_config_group0.cc.o
 .PHONY : src/idu_cmac_set_config_group0.o
 
@@ -1308,9 +1284,6 @@ help:
 	@echo "... src/idu_cmac_conv_direct.o"
 	@echo "... src/idu_cmac_conv_direct.i"
 	@echo "... src/idu_cmac_conv_direct.s"
-	@echo "... src/idu_cmac_conv_winograd.o"
-	@echo "... src/idu_cmac_conv_winograd.i"
-	@echo "... src/idu_cmac_conv_winograd.s"
 	@echo "... src/idu_cmac_set_config_group0.o"
 	@echo "... src/idu_cmac_set_config_group0.i"
 	@echo "... src/idu_cmac_set_config_group0.s"
