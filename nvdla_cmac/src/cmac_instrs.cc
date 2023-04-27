@@ -20,27 +20,15 @@ namespace ilang {
         return bv;
     }
 
-    // General sign_extend.
-    ExprRef sign_extend(ExprRef num, int sign_idx, int new_length){
-        auto is_negative = SelectBit(num, sign_idx) == BvConst(1, 1);
-        auto mask = (BvConst(1, new_length) << (sign_idx + 1)) - BvConst(1, new_length);
-        auto trailing_ones = ~mask;
-
-        auto tmp = num.ZExt(new_length);
-        tmp = Ite(is_negative, trailing_ones | tmp, tmp);
-        return tmp;
-    }
-
-
     // Sum of fp16 numbers
     ExprRef fp16_add(ExprRef a, ExprRef b){
-        // Place holder code
+        // Placeholder code
         return BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
     }
 
     // Product of fp16 numbers
     ExprRef fp16_mult(ExprRef a, ExprRef b){
-        // Place holder code
+        // Placeholder code
         return BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
     }
 
@@ -115,8 +103,9 @@ namespace ilang {
             auto instr = m.NewInstr("cmac_start_from_idle");
             auto group0_ok = cmac_consumer == BvConst(0,1) & !cmac_group0_unset & (cmac_group0_status == IDLE);
             auto group1_ok = cmac_consumer == BvConst(1,1) & !cmac_group1_unset & (cmac_group1_status == IDLE);
-            instr.SetDecode((group0_ok ^ group1_ok) & csc2cmac_vld);
+            instr.SetDecode(group0_ok ^ group1_ok);
             
+            // Cache consumer configurations 
             data_precision = Ite(cmac_consumer == BvConst(0,1), Extract(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), 13, 12),
                                     Extract(m.state(GetVarName("group1_", NVDLA_CMAC_D_MISC_CFG)), 13, 12));
 
@@ -129,10 +118,8 @@ namespace ilang {
 
             // reset partial sums
             for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
-                // Reset output channels
                 auto mem = MemConst(0, {}, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
                 mem = mem.Store(BvConst(0, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH));
-                // update state
                 instr.SetUpdate(m.state("cmac2cacc_partial_sum_mac_" + (std::to_string(i))), mem);                   
             }
 
@@ -160,22 +147,18 @@ namespace ilang {
             instr.SetDecode((cmac_group0_status == BUSY | cmac_group1_status == BUSY) & using_stale_data);
             
             for (auto i = 0; i < NVDLA_CMAC_MAX_NUM_KERNELS_ATOMIC_OP; i++) {
-                // auto mem_ptr = MemConst(0, {}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH).get();
                 auto mem = MemConst(0, {}, NVDLA_CMAC_KERNEL_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
                 
                 for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
                     
                     auto wt = m.input("csc2cmac_wt_" + (std::to_string(i)) + "_" + (std::to_string(j)));
-                    // wt = Ite(data_precision == INT8, sign_extend(num, 7, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH), wt);
                     wt = Ite(data_precision == INT8, int8_to_int16(wt), wt);
 
-                    // Update memory and store new address
-                    // auto new_mem = ExprRef(mem_ptr).Store(BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH), wt);
-                    // mem_ptr = new_mem.get();
+                    // Update memory 
                     mem = mem.Store(BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH), wt);
                 }
 
-                // instr.SetUpdate(m.state("cached_wt_kernel_" + (std::to_string(i))), ExprRef(mem_ptr));
+                // Updatea state
                 instr.SetUpdate(m.state("cached_wt_kernel_" + (std::to_string(i))), mem);
 
             } 
@@ -188,15 +171,20 @@ namespace ilang {
             instr.SetDecode((cmac_group0_status == BUSY | cmac_group1_status == BUSY) & !using_stale_data & (conv_mode == DIRECT));
 
             for (auto i = 0; i < NVDLA_CMAC_NUM_MAC_CELLS; i++) {
-                // Reset output channels
-                // auto mem_ptr = MemConst(0, {}, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH).get();
                 auto mem = MemConst(0, {}, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);
 
-                auto sum0 = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);    
-                auto sum1 = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH);             
+                // Since a MAC cell can cache up to two weight kernels, I use the two variables below to keep track of
+                // intermediate results. sum0 maps the the first cached kernel and is always relevant. sum1 maps to the
+                // second cached kernel and is only relevant when the datatype is int8.
+                auto sum0 = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH); 
+                auto sum1 = BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH); 
+
                 for (auto j = 0; j < NVDLA_CMAC_KERNEL_NUM_ELEM; j++){
+                    // get weights
                     auto wt0 = Load(m.state("cached_wt_kernel_" + (std::to_string(i))), BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH));
                     auto wt1 = Load(m.state("cached_wt_kernel_" + (std::to_string(NVDLA_CMAC_NUM_MAC_CELLS + i))), BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH));
+                    
+                    // get feature
                     auto ft = m.input("csc2cmac_ft_" + (std::to_string(j)));
                     ft = Ite(data_precision == INT8, int8_to_int16(ft), ft);
 
@@ -205,12 +193,11 @@ namespace ilang {
                     sum1 = Ite(data_precision == INT8, sum1 + (wt1 * ft), BvConst(0, NVDLA_CMAC_KERNEL_MAX_ELEM_WIDTH));
                 }
                 
+                // sign extend results if necessary
                 sum0 = Ite(data_precision == INT8, int8_to_int16(sum0), sum0);
                 sum1 = int8_to_int16(sum1);
 
-                // Update memory and store new address
-                // auto new_mem = ExprRef(mem_ptr).Store(BvConst(0, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum0);
-                // mem_ptr = new_mem.get();
+                // Update memory
                 mem = mem.Store(BvConst(0, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum0);
                 mem = mem.Store(BvConst(1, NVDLA_CMAC_MAC_CELL_OUTPUT_ADDR_WIDTH), sum1);
 
@@ -221,16 +208,19 @@ namespace ilang {
             auto done = m.input("csc2cmac_sending_last_batch") == BoolConst(true);
             auto group0_active = cmac_consumer == BvConst(0,1);
             
+            // update consumer status
             auto status_update = Ite(done, IDLE, PEND);
             instr.SetUpdate(cmac_group0_status, Ite(group0_active, status_update, cmac_group0_status));
             instr.SetUpdate(cmac_group1_status, Ite(!group0_active, status_update, cmac_group1_status));
 
+            // update consumer enable flag
             auto enable_flag_update = Ite(done, BvConst(0,1), BvConst(1,1));
             auto group0_enable = m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE));
             auto group1_enable = m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE));
             instr.SetUpdate(group0_enable, Ite(group0_active, enable_flag_update, group0_enable));
             instr.SetUpdate(group1_enable, Ite(!group0_active, enable_flag_update, group1_enable));
 
+            // update cosumer
             instr.SetUpdate(cmac_consumer, Ite(done, ~cmac_consumer, cmac_consumer));
         }
 

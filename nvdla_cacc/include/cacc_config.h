@@ -87,8 +87,6 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 #define ACK           BvConst(2,2)
 #define LAST_BATCH    BvConst(3,2)    // cacc should truncate outputs
 
-// RUN and LAST_BATCH have bit 0 equal to 1
-
 //////////////////////////////////////////////////////////////////////////////
 ///  OTHER CONSTANTS
 //////////////////////////////////////////////////////////////////////////////
@@ -97,7 +95,6 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 #define NVDLA_INT16_BIT_WIDTH       16    
 #define MAX_INT32             BvConst(0x7FFFFFFF, 48)
 #define MIN_INT32             BvConst(0xFFFF80000000, 48)
-// #define MASK_INT32            BvConst(0xFFFFFFFFFFFF, 48)
 
 #define NVDLA_CACC_STATUS_REG_MASK    3           // 3 = 0b11
 
@@ -111,7 +108,7 @@ inline std::string GetVarName(const std::string& var_name0, const std::string& v
 #define NVDLA_CACC_ACCU_FP16_BIT_WIDTH    44    
 
 #define NVDLA_CONV_MAX_STRIPE_LEN         32
-#define NVDLA_CONV_STRIPE_ADDR_WIDTH      5     /// 2 ^ 5 = 32  (max stripe_len)
+#define NVDLA_CONV_STRIPE_ADDR_WIDTH      5       // 2 ^ 5 = 32  (max stripe_len)
 
 // Outputs
 #define NVDLA_CACC_OUTPUT_BIT_WIDTH     32       // width per unit output
