@@ -43,7 +43,7 @@ namespace ilang {
         ///  VARIABLES
         //////////////////////////////////////////////////////////////////////////////
 
-        auto cmac_csb_addr = Extract(m.input("csb2cmac_addr"), 11, 0);
+        auto cmac_csb_addr = Extract(m.input("csb2cmac_addr"), 15, 0);
         auto cmac_csb_valid = m.state("cmac2csb_rdy") & m.input("csb2cmac_vld");
         auto cmac_csb_write = m.input("csb2cmac_write");
         
@@ -57,44 +57,51 @@ namespace ilang {
 
         auto csc2cmac_vld = m.input("csc2cmac_vld");
         auto csc2cmac_sending_last_batch = m.input("csc2cmac_sending_last_batch");
+        
         auto using_stale_data = BoolConst(false);
-        auto data_precision = BvConst(0,2);        // defualt value is INT8
-        auto conv_mode = BvConst(0,1);             // default value is Direct Convolution
+        auto data_precision = INT8;        // initial guess
+        auto conv_mode = DIRECT;           // initial guess
 
         //////////////////////////////////////////////////////////////////////////////
         ///  SET REGISTERS
         //////////////////////////////////////////////////////////////////////////////
 
-        { // CMAC Set Producer (addr:004)
+        { // CMAC Set Producer (addr:7004)
             auto instr = m.NewInstr("cmac_set_producer");
-            instr.SetDecode(cmac_csb_addr == 0x004 & cmac_csb_valid & cmac_csb_write);
+            instr.SetDecode(cmac_csb_addr == 0x7004 & cmac_csb_valid & cmac_csb_write);
             instr.SetUpdate(cmac_producer, Extract(m.input("csb2cmac_data"), NVDLA_CMAC_S_PRODUCER_WIDTH - 1, 0));
         }
 
-        { // CMAC Set Start Group 0 (addr:008)
-            auto instr = m.NewInstr("cmac_set_start_group0");
-            instr.SetDecode(cmac_csb_addr == 0x008 & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(0,1) & cmac_group0_unset);
-            instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_OP_ENABLE_WIDTH - 1, 0));
+        { // Group 0
+            
+            { // CMAC Set Start Group 0 (addr:7008)
+                auto instr = m.NewInstr("cmac_set_start_group0");
+                instr.SetDecode(cmac_csb_addr == 0x7008 & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(0,1) & cmac_group0_unset);
+                instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_OP_ENABLE)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_OP_ENABLE_WIDTH - 1, 0));
+            }
+
+            { // CMAC Set Config Group 0 (addr:700c)
+                auto instr = m.NewInstr("cmac_set_config_group0");
+                instr.SetDecode(cmac_csb_addr == 0x700c & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(0,1) & cmac_group0_unset);
+                instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_MISC_CFG_WIDTH - 1, 0));
+            }
+
         }      
         
-        { // CMAC Set Start Group 1 (addr:008)
-            auto instr = m.NewInstr("cmac_set_start_group1");
-            instr.SetDecode(cmac_csb_addr == 0x008 & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(1,1) & cmac_group1_unset);
-            instr.SetUpdate(m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_OP_ENABLE_WIDTH - 1, 0));
-        } 
+        { // Group 1
 
-        { // CMAC Set Config Group 0 (addr:00c)
-            auto instr = m.NewInstr("cmac_set_config_group0");
-            instr.SetDecode(cmac_csb_addr == 0x00c & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(0,1) & cmac_group0_unset);
-            instr.SetUpdate(m.state(GetVarName("group0_", NVDLA_CMAC_D_MISC_CFG)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_MISC_CFG_WIDTH - 1, 0));
+            { // CMAC Set Start Group 1 (addr:7008)
+                auto instr = m.NewInstr("cmac_set_start_group1");
+                instr.SetDecode(cmac_csb_addr == 0x7008 & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(1,1) & cmac_group1_unset);
+                instr.SetUpdate(m.state(GetVarName("group1_", NVDLA_CMAC_D_OP_ENABLE)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_OP_ENABLE_WIDTH - 1, 0));
+            }    
+
+            { // CMAC Set Config Group 1 (addr:700c)
+                auto instr = m.NewInstr("cmac_set_config_group1");
+                instr.SetDecode(cmac_csb_addr == 0x700c & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(1,1) & cmac_group1_unset);
+                instr.SetUpdate(m.state(GetVarName("group1_", NVDLA_CMAC_D_MISC_CFG)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_MISC_CFG_WIDTH - 1, 0));
+            }
         }
-
-        { // CMAC Set Config Group 1 (addr:00c)
-            auto instr = m.NewInstr("cmac_set_config_group1");
-            instr.SetDecode(cmac_csb_addr == 0x00c & cmac_csb_valid & cmac_csb_write & cmac_producer == BvConst(1,1) & cmac_group1_unset);
-            instr.SetUpdate(m.state(GetVarName("group1_", NVDLA_CMAC_D_MISC_CFG)), Extract(m.input("csb2cmac_data"), NVDLA_CMAC_D_MISC_CFG_WIDTH - 1, 0));
-        }
-
         //////////////////////////////////////////////////////////////////////////////
         ///  EXPLICIT STATUS CONTROL
         //////////////////////////////////////////////////////////////////////////////
@@ -158,7 +165,7 @@ namespace ilang {
                     mem = mem.Store(BvConst(j, NVDLA_CMAC_KERNEL_ADDR_WIDTH), wt);
                 }
 
-                // Updatea state
+                // Update state
                 instr.SetUpdate(m.state("cached_wt_kernel_" + (std::to_string(i))), mem);
 
             } 
@@ -220,7 +227,7 @@ namespace ilang {
             instr.SetUpdate(group0_enable, Ite(group0_active, enable_flag_update, group0_enable));
             instr.SetUpdate(group1_enable, Ite(!group0_active, enable_flag_update, group1_enable));
 
-            // update cosumer
+            // update consumer
             instr.SetUpdate(cmac_consumer, Ite(done, ~cmac_consumer, cmac_consumer));
         }
 
